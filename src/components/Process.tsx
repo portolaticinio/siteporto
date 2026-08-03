@@ -10,32 +10,32 @@ const steps = [
   {
     n: "01",
     title: "Recepção do leite",
-    desc: "Leite coletado em fazendas locais, testado na chegada.",
+    desc: "De produtores locais, testado na chegada.",
   },
   {
     n: "02",
     title: "Pasteurização",
-    desc: "Aquecimento controlado para eliminar microrganismos preservando o sabor.",
+    desc: "Aquecimento controlado que preserva o sabor.",
   },
   {
     n: "03",
     title: "Coagulação",
-    desc: "Adição de coalho natural e fermento lácteo selecionado.",
+    desc: "Adição de coalho e fermentos selecionados.",
   },
   {
     n: "04",
     title: "Modelagem",
-    desc: "Máquinas especializadas moldam a mussarela ainda quente com precisão e padronização.",
+    desc: "Moldagem da mussarela com precisão e padrão.",
   },
   {
     n: "05",
     title: "Resfriamento",
-    desc: "Banho em salmoura fria por tempo cuidadosamente calibrado.",
+    desc: "Feito em salmoura no tempo ideal.",
   },
   {
     n: "06",
     title: "Embalagem",
-    desc: "Embalagem a vácuo no mesmo dia para máxima frescor.",
+    desc: "Embalagem a vácuo para manter o frescor.",
   },
 ];
 
@@ -75,8 +75,7 @@ export function Process() {
   return (
     <section
       id="processo"
-      className="relative overflow-hidden py-20"
-    
+      className="relative overflow-hidden py-20     bg-[radial-gradient(circle_at_left,#084E80_0%,#084E80_45%,#063C67_100%)]"
     >
 
       {/* profundidade sutil */}
@@ -91,12 +90,12 @@ export function Process() {
           Do leite ao produto
         </SectionLabel>
 
-        <SectionHeading width="full">
+        <SectionHeading width="full" className="text-white">
           Cada queijo passa por 6 etapas e mais de 20 conferências.
         </SectionHeading>
 
         {/* ===== Timeline ===== */}
-        <div className="relative mt-16 hidden lg:block">
+        <div className="relative mt-16 py-10 hidden lg:block">
           {/* trilho central */}
           <div className="absolute inset-x-0 top-1/2 h-px -translate-y-1/2 bg-gradient-to-r from-transparent via-black/30 to-transparent" />
 
@@ -158,8 +157,9 @@ export function Process() {
                     className="
         mt-2
         text-lg
-        font-semibold
-        text-black
+        font-medium
+        font-sans
+        text-white
       "
                   >
                     {step.title}
@@ -169,8 +169,7 @@ export function Process() {
                   <p
                     className="
         text-sm
-        font-medium
-        text-black
+        text-white
       "
                   >
                     {step.desc}

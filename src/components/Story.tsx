@@ -11,7 +11,7 @@ export function Story() {
     >
       <div className="mx-auto grid max-w-7xl items-center gap-14 px-6 lg:grid-cols-2">
         <div className="relative">
-          <img
+        <img
   src={historyImg}
   alt="Fundador da fábrica nos anos iniciais"
   loading="lazy"
@@ -23,8 +23,8 @@ export function Story() {
     w-full
     max-w-[280px]
     rounded-2xl
-    shadow-soft
     sepia-[0.2]
+    shadow-[0_30px_70px_rgba(0,0,0,0.35)]
 
     sm:max-w-[320px]
     md:max-w-[380px]
@@ -46,7 +46,7 @@ export function Story() {
     sm:-right-3
     sm:w-[140px]
     sm:p-3
-
+    
     md:-bottom-8
     md:-right-4
     md:w-[160px]
@@ -72,7 +72,7 @@ export function Story() {
             <p>
               Foi assim que nasceu a nossa história: da união de dois irmãos e um amigo,
               que escolheram caminhar juntos como uma família.
-             <br></br>
+              <br></br>
               Com coragem, dedicação e o apoio de seus familiares, enfrentaram obstáculos,
               transformaram desafios em conquistas e construíram muito mais do que uma Fábrica de Laticínios:
               deram início a uma trajetória marcada pela confiança, dedicação e compromisso com a qualidade.

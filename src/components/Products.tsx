@@ -9,6 +9,9 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useEffect, useState } from "react";
 import { SectionHeading } from "./SectionTitle";
 import { SectionLabel } from "./SectionLabel";
+import { FaWhatsapp } from "react-icons/fa";
+import { WHATSAPP_LINK } from "@/lib/constants";
+
 
 export function Products() {
   const products = [
@@ -60,10 +63,36 @@ export function Products() {
     xl:pb-10">
       <div className="mx-auto max-w-7xl px-6">
         <SectionLabel icon={<Milk className="h-3.5 w-3.5" />}>Nossos produtos</SectionLabel>
-        <div className="mt-5">
+        <div className="mt-5 flex flex-col items-start gap-4 sm:flex-row sm:justify-between sm:gap-0">
           <SectionHeading width="medium">
             Excelência em cada processo, sabor em cada momento.
           </SectionHeading>
+             <a
+              href={WHATSAPP_LINK}
+              target="_blank"
+              rel="noreferrer"
+              className="
+    w-fit
+    inline-flex
+    h-12
+    items-center
+    justify-center
+    gap-2
+    rounded-2xl
+    bg-[#07598C]
+    px-6
+    text-sm
+    font-medium
+    text-white
+    transition-all
+    hover:-translate-y-0.5
+    sm:h-14
+    sm:px-7
+  "
+            >
+              <FaWhatsapp className="h-5 w-5 sm:h-6 sm:w-6" />
+              Fazer pedido
+            </a>
         </div>
         <div className="mt-12 grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-3">
           {products.map((p) => {

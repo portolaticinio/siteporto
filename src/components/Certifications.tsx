@@ -11,6 +11,9 @@ import { SectionLabel } from "./SectionLabel";
 import { SectionHeading } from "./SectionTitle";
 import { SectionParagraph } from "./SectionParagraph";
 import { useEffect, useRef, useState } from "react";
+import { WHATSAPP_LINK } from "@/lib/constants";
+import { FaWhatsapp } from "react-icons/fa";
+
 
 const seals = [
   {
@@ -64,7 +67,8 @@ export function Certifications() {
     return () => observer.disconnect();
   }, []);
   return (
-    <section className="py-10 items-center overflow-hidden bg-[radial-gradient(circle_at_left,#084E80_0%,#084E80_45%,#063C67_100%)] text-white">
+    <section className="py-10 items-center overflow-hidden 
+">
       <div className="mx-auto max-w-7xl px-6"
         ref={sectionRef}>
 
@@ -80,10 +84,38 @@ export function Certifications() {
               Compromisso com qualidade e excelência
             </SectionHeading>
 
-            <SectionParagraph width="medium" className="text-white">
+            <SectionParagraph width="medium">
               Seguimos padrões de segurança alimentar, com registros,
               certificações e reconhecimentos que reforçam a confiança.
             </SectionParagraph>
+
+               <a
+                          href={WHATSAPP_LINK}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="
+                w-fit
+                inline-flex
+                h-12
+                items-center
+                justify-center
+                gap-2
+                rounded-2xl
+                bg-[#07598C]
+                px-6
+                text-sm
+                font-medium
+                text-white
+                transition-all
+                hover:-translate-y-0.5
+                sm:h-14
+                sm:px-7
+                mt-5
+              "
+                        >
+                          <FaWhatsapp className="h-5 w-5 sm:h-6 sm:w-6" />
+                          Fazer pedido
+                        </a>
           </div>
 
           {/* Cards */}

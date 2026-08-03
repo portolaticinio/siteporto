@@ -47,7 +47,7 @@ export default function Gallery() {
           }
 
           .gallery--thumbs {
-            display: flex;
+            display: contents;
             gap: .5rem;
             overflow-x: auto;
             padding-block-end: .375rem;

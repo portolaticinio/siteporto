@@ -13,31 +13,7 @@ import { SectionHeading } from "./SectionTitle";
 import { SectionLabel } from "./SectionLabel";
 import { SectionParagraph } from "./SectionParagraph";
 
-
 export function Values() {
-  const highlights = [
-    {
-      icon: <Users className="h-5 w-5" />,
-      value: "14",
-      label: "Produtores parceiros",
-    },
-    {
-      icon: <Truck className="h-5 w-5" />,
-      value: "Diária",
-      label: "Coleta do leite",
-    },
-    {
-      icon: <ShieldCheck className="h-5 w-5" />,
-      value: "100%",
-      label: "Análise na chegada",
-    },
-    {
-      icon: <Leaf className="h-5 w-5" />,
-      value: "Regional",
-      label: "Produção local",
-    },
-  ];
-
   const values = [
     {
       icon: <Recycle className="h-6 w-6" />,
@@ -66,11 +42,8 @@ export function Values() {
   ];
 
   return (
-    <section className="relative overflow-hidden py-10 py-20 "
-    >
-      
+    <section className="relative overflow-hidden py-10 md:py-20">
       <div className="mx-auto relative z-10 max-w-7xl px-6">
-        {/* TOPO */}
 
         <div className="grid items-center gap-14">
           <div>
@@ -83,23 +56,66 @@ export function Values() {
             </SectionHeading>
 
             <SectionParagraph width="large">
-              Cada produto representa uma cadeia de pessoas, produtores e práticas responsáveis,
-              da origem do leite ao impacto positivo na comunidade e nossa região.
+              Cada produto representa uma cadeia de pessoas, produtores e práticas
+              responsáveis, da origem do leite ao impacto positivo na comunidade
+              e nossa região.
             </SectionParagraph>
           </div>
         </div>
 
-        <div className="mt-10 grid grid-cols-1 gap-6 md:grid-cols-2">
+
+        {/* MOBILE = 2 CARDS + SCROLL */}
+        <div
+          className="
+            mt-10
+            grid
+            grid-cols-1
+            gap-6
+
+            max-h-[460px]
+            overflow-y-auto
+            pr-2
+
+            md:max-h-none
+            md:overflow-visible
+            md:grid-cols-2
+          "
+        >
           {values.map((item) => (
             <div
               key={item.title}
-              className="rounded-2xl border border-border bg-background p-7 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
+              className="
+                rounded-2xl
+                border
+                border-border
+                bg-background
+                p-7
+                transition-all
+                duration-300
+                hover:-translate-y-1
+                hover:shadow-lg
+              "
             >
-              <div style={{ display: "flex", alignItems: "center", gap: "1rem" }}>
-                <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[#07598C] text-secondary-foreground">
+              <div className="flex items-center gap-4">
+                <div
+                  className="
+                    flex
+                    h-12
+                    w-12
+                    shrink-0
+                    items-center
+                    justify-center
+                    rounded-2xl
+                    bg-[#07598C]
+                    text-secondary-foreground
+                  "
+                >
                   {item.icon}
                 </div>
-                <h4 className="text-xl">{item.title}</h4>
+
+                <h4 className="text-xl">
+                  {item.title}
+                </h4>
               </div>
 
 
@@ -109,6 +125,7 @@ export function Values() {
             </div>
           ))}
         </div>
+
       </div>
     </section>
   );
