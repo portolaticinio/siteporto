@@ -2,13 +2,10 @@
 
 import useEmblaCarousel from "embla-carousel-react";
 import Autoplay from "embla-carousel-autoplay";
-import { Star } from "lucide-react";
+import { Truck, Star } from "lucide-react";
 
 import { useEffect, useState } from "react";
 
-import { SectionLabel } from "./SectionLabel";
-import { SectionHeading } from "./SectionTitle";
-import { SectionParagraph } from "./SectionParagraph";
 
 export function Testimonials() {
   const reviews = [
@@ -49,10 +46,8 @@ export function Testimonials() {
       role: "Lanchonete Express",
     },
   ];
-
   const [selectedIndex, setSelectedIndex] = useState(0);
-
-  const [emblaRef, emblaApi] = useEmblaCarousel(
+  const [emblaRef2, emblaApi2] = useEmblaCarousel(
     {
       align: "start",
       loop: true,
@@ -66,52 +61,30 @@ export function Testimonials() {
   );
 
   useEffect(() => {
-    if (!emblaApi) return;
+    if (!emblaApi2) return;
 
     const onSelect = () => {
-      setSelectedIndex(emblaApi.selectedScrollSnap());
+      setSelectedIndex(emblaApi2.selectedScrollSnap());
     };
 
-    emblaApi.on("select", onSelect);
-    emblaApi.on("reInit", onSelect);
+    emblaApi2.on("select", onSelect);
+    emblaApi2.on("reInit", onSelect);
 
     onSelect();
 
     return () => {
-      emblaApi.off("select", onSelect);
-      emblaApi.off("reInit", onSelect);
+      emblaApi2.off("select", onSelect);
+      emblaApi2.off("reInit", onSelect);
     };
-  }, [emblaApi]);
+  }, [emblaApi2]);
 
   return (
-    <section className="py-10">
-      <div className="mx-auto max-w-7xl px-5">
-
-        <div className="flex flex-col gap-10 lg:grid lg:grid-cols-[320px_1fr] lg:items-center">
-
-          {/* Texto da seção */}
-          <div>
-            <SectionLabel icon={<Star className="h-3.5 w-3.5" />}>
-              Depoimentos
-            </SectionLabel>
-
-            <SectionHeading width="large">
-              O que dizem quem usa todo dia.
-            </SectionHeading>
-
-            <SectionParagraph width="large">
-              Histórias de clientes que confiam na qualidade dos nossos
-              produtos.
-            </SectionParagraph>
-          </div>
-
-
+    <div>
           {/* Carrossel + indicador */}
           <div>
-
             <div
               className="overflow-hidden"
-              ref={emblaRef}
+              ref={emblaRef2}
             >
               <div className="flex">
 
@@ -122,19 +95,21 @@ export function Testimonials() {
                       min-w-0
                       flex-[0_0_100%]
                       px-2
-                      md:flex-[0_0_50%]
-                      lg:flex-[0_0_33.333%]
+                    
                     "
                   >
                     <figure
                       className="
-                        flex
-                        h-full
-                        flex-col
-                        rounded-2xl
-                        bg-card
-                        p-5
-                      "
+    mx-auto
+    flex
+    aspect-square
+    w-full
+    max-w-[270px]
+    flex-col
+    rounded-2xl
+    bg-card
+    p-5
+  "
                     >
 
                       <div className="flex gap-1 text-accent">
@@ -146,7 +121,7 @@ export function Testimonials() {
                         ))}
                       </div>
 
-                      <blockquote className="mt-3 flex-1 text-1xl leading-relaxed">
+                      <blockquote className="mt-3 text-1xl leading-relaxed">
                         "{r.quote}"
                       </blockquote>
 
@@ -173,13 +148,12 @@ export function Testimonials() {
               {reviews.map((_, index) => (
                 <button
                   key={index}
-                  onClick={() => emblaApi?.scrollTo(index)}
+                  onClick={() => emblaApi2?.scrollTo(index)}
                   className={`
                     h-2 rounded-full transition-all duration-300
-                    ${
-                      selectedIndex === index
-                        ? "w-10 bg-primary"
-                        : "w-3 bg-border"
+                    ${selectedIndex === index
+                      ? "w-10 bg-primary"
+                      : "w-3 bg-border"
                     }
                   `}
                   aria-label={`Ir para depoimento ${index + 1}`}
@@ -188,10 +162,6 @@ export function Testimonials() {
             </div>
 
           </div>
-
-        </div>
-
-      </div>
-    </section>
+    </div>
   );
 }

@@ -8,8 +8,9 @@ import logo from "@/assets/back.png";
 
 export function Footer() {
   return (
-    <footer className="border-t border-white/10 bg-gradient-to-b from-[#1771A8] to-[#115A86] text-white">
-      <div className="mx-auto max-w-7xl px-6 py-16">
+    <footer className="border-t border-white/10 
+    bg-[radial-gradient(circle_at_left,#084E80_0%,#084E80_45%,#063C67_100%)] text-white">
+      <div className="mx-auto max-w-7xl px-6 py-10">
 
         <div className="grid gap-10 lg:grid-cols-[1fr_1fr_1fr_1fr]">
           {/* Logo */}
@@ -19,7 +20,7 @@ export function Footer() {
               alt="Porto Laticínios"
               className="h-20 w-auto"
             />
-            <p className="mt-6 max-w-sm text-sm leading-7 text-white/75">
+            <p className="mt-4 max-w-sm text-sm leading-7 text-white/75">
               O verdadeiro sabor
               do Queijo na Paraíba
 
@@ -41,7 +42,7 @@ export function Footer() {
               Institucional
             </h3>
 
-            <ul className="mt-6 space-y-4 text-sm text-white/75">
+            <ul className="mt-4 space-y-2 text-sm text-white/75">
 
               <li>
                 <a
@@ -89,7 +90,7 @@ export function Footer() {
               Produtos
             </h3>
 
-            <ul className="mt-6 space-y-4 text-sm text-white/75">
+            <ul className="mt-4 space-y-2 text-sm text-white/75">
 
               <li>
                 <a
@@ -137,7 +138,7 @@ export function Footer() {
             >
               Contato
             </h3>
-            <div className="mt-6 flex gap-3">
+            <div className="mt-4 flex gap-3">
 
 
               {/* WhatsApp */}
@@ -218,7 +219,7 @@ export function Footer() {
                 <Mail className="h-5 w-5" />
               </a>
             </div>
-            <div className="mt-8 space-y-2 text-sm text-white/70">
+            <div className="mt-4 space-y-2 text-sm text-white/70">
             <p>
               Atendimento de Segunda a Sexta
             </p>
@@ -231,7 +232,7 @@ export function Footer() {
         {/* Linha inferior */}
         <div
           className="
-            mt-14
+            mt-6
             flex
             flex-col
             gap-4

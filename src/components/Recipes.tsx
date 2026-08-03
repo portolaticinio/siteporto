@@ -194,7 +194,7 @@ export function Recipes() {
   }, [receitaSelecionada]);
 
   return (
-    <section id="receitas" className="pt-20">
+    <section id="receitas" className="pt-20 pb-15 relative overflow-hidden">
       <div className="mx-auto max-w-7xl px-3">
         <div className="grid items-center lg:grid-cols-2">
           <div>

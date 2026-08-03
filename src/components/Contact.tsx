@@ -30,17 +30,24 @@ export function Contact() {
   };
 
   return (
-    <section id="contato" className="relative overflow-hidden pt-20 pb-7 " >
-      <div className="mx-auto grid max-w-7xl gap-14 px-6 lg:grid-cols-2">
+    <section id="contato" className="relative overflow-hidden pt-20 pb-7 " style={{
+      backgroundImage: "url('/src/assets/back.png')",
+      backgroundSize: 'cover',
+      backgroundPosition: 'center -179px', // Ajuste este valor em pixels para subir mais (-100px, -200px, etc.)
+    }}
+    >
+      {/* Camada de sobreposição para clarear e diminuir o contraste do fundo */}
+      < div className="absolute inset-0 bg-[#F7F3E8]/85 pointer-events-none" />
+      <div className="mx-auto grid max-w-7xl gap-14 px-6 lg:grid-cols-2 z-10 relative">
         <div>
-          <SectionLabel 
-          icon={<MessageCircle className="h-3.5 w-3.5" />}>
+          <SectionLabel
+            icon={<MessageCircle className="h-3.5 w-3.5" />}>
             Contato
           </SectionLabel>
           <SectionHeading width="small" >
             Estamos à disposição para atender você.
           </SectionHeading>
-        
+
           <div className="mt-10 space-y-5">
             <ContactRow icon={<MessageCircle className="h-5 w-5" />} label="WhatsApp" value={COMPANY_WHATSAPP_DISPLAY} href={WHATSAPP_LINK} />
             <ContactRow icon={<Mail className="h-5 w-5" />} label="E-mail" value={COMPANY_EMAIL} href={`mailto:${COMPANY_EMAIL}`} />
@@ -55,7 +62,7 @@ export function Contact() {
           noValidate
         >
           <h3 className="text-2xl">Entre em contato conosco</h3>
-          
+
           <div className="mt-2 grid gap-1">
             <FormField label="Nome" error={errors.name?.message}>
               <input

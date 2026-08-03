@@ -76,14 +76,8 @@ export function Process() {
     <section
       id="processo"
       className="relative overflow-hidden py-20"
-      style={{
-  backgroundImage: "url('/src/assets/back.png')",
-  backgroundSize: 'cover',
-  backgroundPosition: 'center -179px', // Ajuste este valor em pixels para subir mais (-100px, -200px, etc.)
-}}
+    
     >
-      {/* Camada de sobreposição para clarear e diminuir o contraste do fundo */}
-      < div className="absolute inset-0 bg-[#F7F3E8]/85 pointer-events-none" />
 
       {/* profundidade sutil */}
       <div

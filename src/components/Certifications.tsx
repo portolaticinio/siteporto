@@ -64,7 +64,7 @@ export function Certifications() {
     return () => observer.disconnect();
   }, []);
   return (
-    <section className="pt-15 overflow-hidden">
+    <section className="py-10 items-center overflow-hidden bg-[radial-gradient(circle_at_left,#084E80_0%,#084E80_45%,#063C67_100%)] text-white">
       <div className="mx-auto max-w-7xl px-6"
         ref={sectionRef}>
 
@@ -80,14 +80,14 @@ export function Certifications() {
               Compromisso com qualidade e excelência
             </SectionHeading>
 
-            <SectionParagraph width="medium">
+            <SectionParagraph width="medium" className="text-white">
               Seguimos padrões de segurança alimentar, com registros,
               certificações e reconhecimentos que reforçam a confiança.
             </SectionParagraph>
           </div>
 
           {/* Cards */}
-          <div className="grid grid-cols-2 gap-4 lg:grid-cols-3">
+          <div className="grid grid-cols-2 gap-4 lg:grid-cols-3 ">
             {seals.map((seal, index) => {
               const Icon = seal.icon;
 
@@ -99,7 +99,7 @@ export function Certifications() {
   rounded-xl
   border
   border-[#07598C]
-  bg-[card]
+  bg-[#fff]
   p-3
   text-center
   transition-all
@@ -136,7 +136,7 @@ export function Certifications() {
                     <Icon className="h-5 w-5 text-white" />
                   </div>
 
-                  <h3 className="mt-3 text-lg font-semibold leading-none">
+                  <h3 className="mt-3 text-lg text-black font-semibold leading-none">
                     {seal.title}
                   </h3>
 
