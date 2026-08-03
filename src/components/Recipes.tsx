@@ -1,8 +1,9 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import useEmblaCarousel from "embla-carousel-react";
+import Autoplay from "embla-carousel-autoplay";
 import { ChevronLeft, ChevronRight, ChefHat } from "lucide-react";
 
-import mussarelaImg from "@/assets/product-requeijao.jpg";
+import mussarelaImg from "@/assets/product-requeijao.jpg"; // TODO: confirme o caminho correto da imagem de mussarela
 import requeijaoImg from "@/assets/product-requeijao.jpg";
 import pizzaImg from "@/assets/recipe-pizza.jpg";
 
@@ -10,14 +11,30 @@ import { SectionLabel } from "./SectionLabel";
 import { SectionHeading } from "./SectionTitle";
 import { SectionParagraph } from "./SectionParagraph";
 
+type Recipe = {
+  id: string;
+  img: string;
+  title: string;
+  time: string;
+  level: string;
+  audience: "casa" | "negocio" | "ambos";
+  product: string;
+  description: string;
+  ingredients: string[];
+  steps: string[];
+  tip?: string;
+  orderLink: string;
+};
+
 export function Recipes() {
-  const recipes = [
+  const recipes: Recipe[] = [
     {
+      id: "torrada-requeijao",
       img: requeijaoImg,
-      title: "Torrada com requeijão e mel",
+      title: "Torrada com requeijão",
       time: "5 min",
       level: "Fácil",
-      audience: "casa", // "casa" | "negocio" | "ambos"
+      audience: "casa",
       product: "Requeijão Porto Laticínios",
       description:
         "Uma torrada rápida e cremosa, perfeita para um café da manhã ou lanche da tarde.",
@@ -36,6 +53,7 @@ export function Recipes() {
       orderLink: "/produtos/requeijao",
     },
     {
+      id: "macarrao-parmegiana",
       img: mussarelaImg,
       title: "Macarrão à parmegiana",
       time: "40 min",
@@ -61,6 +79,7 @@ export function Recipes() {
       orderLink: "/produtos/mussarela",
     },
     {
+      id: "lasanha-mussarela",
       img: pizzaImg,
       title: "Lasanha de Muçarela",
       time: "35 min",
@@ -84,7 +103,8 @@ export function Recipes() {
       tip: "Utilize nossa mussarela para um gratinado uniforme e sabor marcante.",
       orderLink: "/produtos/mussarela",
     },
-    {
+     {
+      id: "lasanha",
       img: pizzaImg,
       title: "Lasanha de Muçarela",
       time: "35 min",
@@ -113,8 +133,10 @@ export function Recipes() {
   const [canPrev, setCanPrev] = useState(false);
   const [canNext, setCanNext] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
-  const [filtro, setFiltro] = useState(null); // null = todas | "casa" | "negocio"
-  const [receitaSelecionada, setReceitaSelecionada] = useState(null);
+  const [filtro, setFiltro] = useState<"casa" | "negocio" | null>(null);
+  const [receitaSelecionada, setReceitaSelecionada] = useState<Recipe | null>(
+    null
+  );
 
   useEffect(() => {
     const update = () => {
@@ -128,19 +150,19 @@ export function Recipes() {
     return () => window.removeEventListener("resize", update);
   }, []);
 
-  // Lista filtrada por público
   const recipesFiltradas = recipes.filter(
     (r) => !filtro || r.audience === filtro || r.audience === "ambos"
   );
 
-  const showCarousel = isMobile
-    ? recipesFiltradas.length > 2
-    : recipesFiltradas.length > 3;
+  const showCarousel = recipesFiltradas.length > 3;
 
-  const [emblaRef, emblaApi] = useEmblaCarousel({
-    align: "start",
-    loop: false,
-  });
+  const autoplay = useRef(
+    Autoplay({ delay: 4000, stopOnInteraction: false, stopOnMouseEnter: true })
+  );
+
+  const [emblaRef, emblaApi] = useEmblaCarousel({ align: "start", loop: true }, [
+    autoplay.current,
+  ]);
 
   useEffect(() => {
     if (!emblaApi) return;
@@ -161,16 +183,15 @@ export function Recipes() {
     };
   }, [emblaApi]);
 
-  // Reinicializa o embla sempre que a lista filtrada mudar
   useEffect(() => {
     emblaApi?.reInit();
   }, [emblaApi, filtro]);
 
-  // Trava o scroll do body quando o modal está aberto + fecha com ESC
   useEffect(() => {
     if (!receitaSelecionada) return;
     document.body.style.overflow = "hidden";
-    const onKeyDown = (e) => e.key === "Escape" && setReceitaSelecionada(null);
+    const onKeyDown = (e: KeyboardEvent) =>
+      e.key === "Escape" && setReceitaSelecionada(null);
     window.addEventListener("keydown", onKeyDown);
     return () => {
       document.body.style.overflow = "";
@@ -192,39 +213,41 @@ export function Recipes() {
             </SectionHeading>
 
             <SectionParagraph width="large">
-                Receitas para valorizar o sabor dos nossos produtos e transformar
-                momentos simples em experiências especiais à mesa.
+              Receitas para valorizar o sabor dos nossos produtos e
+              transformar momentos simples em experiências especiais à mesa.
             </SectionParagraph>
 
-            {/* Filtros de público */}
             <div className="mt-5 flex flex-wrap gap-3 mb-6">
               <button
                 type="button"
                 onClick={() => setFiltro(null)}
-                className={`rounded-full px-4 py-2 text-sm font-medium transition border ${!filtro
-                  ? "bg-foreground text-background border-foreground"
-                  : "border-border/80 text-muted-foreground hover:border-foreground"
-                  }`}
+                className={`rounded-full px-4 py-2 text-sm font-medium transition border ${
+                  !filtro
+                    ? "bg-foreground text-background border-foreground"
+                    : "border-border/80 text-muted-foreground hover:border-foreground"
+                }`}
               >
                 Todas as receitas
               </button>
               <button
                 type="button"
                 onClick={() => setFiltro("casa")}
-                className={`rounded-full px-4 py-2 text-sm font-medium transition border ${filtro === "casa"
-                  ? "bg-foreground text-background border-foreground"
-                  : "border-border/80 text-muted-foreground hover:border-foreground"
-                  }`}
+                className={`rounded-full px-4 py-2 text-sm font-medium transition border ${
+                  filtro === "casa"
+                    ? "bg-foreground text-background border-foreground"
+                    : "border-border/80 text-muted-foreground hover:border-foreground"
+                }`}
               >
                 Para sua casa
               </button>
               <button
                 type="button"
                 onClick={() => setFiltro("negocio")}
-                className={`rounded-full px-4 py-2 text-sm font-medium transition border ${filtro === "negocio"
-                  ? "bg-foreground text-background border-foreground"
-                  : "border-border/80 text-muted-foreground hover:border-foreground"
-                  }`}
+                className={`rounded-full px-4 py-2 text-sm font-medium transition border ${
+                  filtro === "negocio"
+                    ? "bg-foreground text-background border-foreground"
+                    : "border-border/80 text-muted-foreground hover:border-foreground"
+                }`}
               >
                 Para o seu negócio
               </button>
@@ -233,12 +256,13 @@ export function Recipes() {
 
           {!showCarousel ? (
             <div
-              className={`grid gap-5 ${isMobile ? "grid-cols-2" : "grid-cols-3"
-                }`}
+              className={`grid gap-5 ${
+                isMobile ? "grid-cols-2" : "grid-cols-3"
+              }`}
             >
               {recipesFiltradas.map((r) => (
                 <div
-                  key={r.title}
+                  key={r.id}
                   className="group overflow-hidden rounded-2xl bg-card transition hover:-translate-y-1 border border-border/80"
                 >
                   <div className="relative h-48 overflow-hidden">
@@ -280,40 +304,28 @@ export function Recipes() {
                 type="button"
                 disabled={!canPrev}
                 onClick={() => emblaApi?.scrollPrev()}
-                className={`
-                flex h-10 w-10 md:h-12 md:w-12
-                items-center justify-center
-                rounded-full
-                transition
-                ${canPrev
+                className={`flex h-10 w-10 md:h-12 md:w-12 items-center justify-center rounded-full transition ${
+                  canPrev
                     ? "shadow-lg hover:scale-105"
                     : "cursor-not-allowed opacity-30"
-                  }
-  `}
+                }`}
               >
                 <ChevronLeft className="h-5 w-5 md:h-6 md:w-6" />
               </button>
 
-              {/* Carrossel */}
-              <div className="min-w-0 overflow-hidden pr-6 md:pr-0" ref={emblaRef}>
+              <div
+                className="min-w-0 overflow-hidden pr-6 md:pr-0"
+                ref={emblaRef}
+              >
                 <div className="flex">
                   {recipesFiltradas.map((r) => (
                     <div
-                      key={r.title}
-                      className={`
-                      flex-none
-                      pl-3
-                      ${isMobile ? "w-[82%]" : "basis-[42%]"}
-                    `}
+                      key={r.id}
+                      className={`flex-none pl-3 ${
+                        isMobile ? "w-[82%]" : "basis-1/3"
+                      }`}
                     >
-                      <div
-                        className="
-                        group flex h-[320px] flex-col
-                        overflow-hidden rounded-2xl
-                        bg-card border border-border/60
-                        transition hover:-translate-y-1
-                      "
-                      >
+                      <div className="group flex h-[320px] flex-col overflow-hidden rounded-2xl bg-card border border-border/60 transition hover:-translate-y-1">
                         <div className="relative h-44 flex-shrink-0 overflow-hidden">
                           <img
                             src={r.img}
@@ -354,16 +366,11 @@ export function Recipes() {
                 type="button"
                 disabled={!canNext}
                 onClick={() => emblaApi?.scrollNext()}
-                className={`
-                flex h-10 w-10 md:h-12 md:w-12
-                items-center justify-center
-                rounded-full
-                transition
-                ${canNext
+                className={`flex h-10 w-10 md:h-12 md:w-12 items-center justify-center rounded-full transition ${
+                  canNext
                     ? "shadow-lg hover:scale-105"
                     : "cursor-not-allowed opacity-30"
-                  }
-  `}
+                }`}
               >
                 <ChevronRight className="h-5 w-5 md:h-6 md:w-6" />
               </button>
@@ -372,7 +379,6 @@ export function Recipes() {
         </div>
       </div>
 
-      {/* Modal da receita */}
       {receitaSelecionada && (
         <div
           className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 px-4"
