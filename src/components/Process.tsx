@@ -1,35 +1,99 @@
 "use client";
 
-import { useState } from "react";
-import { Factory, X, ChevronDown } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
+import { Factory } from "lucide-react";
 
 import { SectionLabel } from "./SectionLabel";
 import { SectionHeading } from "./SectionTitle";
 
-export function Process() {
-  const [openModal, setOpenModal] = useState(false);
-  const [openCard, setOpenCard] = useState<string | null>(null);
+const steps = [
+  {
+    n: "01",
+    title: "Recepção do leite",
+    desc: "Leite coletado em fazendas locais, testado na chegada.",
+  },
+  {
+    n: "02",
+    title: "Pasteurização",
+    desc: "Aquecimento controlado para eliminar microrganismos preservando o sabor.",
+  },
+  {
+    n: "03",
+    title: "Coagulação",
+    desc: "Adição de coalho natural e fermento lácteo selecionado.",
+  },
+  {
+    n: "04",
+    title: "Modelagem",
+    desc: "Máquinas especializadas moldam a mussarela ainda quente com precisão e padronização.",
+  },
+  {
+    n: "05",
+    title: "Resfriamento",
+    desc: "Banho em salmoura fria por tempo cuidadosamente calibrado.",
+  },
+  {
+    n: "06",
+    title: "Embalagem",
+    desc: "Embalagem a vácuo no mesmo dia para máxima frescor.",
+  },
+];
 
-  const steps = [
-    ["01", "Recepção do leite", "Leite coletado em fazendas locais, testado na chegada."],
-    ["02", "Pasteurização", "Aquecimento controlado para eliminar microrganismos preservando o sabor."],
-    ["03", "Coagulação", "Adição de coalho natural e fermento lácteo selecionado."],
-    ["04", "Modelagem", "Máquinas especializadas moldam a mussarela ainda quente com precisão e padronização."],
-    ["05", "Resfriamento", "Banho em salmoura fria por tempo cuidadosamente calibrado."],
-    ["06", "Embalagem", "Embalagem a vácuo no mesmo dia para máxima frescor."],
-  ];
+function useStepVisibility() {
+  const [visible, setVisible] = useState<boolean[]>(() => steps.map(() => false));
+  const itemRefs = useRef<Array<HTMLDivElement | null>>([]);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          const index = Number((entry.target as HTMLElement).dataset.index);
+          setVisible((prev) => {
+            if (prev[index]) return prev;
+            const next = [...prev];
+            next[index] = true;
+            return next;
+          });
+        });
+      },
+      { threshold: 0.35 }
+    );
+
+    const nodes = itemRefs.current;
+    nodes.forEach((el) => el && observer.observe(el));
+    return () => observer.disconnect();
+  }, []);
+
+  return { visible, itemRefs };
+}
+
+export function Process() {
+  const desktop = useStepVisibility();
+  const mobile = useStepVisibility();
 
   return (
     <section
       id="processo"
-      className="relative overflow-hidden bg-secondary py-20 text-secondary-foreground"
+      className="relative overflow-hidden py-20"
+      style={{
+  backgroundImage: "url('/src/assets/back.png')",
+  backgroundSize: 'cover',
+  backgroundPosition: 'center -179px', // Ajuste este valor em pixels para subir mais (-100px, -200px, etc.)
+}}
     >
-      <div className="mx-auto max-w-7xl px-6">
+      {/* Camada de sobreposição para clarear e diminuir o contraste do fundo */}
+      < div className="absolute inset-0 bg-[#F7F3E8]/85 pointer-events-none" />
 
-        <SectionLabel
-          icon={<Factory className="h-3.5 w-3.5" />}
-          variant="dark"
-        >
+      {/* profundidade sutil */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0"
+      />
+
+
+      <div className="relative mx-auto max-w-7xl px-6">
+        <SectionLabel icon={<Factory className="h-3.5 w-3.5" />} variant="dark">
           Do leite ao produto
         </SectionLabel>
 
@@ -37,205 +101,357 @@ export function Process() {
           Cada queijo passa por 6 etapas e mais de 20 conferências.
         </SectionHeading>
 
+        {/* ===== Timeline ===== */}
+        <div className="relative mt-16 hidden lg:block">
+          {/* trilho central */}
+          <div className="absolute inset-x-0 top-1/2 h-px -translate-y-1/2 bg-gradient-to-r from-transparent via-black/30 to-transparent" />
 
-        {/* Desktop */}
-        <div className="mt-10 hidden gap-6 md:grid md:grid-cols-2 lg:grid-cols-3">
-          {steps.map(([n, t, d]) => (
-            <StepCard
-              key={n}
-              number={n}
-              title={t}
-              description={d}
-            />
-          ))}
-        </div>
-        {/* Botão */}
-        <button
-          onClick={() => setOpenModal(true)}
-          className="
-            mt-8
-            text-sm
-            font-medium
-            underline
-            underline-offset-4
-            md:hidden
-          "
-        >
-          Ver todas as etapas
-        </button>
+          <div className="grid grid-cols-6">
+            {steps.map((step, i) => {
+              const isEven = i % 2 === 0;
+              const isVisible = desktop.visible[i];
 
-        {/* Mobile compacto */}
-        <div className="mt-10 grid grid-cols-2 gap-4 md:hidden">
-
-          {steps.map(([n, t, d]) => {
-            const isOpen = openCard === n;
-
-            return (
-              <div
-                key={n}
-                className="
-                  rounded-2xl
-                  border border-white/10
-                  bg-white/5
-                  p-4
-                "
-              >
-
-                <span className="text-xl">
-                  {n}
-                </span>
-
-                <p className="mt-1 text-sm font-medium">
-                  {t}
-                </p>
-
-                <button
-                  type="button"
-                  onClick={() => setOpenCard(isOpen ? null : n)}
-                  aria-expanded={isOpen}
-                  className="
-                    mt-2
-                    flex
-                    items-center
-                    gap-1
-                    text-xs
-                    font-medium
-                    underline
-                    underline-offset-4
-                    opacity-80
-                  "
-                >
-                  {isOpen ? "Ver menos" : "Ver mais"}
-                  <ChevronDown
-                    className={`h-3.5 w-3.5 transition-transform duration-200 ${
-                      isOpen ? "rotate-180" : ""
-                    }`}
-                  />
-                </button>
-
+              const card = (
                 <div
-                  className={`
-                    grid
-                    transition-all
-                    duration-300
-                    ease-in-out
-                    ${isOpen ? "mt-2 grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"}
-                  `}
+                  className="
+      group
+      relative
+      mx-auto
+      w-full
+      max-w-[210px]
+      rounded-2xl
+      border
+      border-black/10
+      bg-black/[0.06]
+      px-5
+      py-6
+      text-center
+      backdrop-blur-md
+      transition-all
+      duration-500
+      hover:-translate-y-1
+      hover:bg-black/[0.1]
+    "
                 >
-                  <p className="overflow-hidden text-sm leading-relaxed opacity-80">
-                    {d}
+
+                  {/* número */}
+                  <div
+                    className="
+        absolute
+        -top-6
+        left-1/2
+        flex
+        h-12
+        w-12
+        -translate-x-1/2
+        items-center
+        justify-center
+        rounded-full
+        border
+        border-white
+        bg-[#07598C]
+        text-sm
+        font-bold
+        text-white
+        shadow-lg
+      "
+                  >
+                    {step.n}
+                  </div>
+
+
+                  <h3
+                    className="
+        mt-2
+        text-lg
+        font-semibold
+        text-black
+      "
+                  >
+                    {step.title}
+                  </h3>
+
+
+                  <p
+                    className="
+        text-sm
+        font-medium
+        text-black
+      "
+                  >
+                    {step.desc}
                   </p>
+
                 </div>
+              );
 
-              </div>
-            );
-          })}
+              return (
+                <div
+                  key={step.n}
+                  data-index={i}
+                  ref={(el) => {
+                    desktop.itemRefs.current[i] = el;
+                  }}
+                  className="flex flex-col"
+                >
+                  {/* slot superior */}
+                  <div
+                    className={`
+                      flex h-32 items-end justify-center pb-6
+                      transition-all duration-700 ease-out
+                      ${isVisible ? "translate-y-0 opacity-100" : "translate-y-3 opacity-0"}
+                    `}
+                    style={{ transitionDelay: isVisible ? `${i * 70}ms` : "0ms" }}
+                  >
+                    {isEven ? card : null}
+                  </div>
+
+                  {/* nó sobre o trilho */}
+                  <div className="relative flex items-center justify-center py-3">
+                    {/* conector vertical até o card */}
+                    <span
+                      className={`
+                        absolute left-1/2 h-8 w-px -translate-x-1/2 bg-black/15
+                        ${isEven ? "bottom-1/2" : "top-1/2"}
+                      `}
+                      aria-hidden
+                    />
+                    <span
+                      className={`
+    relative
+    z-10
+    h-5
+    w-5
+    rounded-full
+    border-4
+    border-[#07598C]
+    bg-white
+    shadow-[0_0_25px_rgba(255,255,255,0.35)]
+    transition-transform
+    duration-300
+    ease-out
+
+    ${isVisible ? "scale-100" : "scale-0"}
+  `}
+                      style={{
+                        transitionDelay: isVisible
+                          ? `${i * 70 + 150}ms`
+                          : "0ms"
+                      }}
+                    />
+                  </div>
+
+                  {/* slot inferior */}
+                  <div
+                    className={`
+                      flex h-32 items-start justify-center pt-6
+                      transition-all duration-700 ease-out
+                      ${isVisible ? "translate-y-0 opacity-100" : "-translate-y-3 opacity-0"}
+                    `}
+                    style={{ transitionDelay: isVisible ? `${i * 70}ms` : "0ms" }}
+                  >
+                    {!isEven ? card : null}
+                  </div>
+                </div>
+              );
+            })}
+          </div>
         </div>
-      </div>
 
-
-      {/* Modal */}
-      {openModal && (
-        <div
-          className="
-            fixed inset-0 z-50
-            flex items-center justify-center
-            bg-black/60
-            px-6
-          "
-          onClick={() => setOpenModal(false)}
-        >
+        {/* ===== Versão compacta (mobile / tablet) ===== */}
+        <div className="relative mt-7 lg:hidden">
 
           <div
             className="
-              relative
-              max-h-[85vh]
-              w-full
-              max-w-lg
-              overflow-y-auto
-              rounded-2xl
-              bg-secondary
-              p-6
-            "
-            onClick={(e) => e.stopPropagation()}
+      flex overflow-x-auto scroll-smooth snap-x snap-mandatory pb-8
+      px-2
+      [-ms-overflow-style:none]
+      [scrollbar-width:none]
+      [&::-webkit-scrollbar]:hidden
+    "
           >
+            {steps.map((step, i) => {
+              const isEven = i % 2 === 0;
+              const isVisible = mobile.visible[i];
 
-            <button
-              onClick={() => setOpenModal(false)}
-              className="
-                absolute
-                right-4
-                top-4
-                flex
-                h-9
-                w-9
-                items-center justify-center
-                rounded-full
-                bg-white/10
-              "
-            >
-              <X className="h-5 w-5" />
-            </button>
+              const card = (
+                <div
+                  className="
+      group
+      relative
+      max-w-[180px]
+      rounded-2xl
+      border
+      border-black/10
+      bg-black/[0.06]
+      px-4
+      py-5
+      text-center
+      backdrop-blur-md
+      transition-all
+      duration-500
+      hover:bg-black/[0.1]
+    "
+                >
 
-
-            <h3 className="mb-6 text-3xl">
-              Nosso processo
-            </h3>
-
-
-            <div className="grid gap-4">
-
-              {steps.map(([n, t, d]) => (
-                <StepCard
-                  key={n}
-                  number={n}
-                  title={t}
-                  description={d}
-                />
-              ))}
-
-            </div>
-
-          </div>
-
-        </div>
-      )}
-
-    </section>
-  );
-}
-
-
-function StepCard({
-  number,
-  title,
-  description,
-}: {
-  number: string;
-  title: string;
-  description: string;
-}) {
-  return (
-    <div
-      className="
-        rounded-2xl
-        border border-white/10
-        bg-white/5
-        p-5
+                  {/* número */}
+                  <div
+                    className="
+        absolute
+        -top-5
+        left-1/2
+        flex
+        h-10
+        w-10
+        -translate-x-1/2
+        items-center
+        justify-center
+        rounded-full
+        border
+        border-white
+        bg-[#07598C]
+        text-xs
+        font-bold
+        text-white
+        shadow-lg
       "
-    >
-      <p className="text-3xl text-accen font-bold">
-        {number}
-      </p>
+                  >
+                    {step.n}
+                  </div>
 
-      <p className="mt-2 text-xl">
-        {title}
-      </p>
 
-      <p className="mt-2 text-sm leading-relaxed opacity-80">
-        {description}
-      </p>
+                  <h3
+                    className="
+        mt-2
+        text-sm
+        font-semibold
+        leading-snug
+        text-black
+      "
+                  >
+                    {step.title}
+                  </h3>
 
-    </div>
+
+                  <p
+                    className="
+        mt-2
+        text-[11px]
+        font-medium
+        text-black
+      "
+                  >
+                    {step.desc}
+                  </p>
+
+                </div>
+              );
+
+              return (
+                <div
+                  key={step.n}
+                  data-index={i}
+                  ref={(el) => {
+                    mobile.itemRefs.current[i] = el;
+                  }}
+                  className="
+            flex
+            w-40vw
+            shrink-0
+            snap-center
+            flex-col
+          "
+                >
+
+                  {/* topo */}
+                  <div
+                    className={`
+              flex
+              h-36
+              items-end
+              justify-center
+              transition-all
+              duration-700
+              ease-out
+              ${isVisible
+                        ? "translate-y-0 opacity-100"
+                        : "translate-y-3 opacity-0"
+                      }
+            `}
+                  >
+                    {isEven && card}
+                  </div>
+
+
+                  {/* linha */}
+                  <div className="
+            relative
+            flex
+            h-8
+            items-center
+            justify-center
+          ">
+
+                    {/* linha contínua */}
+                    <span
+                      className="
+                absolute
+                left-0
+                right-0
+                h-px
+bg-gradient-to-r from-transparent via-black/30 to-transparent
+              "
+                    />
+
+                    {/* ponto */}
+                    <span
+                      className={`
+relative z-10
+h-5
+w-5
+rounded-full
+border-4
+border-[#07598C]
+bg-white
+shadow-[0_0_20px_rgba(255,255,255,0.35)]
+transition-transform
+duration-300
+
+${isVisible ? "scale-100" : "scale-0"}
+`}
+
+                    />
+
+                  </div>
+
+
+                  {/* baixo */}
+                  <div
+                    className={`
+              flex
+              h-36
+              items-start
+              justify-center
+              pt-6
+              transition-all
+              duration-700
+              ease-out
+
+              ${isVisible
+                        ? "translate-y-0 opacity-100"
+                        : "-translate-y-3 opacity-0"
+                      }
+            `}
+                  >
+                    {!isEven && card}
+                  </div>
+
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </div>
+    </section>
   );
 }

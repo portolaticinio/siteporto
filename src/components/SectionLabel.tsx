@@ -11,8 +11,8 @@ export function SectionLabel({
     <span
       className={`inline-flex items-center gap-2 rounded-2xl font-semibold px-4 py-1.5 text-xs uppercase tracking-[0.2em] shadow-sm ${
         variant === "dark"
-          ? "border border-zinc-300 bg-white text-zinc-900"
-          : "border border-border bg-muted text-muted-foreground"
+          ? "border border-zinc-300 bg-[#DFA304] text-black"
+          : "border border-border bg-[#DFA304] text-black"
       }`}
     >
       {icon} {children}

@@ -6,7 +6,7 @@ import { Clients } from "@/components/Clients";
 import { Contact } from "@/components/Contact";
 import { FloatingWhatsApp } from "@/components/FloatingWhatsApp";
 import { Footer } from "@/components/Footer";
-import  Gallery from "@/components/Gallery";
+import Gallery from "@/components/Gallery";
 import { Header } from "@/components/Header";
 import { Hero } from "@/components/Hero";
 import { Marquee } from "@/components/Marquee";
@@ -41,19 +41,33 @@ function Home() {
   return (
     <div className="min-h-screen bg-background text-foreground">
       <Header />
-      <Hero /> 
-      <Marquee />  
-      <Products />         
-      <Process />          
-      <Certifications />   
-      <Story />             
-      <Values />            
-      <Gallery />        
-      <Clients />          
-      <Testimonials />     
-      <Recipes />           
-      <Contact />       
+
+      <Hero />
+
+      <Marquee />
+
+      <Story />
+
+      <Products />
+
+      <Process />
+
+      <Certifications />
+
+      <Values />
+
+      <Gallery />
+
+      <Clients />
+
+      <Testimonials />
+
+      <Recipes />
+
+      <Contact />
+
       <Footer />
+
       <FloatingWhatsApp />
     </div>
   );

@@ -9,9 +9,7 @@ import {
   ShieldCheck,
 } from "lucide-react";
 
-import farmImg from "@/assets/dairy-farm.jpg";
 import { SectionHeading } from "./SectionTitle";
-
 import { SectionLabel } from "./SectionLabel";
 import { SectionParagraph } from "./SectionParagraph";
 
@@ -69,14 +67,7 @@ export function Values() {
 
   return (
     <section className="relative overflow-hidden py-10 py-20 "
-      style={{
-  backgroundImage: "url('/src/assets/back.png')",
-  backgroundSize: 'cover',
-  backgroundPosition: 'center -179px', // Ajuste este valor em pixels para subir mais (-100px, -200px, etc.)
-}}
     >
-      {/* Camada de sobreposição para clarear e diminuir o contraste do fundo */}
-      <div className="absolute inset-0 bg-[#F7F3E8]/85 pointer-events-none" />
       
       <div className="mx-auto relative z-10 max-w-7xl px-6">
         {/* TOPO */}
@@ -105,7 +96,7 @@ export function Values() {
               className="rounded-2xl border border-border bg-background p-7 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
             >
               <div style={{ display: "flex", alignItems: "center", gap: "1rem" }}>
-                <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-secondary text-secondary-foreground">
+                <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[#07598C] text-secondary-foreground">
                   {item.icon}
                 </div>
                 <h4 className="text-xl">{item.title}</h4>

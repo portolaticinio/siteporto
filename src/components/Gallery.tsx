@@ -308,15 +308,8 @@ export default function Gallery() {
         }
       `}</style>
 
-      <section className="relative bg-[#F7F3E8]"
-        style={{
-          backgroundImage: "url('/src/assets/back.png')",
-          backgroundSize: 'cover',
-          backgroundPosition: 'center -890px',
-        }}
-      >
+      <section className="relative">
 
-        <div className="absolute inset-0 bg-[#F7F3E8]/85 pointer-events-none" />
         <div className="mx-auto max-w-7xl px-6 relative z-10">
           <SectionLabel icon={<Factory className="h-3.5 w-3.5" />}>Galeria da fábrica</SectionLabel>
           <SectionHeading width="full">

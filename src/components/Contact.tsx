@@ -37,7 +37,7 @@ export function Contact() {
           icon={<MessageCircle className="h-3.5 w-3.5" />}>
             Contato
           </SectionLabel>
-          <SectionHeading width="large" >
+          <SectionHeading width="small" >
             Estamos à disposição para atender você.
           </SectionHeading>
         
@@ -55,9 +55,8 @@ export function Contact() {
           noValidate
         >
           <h3 className="text-2xl">Entre em contato conosco</h3>
-          <p className="mt-1 text-sm text-muted-foreground">Tire suas dúvidas, fale sobre compras, solicite informações ou envie sua mensagem.
-          </p>
-          <div className="mt-6 grid gap-4">
+          
+          <div className="mt-2 grid gap-1">
             <FormField label="Nome" error={errors.name?.message}>
               <input
                 placeholder="Seu nome"
@@ -92,7 +91,7 @@ export function Contact() {
             <FormField label="Mensagem" error={errors.message?.message}>
               <textarea
                 rows={4}
-                placeholder="Conte como podemos ajudar você"
+                placeholder="Tire suas dúvidas, fale sobre compras, solicite informações ou envie sua mensagem."
                 className="mt-2 w-full rounded-xl border border-input bg-card px-4 py-3 text-sm outline-none focus:border-primary"
                 {...register("message")}
               />
@@ -100,7 +99,7 @@ export function Contact() {
             <button
               type="submit"
               disabled={isSubmitting}
-              className="mt-2 rounded-2xl bg-primary py-3.5 text-sm font-medium text-primary-foreground shadow-warm transition hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-60"
+              className="mt-2 rounded-2xl bg-[#07598C] py-3.5 text-sm font-medium text-primary-foreground shadow-warm transition hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-60"
             >
               {isSubmitting ? "Enviando..." : "Enviar minha mensagem"}
             </button>
@@ -128,9 +127,9 @@ function ContactRow({
       href={href}
       target={href ? "_blank" : undefined}
       rel="noreferrer"
-      className="flex items-center gap-4 rounded-2xl border border-white/15 bg-black/5 p-4 transition hover:bg-white/10"
+      className="flex items-center gap-1 rounded-2xl border border-white/15 p-2 transition"
     >
-      <div className="grid h-11 w-11 place-items-center rounded-2xl bg-accent text-accent-foreground">{icon}</div>
+      <div className="grid h-11 w-11 place-items-center rounded-2xl bg-[#07598C] text-white">{icon}</div>
       <div>
         <p className="text-xs uppercase tracking-wider opacity-70">{label}</p>
         <p className="font-medium">{value}</p>

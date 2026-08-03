@@ -18,7 +18,6 @@ export function Products() {
         mussarelaImg,
       ],
       name: "Mussarela",
-      tagline: "A clássica da casa",
       formats: [
         "Peça inteira ( a partir de 3,5kg)",
         "Porção  (30g / 1 fatia)",
@@ -31,7 +30,6 @@ export function Products() {
         requeijao2Img,
       ],
       name: "Mistura de Requeijão e Amido",
-      tagline: "Para quem busca cremosidade e sabor intenso",
       formats: [
         "Bisnaga 1,5kg",
         "Rendimento total (50 porções)",
@@ -45,7 +43,6 @@ export function Products() {
         requeijaoImg,
       ],
       name: "Mistura Requeijão e Amido, sabor Quatro Queijos",
-      tagline: "Cremoso, fácil de espalhar",
       formats: [
         "Bisnaga 1,2kg",
         "Rendimento total (40 porções)",
@@ -86,77 +83,138 @@ export function Products() {
 
             return (
               <article
-                key={p.id}
-                className="group overflow-hidden rounded-2xl bg-card shadow-soft transition hover:shadow-warm"
-              >
-                <div className="relative aspect-[6/4] overflow-hidden bg-muted">
+  key={p.id}
+  className="
+    group
+    overflow-hidden
+    rounded-2xl
+    bg-card
+    shadow-soft
+    transition
+    hover:shadow-warm
+  "
+>
+  {/* Imagem */}
+  <div
+    className="
+      relative
+      aspect-[5/3]
+      overflow-hidden
+      bg-muted
+    "
+  >
+    <img
+      src={p.images[currentImage]}
+      alt={p.name}
+      loading="lazy"
+      width={700}
+      height={500}
+      className="
+        h-full
+        w-full
+        object-cover
+        transition
+        duration-700
+        group-hover:scale-105
+      "
+    />
 
-                  <img
-                    src={p.images[currentImage]}
-                    alt={p.name}
-                    loading="lazy"
-                    width={1024}
-                    height={1024}
-                    className="h-full w-full object-contain transition duration-700 group-hover:scale-[1.02]"
-                  />
+    {p.images.length > 1 && (
+      <>
+        <button
+          onClick={() =>
+            setCurrentImage((prev) =>
+              prev === 0 ? p.images.length - 1 : prev - 1
+            )
+          }
+          className="
+            absolute
+            left-3
+            top-1/2
+            -translate-y-1/2
+            rounded-full
+            bg-white/90
+            p-1.5
+            shadow
+          "
+        >
+          <ChevronLeft className="h-4 w-4" />
+        </button>
 
-                  {p.images.length > 1 && (
-                    <>
-                      <button
-                        onClick={() =>
-                          setCurrentImage((prev) =>
-                            prev === 0 ? p.images.length - 1 : prev - 1
-                          )
-                        }
-                        className="absolute left-3 top-1/2 -translate-y-1/2 rounded-full bg-white/80 p-2 shadow hover:bg-white"
-                      >
-                        <ChevronLeft className="h-5 w-5" />
-                      </button>
+        <button
+          onClick={() =>
+            setCurrentImage((prev) =>
+              prev === p.images.length - 1 ? 0 : prev + 1
+            )
+          }
+          className="
+            absolute
+            right-3
+            top-1/2
+            -translate-y-1/2
+            rounded-full
+            bg-white/90
+            p-1.5
+            shadow
+          "
+        >
+          <ChevronRight className="h-4 w-4" />
+        </button>
+      </>
+    )}
+  </div>
 
-                      <button
-                        onClick={() =>
-                          setCurrentImage((prev) =>
-                            prev === p.images.length - 1 ? 0 : prev + 1
-                          )
-                        }
-                        className="absolute right-3 top-1/2 -translate-y-1/2 rounded-full bg-white/80 p-2 shadow hover:bg-white"
-                      >
-                        <ChevronRight className="h-5 w-5" />
-                      </button>
-                    </>
-                  )}
-                </div>
 
-                <div className="p-8">
-                  <p className="text-xs uppercase tracking-[0.2em] text-primary">
-                    {p.tagline}
-                  </p>
+  {/* Conteúdo */}
+  <div className="p-5">
+    <h3
+      className="
+        line-clamp-2
+        text-xl
+        font-semibold
+        leading-tight
+      "
+    >
+      {p.name}
+    </h3>
 
-                  <h3 className="mt-2 text-3xl">
-                    {p.name}
-                  </h3>
+    <div className="mt-4 space-y-2">
+      {p.formats.map((f) => (
+        <div
+          key={f}
+          className="
+            flex
+            items-center
+            gap-2
+            text-sm
+            text-muted-foreground
+          "
+        >
+          <span className="h-1.5 w-1.5 rounded-full bg-primary" />
+          {f}
+        </div>
+      ))}
+    </div>
 
-                  <ul className="mt-5 space-y-2 text-sm text-muted-foreground">
-                    {p.formats.map((f) => (
-                      <li key={f} className="flex items-start gap-2">
-                        <span className="mt-2 h-1 w-1 rounded-2xl bg-primary" />
-                        {f}
-                      </li>
-                    ))}
-                  </ul>
-
-                  <div className="mt-6 flex flex-wrap gap-2">
-                    {p.tags.map((t) => (
-                      <span
-                        key={t}
-                        className="rounded-2xl bg-muted px-3 py-1 text-xs text-muted-foreground"
-                      >
-                        {t}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              </article>
+    <div className="mt-4 flex flex-wrap gap-1.5">
+      {p.tags.map((t) => (
+        <span
+          key={t}
+          className="
+            rounded-full
+            bg-muted
+            px-2.5
+            py-1
+            text-[11px]
+            text-muted-foreground
+          "
+        >
+          {t}
+        </span>
+      ))}
+    </div>
+  </div>
+</article>
             );
           })}
         </div>

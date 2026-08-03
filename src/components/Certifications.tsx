@@ -10,6 +10,7 @@ import {
 import { SectionLabel } from "./SectionLabel";
 import { SectionHeading } from "./SectionTitle";
 import { SectionParagraph } from "./SectionParagraph";
+import { useEffect, useRef, useState } from "react";
 
 const seals = [
   {
@@ -40,17 +41,38 @@ const seals = [
 ];
 
 export function Certifications() {
+  const sectionRef = useRef<HTMLDivElement | null>(null);
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setVisible(true);
+          observer.disconnect(); // anima apenas uma vez
+        }
+      },
+      {
+        threshold: 0.25,
+      }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
   return (
     <section className="pt-15 overflow-hidden">
-      <div className="mx-auto max-w-7xl px-6">
+      <div className="mx-auto max-w-7xl px-6"
+        ref={sectionRef}>
 
-        <div className="grid lg:grid-cols-2 gap-14 items-center">
+        <div className="grid items-center gap-12 lg:grid-cols-[1fr_1.2fr]">
 
           {/* Texto */}
           <div>
-            <SectionLabel
-              icon={<ShieldCheck className="h-4 w-4" />}
-            >
+            <SectionLabel icon={<ShieldCheck className="h-4 w-4" />}>
               Selos e Qualidade
             </SectionLabel>
 
@@ -62,51 +84,73 @@ export function Certifications() {
               Seguimos padrões de segurança alimentar, com registros,
               certificações e reconhecimentos que reforçam a confiança.
             </SectionParagraph>
-
           </div>
 
-          {/* Imagem */}
-          <div className="relative">
-            <img
-              src="/images/queijos-certificacao.png"
-              className="w-full"
-              alt=""
-            />
+          {/* Cards */}
+          <div className="grid grid-cols-2 gap-4 lg:grid-cols-3">
+            {seals.map((seal, index) => {
+              const Icon = seal.icon;
+
+              return (
+                <div
+                  key={seal.title}
+                  className={`
+  group
+  rounded-xl
+  border
+  border-[#07598C]
+  bg-[card]
+  p-3
+  text-center
+  transition-all
+  duration-700
+  ease-out
+  hover:-translate-y-2
+  hover:shadow-xl
+
+  ${visible
+                      ? "translate-y-0 opacity-100"
+                      : "translate-y-10 opacity-0"
+                    }
+`}
+                  style={{
+                    transitionDelay: `${index * 120}ms`,
+                  }}
+                >
+                  <div
+                    className="
+      mx-auto
+      flex
+      h-11
+      w-11
+      items-center
+      justify-center
+      rounded-2xl
+      bg-[#07598C]
+      transition-transform
+      duration-300
+      group-hover:rotate-6
+      group-hover:scale-110
+    "
+                  >
+                    <Icon className="h-5 w-5 text-white" />
+                  </div>
+
+                  <h3 className="mt-3 text-lg font-semibold leading-none">
+                    {seal.title}
+                  </h3>
+
+                  <p className="mt-2 text-xs leading-5 text-black font-medium">
+                    {seal.desc}
+                  </p>
+                </div>
+              );
+            })}
           </div>
 
         </div>
-
-        {/* Certificações */}
-
-
-        <div className="grid grid-cols-2 lg:grid-cols-5 mt-10 ">
-
-          {seals.map((seal, index) => {
-
-            const Icon = seal.icon;
-
-            return (
-              <div
-                key={seal.title}
-                className=
-                "px-4 py-2 text-center "
-              >
-                <Icon className="h-11 w-11 text-primary mx-auto" />
-                <h3 className="mt-2 font-sans text-3xl">
-                  {seal.title}
-                </h3>
-                <div className="mx-auto mt-2 h-px w-10 bg-primary" />
-                <p className="mt-2 text-muted-foreground leading-relaxed text-sm">
-                  {seal.desc}
-                </p>
-
-              </div>
-            );
-
-          })}
-        </div>
-
       </div>
     </section>
+
   );
 }

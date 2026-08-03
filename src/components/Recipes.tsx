@@ -16,7 +16,6 @@ type Recipe = {
   img: string;
   title: string;
   time: string;
-  level: string;
   audience: "casa" | "negocio" | "ambos";
   product: string;
   description: string;
@@ -33,7 +32,6 @@ export function Recipes() {
       img: requeijaoImg,
       title: "Torrada com requeijão",
       time: "5 min",
-      level: "Fácil",
       audience: "casa",
       product: "Requeijão Porto Laticínios",
       description:
@@ -56,9 +54,7 @@ export function Recipes() {
       id: "macarrao-parmegiana",
       img: mussarelaImg,
       title: "Macarrão à parmegiana",
-      time: "40 min",
-      level: "Médio",
-      audience: "casa",
+      time: "40 min",      audience: "casa",
       product: "Mussarela Porto Laticínios",
       description:
         "Um clássico reconfortante com camadas de queijo derretido e molho de tomate encorpado.",
@@ -83,7 +79,6 @@ export function Recipes() {
       img: pizzaImg,
       title: "Lasanha de Muçarela",
       time: "35 min",
-      level: "Médio",
       audience: "negocio",
       product: "Mussarela Porto Laticínios",
       description:
@@ -108,7 +103,6 @@ export function Recipes() {
       img: pizzaImg,
       title: "Lasanha de Muçarela",
       time: "35 min",
-      level: "Médio",
       audience: "negocio",
       product: "Mussarela Porto Laticínios",
       description:
@@ -209,7 +203,7 @@ export function Recipes() {
             </SectionLabel>
 
             <SectionHeading width="medium">
-              Ideias para tirar o melhor dos nossos produtos.
+              Inspirações para usar nossos produtos
             </SectionHeading>
 
             <SectionParagraph width="large">
@@ -223,8 +217,8 @@ export function Recipes() {
                 onClick={() => setFiltro(null)}
                 className={`rounded-full px-4 py-2 text-sm font-medium transition border ${
                   !filtro
-                    ? "bg-foreground text-background border-foreground"
-                    : "border-border/80 text-muted-foreground hover:border-foreground"
+                    ? "bg-[#07598C] text-background"
+                    : "border-border/80 text-muted-foreground hover:border-[#07598C]"
                 }`}
               >
                 Todas as receitas
@@ -234,8 +228,8 @@ export function Recipes() {
                 onClick={() => setFiltro("casa")}
                 className={`rounded-full px-4 py-2 text-sm font-medium transition border ${
                   filtro === "casa"
-                    ? "bg-foreground text-background border-foreground"
-                    : "border-border/80 text-muted-foreground hover:border-foreground"
+                    ? "bg-[#07598C] text-background"
+                    : "border-border/80 text-muted-foreground hover:border-[#07598C]"
                 }`}
               >
                 Para sua casa
@@ -245,8 +239,8 @@ export function Recipes() {
                 onClick={() => setFiltro("negocio")}
                 className={`rounded-full px-4 py-2 text-sm font-medium transition border ${
                   filtro === "negocio"
-                    ? "bg-foreground text-background border-foreground"
-                    : "border-border/80 text-muted-foreground hover:border-foreground"
+                    ? "bg-[#07598C] text-background"
+                    : "border-border/80 text-muted-foreground hover:border-[#07598C]"
                 }`}
               >
                 Para o seu negócio
@@ -279,8 +273,6 @@ export function Recipes() {
                   <div className="p-4">
                     <div className="flex gap-2 text-xs uppercase tracking-wider text-muted-foreground">
                       <span>{r.time}</span>
-                      <span>•</span>
-                      <span>{r.level}</span>
                     </div>
 
                     <h3 className="mt-2 text-1xl font-sans font-medium text-foreground">
@@ -299,14 +291,14 @@ export function Recipes() {
               ))}
             </div>
           ) : (
-            <div className="grid grid-cols-[32px_1fr_32px] md:grid-cols-[56px_1fr_56px] items-center gap-2">
+            <div className="grid grid-cols-[32px_1fr_32px] items-center gap-1">
               <button
                 type="button"
                 disabled={!canPrev}
                 onClick={() => emblaApi?.scrollPrev()}
                 className={`flex h-10 w-10 md:h-12 md:w-12 items-center justify-center rounded-full transition ${
                   canPrev
-                    ? "shadow-lg hover:scale-105"
+                    ? ""
                     : "cursor-not-allowed opacity-30"
                 }`}
               >
@@ -321,7 +313,7 @@ export function Recipes() {
                   {recipesFiltradas.map((r) => (
                     <div
                       key={r.id}
-                      className={`flex-none pl-3 ${
+                      className={`flex-none pl-1 ${
                         isMobile ? "w-[82%]" : "basis-1/3"
                       }`}
                     >
@@ -332,16 +324,11 @@ export function Recipes() {
                             alt={r.title}
                             className="h-full w-full object-cover transition duration-700 group-hover:scale-105"
                           />
-                          <span className="absolute left-3 top-3 rounded-full bg-background/90 px-3 py-1 text-[11px] font-medium text-foreground shadow-sm backdrop-blur">
-                            🧀 {r.product}
-                          </span>
                         </div>
 
                         <div className="flex flex-1 flex-col p-4">
                           <div className="flex gap-2 text-xs uppercase tracking-wider text-muted-foreground">
                             <span>{r.time}</span>
-                            <span>•</span>
-                            <span>{r.level}</span>
                           </div>
 
                           <h3 className="mt-2 font-display text-xl">
@@ -368,7 +355,7 @@ export function Recipes() {
                 onClick={() => emblaApi?.scrollNext()}
                 className={`flex h-10 w-10 md:h-12 md:w-12 items-center justify-center rounded-full transition ${
                   canNext
-                    ? "shadow-lg hover:scale-105"
+                    ? ""
                     : "cursor-not-allowed opacity-30"
                 }`}
               >
@@ -397,7 +384,7 @@ export function Recipes() {
               ✕
             </button>
 
-            <div className="h-56 w-full overflow-hidden">
+            <div className="h-46 w-full overflow-hidden">
               <img
                 src={receitaSelecionada.img}
                 alt={receitaSelecionada.title}
@@ -405,19 +392,13 @@ export function Recipes() {
               />
             </div>
 
-            <div className="p-6">
-              <span className="inline-block rounded-full bg-muted px-3 py-1 text-xs font-medium text-muted-foreground">
-                🧀 {receitaSelecionada.product}
-              </span>
-
+            <div className="pl-5 pr-5 pb-5">
               <h2 className="mt-3 font-display text-2xl text-foreground">
                 {receitaSelecionada.title}
               </h2>
 
               <div className="mt-2 flex gap-3 text-xs uppercase tracking-wider text-muted-foreground">
                 <span>⏱️ {receitaSelecionada.time}</span>
-                <span>•</span>
-                <span>👨‍🍳 {receitaSelecionada.level}</span>
               </div>
 
               <p className="mt-4 text-sm text-muted-foreground">

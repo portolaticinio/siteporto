@@ -1,17 +1,273 @@
+import {
+  Instagram,
+  Mail,
+  MessageCircle,
+} from "lucide-react";
+
+import logo from "@/assets/back.png";
+
 export function Footer() {
   return (
-    <footer className="border-t border-border py-12 bg-[#1771A8]">
-      <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-6 px-6">
-        <div className="flex items-center gap-3">
-          <div className="grid h-10 w-10 place-items-center rounded-full bg-primary text-white font-display">
-            V
-          </div>
+    <footer className="border-t border-white/10 bg-gradient-to-b from-[#1771A8] to-[#115A86] text-white">
+      <div className="mx-auto max-w-7xl px-6 py-16">
+
+        <div className="grid gap-10 lg:grid-cols-[1fr_1fr_1fr_1fr]">
+          {/* Logo */}
           <div>
-            <p className="font-display text-lg text-white">Porto Laticínios</p>
-            <p className="text-xs text-muted-foreground text-white">CNPJ 00.000.000/0001-00 · Reg. MAPA SIF 0000</p>
+            <img
+              src={logo}
+              alt="Porto Laticínios"
+              className="h-20 w-auto"
+            />
+            <p className="mt-6 max-w-sm text-sm leading-7 text-white/75">
+              O verdadeiro sabor
+              do Queijo na Paraíba
+
+            </p>
+          </div>
+
+          {/* Institucional */}
+          <div>
+
+            <h3
+              className="
+                text-sm
+                font-semibold
+                uppercase
+                tracking-[0.18em]
+                text-white
+              "
+            >
+              Institucional
+            </h3>
+
+            <ul className="mt-6 space-y-4 text-sm text-white/75">
+
+              <li>
+                <a
+                  href="#historia"
+                  className="transition hover:text-white"
+                >
+                  História
+                </a>
+              </li>
+
+              <li>
+                <a
+                  href="#processo"
+                  className="transition hover:text-white"
+                >
+                  Processo
+                </a>
+              </li>
+
+              <li>
+                <a
+                  href="#certificacoes"
+                  className="transition hover:text-white"
+                >
+                  Certificações
+                </a>
+              </li>
+
+            </ul>
+
+          </div>
+
+          {/* Produtos */}
+          <div>
+
+            <h3
+              className="
+                text-sm
+                font-semibold
+                uppercase
+                tracking-[0.18em]
+                text-white
+              "
+            >
+              Produtos
+            </h3>
+
+            <ul className="mt-6 space-y-4 text-sm text-white/75">
+
+              <li>
+                <a
+                  href="#produtos"
+                  className="transition hover:text-white"
+                >
+                  Queijo Mussarela
+                </a>
+              </li>
+
+
+              <li>
+                <a
+                  href="#produtos"
+                  className="transition hover:text-white"
+                >
+                  Mistura de Requeijão e Amido
+                </a>
+              </li>
+
+
+              <li>
+                <a
+                  href="#produtos"
+                  className="transition hover:text-white"
+                >
+                  Requeijão sabor Quatro Queijos
+                </a>
+              </li>
+
+            </ul>
+
+          </div>
+
+          {/* Redes sociais */}
+          <div>
+            <h3
+              className="
+                text-sm
+                font-semibold
+                uppercase
+                tracking-[0.18em]
+                text-white
+              "
+            >
+              Contato
+            </h3>
+            <div className="mt-6 flex gap-3">
+
+
+              {/* WhatsApp */}
+              <a
+                href="https://wa.me/5583999999999"
+                target="_blank"
+                rel="noreferrer"
+                aria-label="WhatsApp"
+                className="
+                  flex
+                  h-11
+                  w-11
+                  items-center
+                  justify-center
+                  rounded-xl
+                  border
+                  border-white/10
+                  bg-white/5
+                  transition-all
+                  duration-300
+                  hover:-translate-y-1
+                  hover:border-[#25D366]
+                  hover:bg-[#25D366]
+                "
+              >
+                <MessageCircle className="h-5 w-5" />
+              </a>
+
+
+              {/* Instagram */}
+              <a
+                href="#"
+                target="_blank"
+                rel="noreferrer"
+                aria-label="Instagram"
+                className="
+                  flex
+                  h-11
+                  w-11
+                  items-center
+                  justify-center
+                  rounded-xl
+                  border
+                  border-white/10
+                  bg-white/5
+                  transition-all
+                  duration-300
+                  hover:-translate-y-1
+                  hover:border-[#E4405F]
+                  hover:bg-[#E4405F]
+                "
+              >
+                <Instagram className="h-5 w-5" />
+              </a>
+
+
+              {/* Gmail */}
+              <a
+                href="mailto:contato@portolaticinios.com.br"
+                aria-label="Email"
+                className="
+                  flex
+                  h-11
+                  w-11
+                  items-center
+                  justify-center
+                  rounded-xl
+                  border
+                  border-white/10
+                  bg-white/5
+                  transition-all
+                  duration-300
+                  hover:-translate-y-1
+                  hover:border-[#EA4335]
+                  hover:bg-[#EA4335]
+                "
+              >
+                <Mail className="h-5 w-5" />
+              </a>
+            </div>
+            <div className="mt-8 space-y-2 text-sm text-white/70">
+            <p>
+              Atendimento de Segunda a Sexta
+            </p>
+            <p>
+              Das 07:00 às 17:00
+            </p>
+          </div>
           </div>
         </div>
-        <p className="text-sm text-muted-foreground text-white">© {new Date().getFullYear()} Porto Laticínios.</p>
+        {/* Linha inferior */}
+        <div
+          className="
+            mt-14
+            flex
+            flex-col
+            gap-4
+            border-t
+            border-white/10
+            pt-6
+            text-center
+            text-sm
+            text-white/60
+
+            md:flex-row
+            md:items-center
+            md:justify-between
+            md:text-left
+          "
+        >
+
+          <p>
+            © {new Date().getFullYear()} Porto Laticínios.
+            Todos os direitos reservados.
+          </p>
+
+
+          <div className="flex flex-col gap-1 md:text-right">
+
+            <p>
+              CNPJ 00.000.000/0001-00
+            </p>
+
+            <p>
+              Registro MAPA / SIF 0000
+            </p>
+
+          </div>
+
+        </div>
       </div>
     </footer>
   );

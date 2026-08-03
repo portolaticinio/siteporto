@@ -92,15 +92,7 @@ export function Clients() {
   return (
     <section
       id="clientes"
-      className="relative pt-20 pb-8 bg-[#F7F3E8]"
-      style={{
-        backgroundImage: "url('/src/assets/back.png')",
-        backgroundSize: 'cover',
-        backgroundPosition: 'center -660px',
-      }}
-    >
-      {/* Camada de sobreposição para clarear e diminuir o contraste do fundo */}
-      < div className="absolute inset-0 bg-[#F7F3E8]/85 pointer-events-none" />
+      className="relative pt-20 pb-8">
 
       {/* Conteúdo da seção com z-index para garantir a visibilidade sobre o overlay */}
       < div className="relative z-10 mx-auto max-w-7xl px-6" >
