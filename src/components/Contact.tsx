@@ -33,7 +33,7 @@ export function Contact() {
     <section id="contato" className="relative overflow-hidden pt-20 pb-7 " style={{
       backgroundImage: "url('/src/assets/back.png')",
       backgroundSize: 'cover',
-      backgroundPosition: 'center -179px', // Ajuste este valor em pixels para subir mais (-100px, -200px, etc.)
+      backgroundPosition: 'center -179px',
     }}
     >
       {/* Camada de sobreposição para clarear e diminuir o contraste do fundo */}

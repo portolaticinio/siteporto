@@ -67,7 +67,7 @@ export function Certifications() {
     return () => observer.disconnect();
   }, []);
   return (
-    <section className="py-10 items-center overflow-hidden 
+    <section className="py-10 items-center bg-white overflow-hidden 
 ">
       <div className="mx-auto max-w-7xl px-6"
         ref={sectionRef}>
@@ -89,11 +89,11 @@ export function Certifications() {
               certificações e reconhecimentos que reforçam a confiança.
             </SectionParagraph>
 
-               <a
-                          href={WHATSAPP_LINK}
-                          target="_blank"
-                          rel="noreferrer"
-                          className="
+            <a
+              href={WHATSAPP_LINK}
+              target="_blank"
+              rel="noreferrer"
+              className="
                 w-fit
                 inline-flex
                 h-12
@@ -112,14 +112,14 @@ export function Certifications() {
                 sm:px-7
                 mt-5
               "
-                        >
-                          <FaWhatsapp className="h-5 w-5 sm:h-6 sm:w-6" />
-                          Fazer pedido
-                        </a>
+            >
+              <FaWhatsapp className="h-5 w-5 sm:h-6 sm:w-6" />
+              Fazer pedido
+            </a>
           </div>
 
           {/* Cards */}
-          <div className="grid grid-cols-2 gap-4 lg:grid-cols-3 ">
+          <div className="flex flex-wrap justify-center gap-4">
             {seals.map((seal, index) => {
               const Icon = seal.icon;
 
@@ -127,27 +127,32 @@ export function Certifications() {
                 <div
                   key={seal.title}
                   className={`
-  group
-  rounded-xl
-  border
-  border-[#07598C]
-  bg-[#fff]
-  p-3
-  text-center
-  transition-all
-  duration-700
-  ease-out
-  hover:-translate-y-2
-  hover:shadow-xl
+group
+relative
+overflow-hidden
+rounded-2xl
+border
+border-gray-200
+border-t-4
+border-t-[#07598C]
+bg-white
+p-6
+text-center
+shadow-sm
+transition-all
+duration-500
+ease-out
+hover:-translate-y-2
+hover:border-[#07598C]/30
+hover:shadow-2xl
+w-[calc(50%-0.5rem)]
+sm:w-[calc(50%-0.5rem)]
+lg:w-[calc(33.333%-1rem)]
 
-  ${visible
+${visible
                       ? "translate-y-0 opacity-100"
-                      : "translate-y-10 opacity-0"
-                    }
+                      : "translate-y-10 opacity-0"}
 `}
-                  style={{
-                    transitionDelay: `${index * 120}ms`,
-                  }}
                 >
                   <div
                     className="

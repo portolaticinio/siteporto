@@ -7,7 +7,7 @@ import { SectionHeading } from "./SectionTitle";
 
 export function Story() {
   return (
-    <section id="historia" className="relative py-10"
+    <section id="historia" className="relative py-10 bg-white"
     >
       <div className="mx-auto grid max-w-7xl items-center gap-14 px-6 lg:grid-cols-2">
         <div className="relative">

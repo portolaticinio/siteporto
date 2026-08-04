@@ -60,7 +60,8 @@ export function Products() {
     pb-10
     md:pt-9
     xl:pt-10
-    xl:pb-10">
+    xl:pb-10
+    bg-white">
       <div className="mx-auto max-w-7xl px-6">
         <SectionLabel icon={<Milk className="h-3.5 w-3.5" />}>Nossos produtos</SectionLabel>
         <div className="mt-5 flex flex-col items-start gap-4 sm:flex-row sm:justify-between sm:gap-0">
@@ -117,7 +118,7 @@ export function Products() {
     group
     overflow-hidden
     rounded-2xl
-    bg-card
+    bg-[#07598C]
     shadow-soft
     transition
     hover:shadow-warm
@@ -200,7 +201,8 @@ export function Products() {
       className="
         line-clamp-2
         text-xl
-        font-semibold
+        text-white
+        font-medium
         leading-tight
       "
     >
@@ -216,10 +218,11 @@ export function Products() {
             items-center
             gap-2
             text-sm
+            text-white
             text-muted-foreground
           "
         >
-          <span className="h-1.5 w-1.5 rounded-full bg-primary" />
+          <span className="h-1.5 w-1.5 rounded-full bg-[#DFA304]" />
           {f}
         </div>
       ))}
@@ -231,10 +234,12 @@ export function Products() {
           key={t}
           className="
             rounded-full
-            bg-muted
+            bg-[#DFA304]
             px-2.5
             py-1
             text-[11px]
+            text-semibold
+            text-white
             text-muted-foreground
           "
         >

@@ -42,7 +42,7 @@ export function Values() {
   ];
 
   return (
-    <section className="relative overflow-hidden py-10 md:py-20">
+    <section className="relative overflow-hidden bg-white py-8 md:py-15">
       <div className="mx-auto relative z-10 max-w-7xl px-6">
 
         <div className="grid items-center gap-14">
@@ -85,15 +85,25 @@ export function Values() {
             <div
               key={item.title}
               className="
-                rounded-2xl
-                border
-                border-border
-                bg-background
-                p-7
-                transition-all
-                duration-300
-                hover:-translate-y-1
-                hover:shadow-lg
+              className={`
+group
+relative
+overflow-hidden
+rounded-2xl
+border
+border-gray-200
+border-l-4
+border-l-[#07598C]
+bg-white
+p-7
+shadow-sm
+transition-all
+duration-500
+ease-out
+hover:-translate-y-2
+hover:border-l-[#DFA304]
+hover:shadow-xl
+`}
               "
             >
               <div className="flex items-center gap-4">

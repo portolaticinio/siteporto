@@ -1,8 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { Factory } from "lucide-react";
-
+import { ArrowRightCircle, Factory } from "lucide-react";
 import { SectionLabel } from "./SectionLabel";
 import { SectionHeading } from "./SectionTitle";
 
@@ -72,10 +71,33 @@ export function Process() {
   const desktop = useStepVisibility();
   const mobile = useStepVisibility();
 
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 900);
+    };
+
+    handleResize();
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
   return (
     <section
       id="processo"
-      className="relative overflow-hidden py-20     bg-[radial-gradient(circle_at_left,#084E80_0%,#084E80_45%,#063C67_100%)]"
+      className="relative overflow-hidden py-20"
+      style={{
+        backgroundImage: "url('/src/assets/processo.png')",
+        backgroundSize: "cover",
+        backgroundPosition: isMobile
+          ? "88% center"
+          : "100% center",
+      }}
     >
 
       {/* profundidade sutil */}
@@ -90,14 +112,22 @@ export function Process() {
           Do leite ao produto
         </SectionLabel>
 
-        <SectionHeading width="full" className="text-white">
+        <SectionHeading width="full" className="text-black">
           Cada queijo passa por 6 etapas e mais de 20 conferências.
         </SectionHeading>
+
+        <div className="flex gap-2 mt-2 items-center lg:hidden">
+          <span className="text-sm text-black font-medium">
+            Deslize para ver mais
+          </span>
+          <ArrowRightCircle className="h-4 w-4 animate-pulse text-black" />
+        </div>
 
         {/* ===== Timeline ===== */}
         <div className="relative mt-16 py-10 hidden lg:block">
           {/* trilho central */}
-          <div className="absolute inset-x-0 top-1/2 h-px -translate-y-1/2 bg-gradient-to-r from-transparent via-black/30 to-transparent" />
+          <div className="absolute inset-x-0 top-1/2 h-px -translate-y-1/2 
+          bg-gradient-to-r from-transparent via-white/50 to-transparent" />
 
           <div className="grid grid-cols-6">
             {steps.map((step, i) => {
@@ -115,7 +145,7 @@ export function Process() {
       rounded-2xl
       border
       border-black/10
-      bg-black/[0.06]
+      bg-[#07598C]
       px-5
       py-6
       text-center
@@ -123,7 +153,6 @@ export function Process() {
       transition-all
       duration-500
       hover:-translate-y-1
-      hover:bg-black/[0.1]
     "
                 >
 
@@ -276,14 +305,15 @@ export function Process() {
       rounded-2xl
       border
       border-black/10
-      bg-black/[0.06]
+      bg-[#07598C]
       px-4
       py-5
       text-center
+      text-white
       backdrop-blur-md
       transition-all
       duration-500
-      hover:bg-black/[0.1]
+
     "
                 >
 
@@ -317,9 +347,11 @@ export function Process() {
                     className="
         mt-2
         text-sm
-        font-semibold
+        font-medium
+        font-sans
+        font
         leading-snug
-        text-black
+        text-white
       "
                   >
                     {step.title}
@@ -331,7 +363,7 @@ export function Process() {
         mt-2
         text-[11px]
         font-medium
-        text-black
+        text-white
       "
                   >
                     {step.desc}
@@ -392,7 +424,7 @@ export function Process() {
                 left-0
                 right-0
                 h-px
-bg-gradient-to-r from-transparent via-black/30 to-transparent
+bg-gradient-to-r from-transparent via-white/50 to-transparent
               "
                     />
 

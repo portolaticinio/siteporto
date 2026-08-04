@@ -157,9 +157,12 @@ export function Clients() {
       className="
     relative
     overflow-hidden
-    py-28
-    bg-[radial-gradient(circle_at_left,#0E6AA4_0%,#084E80_45%,#063C67_100%)]
-"
+    py-24"
+    style={{
+      backgroundImage: "url('/src/assets/testemunhos.png')",
+      backgroundSize: 'cover',
+      backgroundPosition: 'bottom',
+    }}
 
     >
       <div className="mx-auto max-w-7xl px-6">
@@ -182,7 +185,6 @@ export function Clients() {
 
             <SectionHeading width="large" className="
         max-w-[760px]
-        text-6xl
         leading-[1.05]
         font-black
     ">
@@ -251,7 +253,6 @@ export function Clients() {
                       h-[150px]
                       rounded-[26px]
                       overflow-hidden
-                      shadow-2xl
                       border border-white/10
                       group-hover:scale-105
                       group-hover:brightness-110
@@ -278,6 +279,7 @@ export function Clients() {
                         inset-0
                         bg-gradient-to-r
                         from-black/80
+                        bg-gradient-to-b
                         to-transparent
                       "
                         />

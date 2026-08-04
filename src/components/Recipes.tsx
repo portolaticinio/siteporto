@@ -194,7 +194,7 @@ export function Recipes() {
   }, [receitaSelecionada]);
 
   return (
-    <section id="receitas" className="pt-20 pb-15 relative overflow-hidden">
+    <section id="receitas" className="pt-20 pb-15 relative bg-white overflow-hidden">
       <div className="mx-auto max-w-7xl px-3">
         <div className="grid items-center lg:grid-cols-2">
           <div>
@@ -257,7 +257,7 @@ export function Recipes() {
               {recipesFiltradas.map((r) => (
                 <div
                   key={r.id}
-                  className="group overflow-hidden rounded-2xl bg-card transition hover:-translate-y-1 border border-border/80"
+                  className="group overflow-hidden rounded-2xl transition hover:-translate-y-1 border border-border/80"
                 >
                   <div className="relative h-48 overflow-hidden">
                     <img
@@ -270,7 +270,7 @@ export function Recipes() {
                     </span>
                   </div>
 
-                  <div className="p-4">
+                  <div className="p-4 ">
                     <div className="flex gap-2 text-xs uppercase tracking-wider text-muted-foreground">
                       <span>{r.time}</span>
                     </div>
@@ -317,7 +317,21 @@ export function Recipes() {
                         isMobile ? "w-[82%]" : "basis-1/3"
                       }`}
                     >
-                      <div className="group flex h-[320px] flex-col overflow-hidden rounded-2xl bg-card border border-border/60 transition hover:-translate-y-1">
+                      <div className={`
+group
+relative
+overflow-hidden
+rounded-2xl
+border
+border-gray-200
+bg-white
+shadow-sm
+transition-all
+duration-700
+ease-out
+translate-y-0
+opacity-100
+`}>
                         <div className="relative h-44 flex-shrink-0 overflow-hidden">
                           <img
                             src={r.img}
