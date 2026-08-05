@@ -55,7 +55,7 @@ export function Hero() {
         className="absolute inset-0 hidden lg:block"
         style={{
           background:
-            "linear-gradient(120deg, rgba(247, 241, 231, 0.11) 0%, rgba(247, 241, 231, 0.07) 10%, transparent 100%)",
+            "linear-gradient(180deg, rgba(247, 241, 231, 0.27) 0%, rgba(247, 241, 231, 0.07) 10%, transparent 100%)",
         }}
       />
 
@@ -166,8 +166,8 @@ export function Hero() {
           >
             O verdadeiro sabor
             <br />
-            do Queijo{" "}
-            <span style={{ color: "#0c4c74" }}>na Paraíba</span>
+            do Queijo na {" "}
+            <span style={{ color: "#0c4c74" }}>Paraíba</span>
           </h1>
 
           <p
@@ -203,7 +203,7 @@ export function Hero() {
     justify-center
     gap-2
     rounded-2xl
-    bg-[#07598C]
+    bg-[#0E7FE0]
     px-6
     text-sm
     font-medium

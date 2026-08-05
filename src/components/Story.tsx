@@ -37,7 +37,7 @@ export function Story() {
     bottom-[-30px] right-3
     w-[120px]
     rounded-xl
-    bg-[#07598C]
+    bg-[#0E7FE0]
     p-2
     text-white
     shadow-warm

@@ -80,7 +80,7 @@ export function Products() {
     justify-center
     gap-2
     rounded-2xl
-    bg-[#07598C]
+    bg-[#0E7FE0]
     px-6
     text-sm
     font-medium
@@ -118,7 +118,7 @@ export function Products() {
     group
     overflow-hidden
     rounded-2xl
-    bg-[#07598C]
+    bg-[#0E7FE0]
     shadow-soft
     transition
     hover:shadow-warm
@@ -222,7 +222,7 @@ export function Products() {
             text-muted-foreground
           "
         >
-          <span className="h-1.5 w-1.5 rounded-full bg-[#DFA304]" />
+          <span className="h-1.5 w-1.5 rounded-full bg-[#F6C72F]" />
           {f}
         </div>
       ))}
@@ -234,13 +234,12 @@ export function Products() {
           key={t}
           className="
             rounded-full
-            bg-[#DFA304]
+            bg-[#F6C72F]
             px-2.5
             py-1
-            text-[11px]
-            text-semibold
-            text-white
-            text-muted-foreground
+            text-[12px]
+            text-bold
+            text-black
           "
         >
           {t}

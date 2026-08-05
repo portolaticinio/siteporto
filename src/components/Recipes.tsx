@@ -217,8 +217,8 @@ export function Recipes() {
                 onClick={() => setFiltro(null)}
                 className={`rounded-full px-4 py-2 text-sm font-medium transition border ${
                   !filtro
-                    ? "bg-[#07598C] text-background"
-                    : "border-border/80 text-muted-foreground hover:border-[#07598C]"
+                    ? "bg-[#0E7FE0] text-background"
+                    : "border-border/80 text-muted-foreground hover:border-[#0E7FE0]"
                 }`}
               >
                 Todas as receitas
@@ -228,8 +228,8 @@ export function Recipes() {
                 onClick={() => setFiltro("casa")}
                 className={`rounded-full px-4 py-2 text-sm font-medium transition border ${
                   filtro === "casa"
-                    ? "bg-[#07598C] text-background"
-                    : "border-border/80 text-muted-foreground hover:border-[#07598C]"
+                    ? "bg-[#0E7FE0] text-background"
+                    : "border-border/80 text-muted-foreground hover:border-[#0E7FE0]"
                 }`}
               >
                 Para sua casa
@@ -239,8 +239,8 @@ export function Recipes() {
                 onClick={() => setFiltro("negocio")}
                 className={`rounded-full px-4 py-2 text-sm font-medium transition border ${
                   filtro === "negocio"
-                    ? "bg-[#07598C] text-background"
-                    : "border-border/80 text-muted-foreground hover:border-[#07598C]"
+                    ? "bg-[#0E7FE0] text-background"
+                    : "border-border/80 text-muted-foreground hover:border-[#0E7FE0]"
                 }`}
               >
                 Para o seu negócio

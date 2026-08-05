@@ -41,31 +41,18 @@ function Home() {
   return (
     <div className="min-h-screen bg-background text-foreground">
       <Header />
-
       <Hero />
-
       <Marquee />
-
       <Story />
-
       <Products />
-
       <Process />
-
       <Certifications />
-
       <Values />
-
-
+      
       <Clients />
-
-
       <Recipes />
-
       <Contact />
-
       <Footer />
-
       <FloatingWhatsApp />
     </div>
   );

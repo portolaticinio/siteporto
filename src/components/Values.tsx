@@ -93,7 +93,7 @@ rounded-2xl
 border
 border-gray-200
 border-l-4
-border-l-[#07598C]
+border-l-[#0E7FE0]
 bg-white
 p-7
 shadow-sm
@@ -101,7 +101,7 @@ transition-all
 duration-500
 ease-out
 hover:-translate-y-2
-hover:border-l-[#DFA304]
+hover:border-l-[#F6C72F]
 hover:shadow-xl
 `}
               "
@@ -116,7 +116,7 @@ hover:shadow-xl
                     items-center
                     justify-center
                     rounded-2xl
-                    bg-[#07598C]
+                    bg-[#0E7FE0]
                     text-secondary-foreground
                   "
                 >

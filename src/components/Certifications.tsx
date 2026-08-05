@@ -67,7 +67,7 @@ export function Certifications() {
     return () => observer.disconnect();
   }, []);
   return (
-    <section className="py-10 items-center bg-white overflow-hidden 
+    <section id="certificacoes" className="py-10 items-center bg-white overflow-hidden 
 ">
       <div className="mx-auto max-w-7xl px-6"
         ref={sectionRef}>
@@ -101,7 +101,7 @@ export function Certifications() {
                 justify-center
                 gap-2
                 rounded-2xl
-                bg-[#07598C]
+                bg-[#0E7FE0]
                 px-6
                 text-sm
                 font-medium
@@ -134,7 +134,7 @@ rounded-2xl
 border
 border-gray-200
 border-t-4
-border-t-[#07598C]
+border-t-[#0E7FE0]
 bg-white
 p-6
 text-center
@@ -143,7 +143,7 @@ transition-all
 duration-500
 ease-out
 hover:-translate-y-2
-hover:border-[#07598C]/30
+hover:border-[#0E7FE0]/30
 hover:shadow-2xl
 w-[calc(50%-0.5rem)]
 sm:w-[calc(50%-0.5rem)]
@@ -163,7 +163,7 @@ ${visible
       items-center
       justify-center
       rounded-2xl
-      bg-[#07598C]
+      bg-[#0E7FE0]
       transition-transform
       duration-300
       group-hover:rotate-6

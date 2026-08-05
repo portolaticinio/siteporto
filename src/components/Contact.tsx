@@ -106,7 +106,7 @@ export function Contact() {
             <button
               type="submit"
               disabled={isSubmitting}
-              className="mt-2 rounded-2xl bg-[#07598C] py-3.5 text-sm font-medium text-primary-foreground shadow-warm transition hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-60"
+              className="mt-2 rounded-2xl bg-[#0E7FE0] py-3.5 text-sm font-medium text-primary-foreground shadow-warm transition hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-60"
             >
               {isSubmitting ? "Enviando..." : "Enviar minha mensagem"}
             </button>
@@ -136,7 +136,7 @@ function ContactRow({
       rel="noreferrer"
       className="flex items-center gap-1 rounded-2xl border border-white/15 p-2 transition"
     >
-      <div className="grid h-11 w-11 place-items-center rounded-2xl bg-[#07598C] text-white">{icon}</div>
+      <div className="grid h-11 w-11 place-items-center rounded-2xl bg-[#0E7FE0] text-white">{icon}</div>
       <div>
         <p className="text-xs uppercase tracking-wider opacity-70">{label}</p>
         <p className="font-medium">{value}</p>

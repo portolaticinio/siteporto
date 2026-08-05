@@ -4,24 +4,25 @@ import {
   MessageCircle,
 } from "lucide-react";
 
-import logo from "@/assets/back.png";
+import logo from "@/assets/logo2.png";
 
 export function Footer() {
   return (
     <footer className="border-t border-white/10 
-    bg-[radial-gradient(circle_at_left,#084E80_0%,#084E80_45%,#063C67_100%)] text-white">
+    bg-[radial-gradient(circle_at_left,#0A69BA_0%,#095EA8_50%,#074A84_100%)]
+    text-white">
       <div className="mx-auto max-w-7xl px-6 py-10">
 
         <div className="grid gap-10 lg:grid-cols-[1fr_1fr_1fr_1fr]">
           {/* Logo */}
           <div>
             <img
-              src={logo}
-              alt="Porto Laticínios"
-              className="h-20 w-auto"
-            />
+            src={logo}
+            alt="Porto Laticínios"
+            className="h-40 w-auto object-contain rounded-full"
+          />
             <p className="mt-4 max-w-sm text-sm leading-7 text-white/75">
-              O verdadeiro sabor
+              O Verdadeiro Sabor
               do Queijo na Paraíba
 
             </p>

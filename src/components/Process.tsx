@@ -145,7 +145,7 @@ export function Process() {
       rounded-2xl
       border
       border-black/10
-      bg-[#07598C]
+      bg-[#0E7FE0]
       px-5
       py-6
       text-center
@@ -169,9 +169,10 @@ export function Process() {
         items-center
         justify-center
         rounded-full
-        border
+        border-b-2
+        border-l-2
         border-white
-        bg-[#07598C]
+        bg-[#0E7FE0]
         text-sm
         font-bold
         text-white
@@ -246,7 +247,7 @@ export function Process() {
     w-5
     rounded-full
     border-4
-    border-[#07598C]
+    border-[#0E7FE0]
     bg-white
     shadow-[0_0_25px_rgba(255,255,255,0.35)]
     transition-transform
@@ -305,7 +306,7 @@ export function Process() {
       rounded-2xl
       border
       border-black/10
-      bg-[#07598C]
+      bg-[#0E7FE0]
       px-4
       py-5
       text-center
@@ -332,7 +333,7 @@ export function Process() {
         rounded-full
         border
         border-white
-        bg-[#07598C]
+        bg-[#0E7FE0]
         text-xs
         font-bold
         text-white
@@ -436,7 +437,7 @@ h-5
 w-5
 rounded-full
 border-4
-border-[#07598C]
+border-[#0E7FE0]
 bg-white
 shadow-[0_0_20px_rgba(255,255,255,0.35)]
 transition-transform

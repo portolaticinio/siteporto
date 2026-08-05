@@ -188,7 +188,7 @@ export function Clients() {
         leading-[1.05]
         font-black
     ">
-              Quem escolhe a qualidade <span className="text-[#F7B21A]"> Porto Laticínios.
+              Quem escolhe a qualidade <span className="text-[#F6C72F]"> Porto Laticínios.
               </span>
             </SectionHeading>
 

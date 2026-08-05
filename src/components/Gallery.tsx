@@ -308,7 +308,7 @@ export default function Gallery() {
         }
       `}</style>
 
-      <section className="relative">
+      <section className="relative bg-white">
 
         <div className="mx-auto max-w-7xl px-6 relative z-10">
           <SectionLabel icon={<Factory className="h-3.5 w-3.5" />}>Galeria da fábrica</SectionLabel>
