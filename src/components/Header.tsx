@@ -108,6 +108,7 @@ export function Header() {
             <FaWhatsapp className="h-5 w-5" />
             Fazer pedido
           </a>
+
         </nav>
       </div>
     </header>

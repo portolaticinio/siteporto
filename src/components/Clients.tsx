@@ -1,84 +1,49 @@
 import { useEffect, useState } from "react";
 import useEmblaCarousel from "embla-carousel-react";
 import Autoplay from "embla-carousel-autoplay";
-import { ChevronLeft, ChevronRight, Truck } from "lucide-react";
-import { Star, Store } from "lucide-react";
+import {
+  ChevronLeft,
+  ChevronRight,
+  Truck,
+  Star,
+  Pizza,
+  Utensils,
+  ShoppingCart,
+  Croissant,
+  Store,
+} from "lucide-react";
 
 import { SectionLabel } from "./SectionLabel";
 import { SectionHeading } from "./SectionTitle";
 import { SectionParagraph } from "./SectionParagraph";
 
-import pizzariaImg from "@/assets/client-pizzaria.jpg";
-import supermercadoImg from "@/assets/client-supermercado.jpg";
-import restauranteImg from "@/assets/client-restaurante.jpg";
-
-
 export function Clients() {
   const types = [
     {
       name: "Pizzarias",
-      image: pizzariaImg,
+      icon: Pizza,
     },
     {
       name: "Restaurantes",
-      image: restauranteImg,
+      icon: Utensils,
     },
     {
       name: "Supermercados",
-      image: supermercadoImg,
+      icon: ShoppingCart,
     },
     {
       name: "Padarias",
-      image: pizzariaImg,
+      icon: Croissant,
     },
     {
       name: "Mercearias",
-      image: supermercadoImg,
+      icon: Store,
     },
     {
       name: "Distribuidores",
-      image: restauranteImg,
+      icon: Truck,
     },
   ];
-  const autoplay = Autoplay({
-    delay: 3000,
-    stopOnInteraction: false,
-  });
-  const [
-    emblaRef,
-    emblaApi
-  ] = useEmblaCarousel(
-    {
-      loop: true,
-      align: "start",
-    },
-    [autoplay]
-  );
-  const [canPrev, setCanPrev] = useState(false);
-  const [canNext, setCanNext] = useState(false);
-  useEffect(() => {
-    if (!emblaApi) return;
-
-
-    const updateButtons = () => {
-      setCanPrev(emblaApi.canScrollPrev());
-      setCanNext(emblaApi.canScrollNext());
-    };
-
-
-    updateButtons();
-
-
-    emblaApi.on("select", updateButtons);
-    emblaApi.on("reInit", updateButtons);
-
-
-    return () => {
-      emblaApi.off("select", updateButtons);
-      emblaApi.off("reInit", updateButtons);
-    };
-
-  }, [emblaApi]);
 
   const reviews = [
     {
@@ -118,7 +83,52 @@ export function Clients() {
       role: "Lanchonete Express",
     },
   ];
+
+  /* =========================================================
+     CARROSSEL DE CATEGORIAS
+  ========================================================= */
+
+  const autoplay = Autoplay({
+    delay: 3000,
+    stopOnInteraction: false,
+  });
+
+  const [emblaRef, emblaApi] = useEmblaCarousel(
+    {
+      loop: true,
+      align: "start",
+    },
+    [autoplay]
+  );
+
+  const [canPrev, setCanPrev] = useState(false);
+  const [canNext, setCanNext] = useState(false);
+
+  useEffect(() => {
+    if (!emblaApi) return;
+
+    const updateButtons = () => {
+      setCanPrev(emblaApi.canScrollPrev());
+      setCanNext(emblaApi.canScrollNext());
+    };
+
+    updateButtons();
+
+    emblaApi.on("select", updateButtons);
+    emblaApi.on("reInit", updateButtons);
+
+    return () => {
+      emblaApi.off("select", updateButtons);
+      emblaApi.off("reInit", updateButtons);
+    };
+  }, [emblaApi]);
+
+  /* =========================================================
+     CARROSSEL DE DEPOIMENTOS
+  ========================================================= */
+
   const [selectedIndex, setSelectedIndex] = useState(0);
+
   const [emblaRef2, emblaApi2] = useEmblaCarousel(
     {
       align: "start",
@@ -131,7 +141,6 @@ export function Clients() {
       }),
     ]
   );
-
 
   useEffect(() => {
     if (!emblaApi2) return;
@@ -149,295 +158,366 @@ export function Clients() {
       emblaApi2.off("select", onSelect);
       emblaApi2.off("reInit", onSelect);
     };
-
   }, [emblaApi2]);
+
   return (
     <section
       id="clientes"
       className="
-    relative
-    overflow-hidden
-    py-24"
-    style={{
-      backgroundImage: "url('/src/assets/testemunhos.png')",
-      backgroundSize: 'cover',
-      backgroundPosition: 'bottom',
-    }}
-
+        relative
+        overflow-hidden
+        py-24
+      "
+      style={{
+        backgroundImage: "url('/src/assets/testemunhos.png')",
+        backgroundSize: "cover",
+        backgroundPosition: "bottom",
+      }}
     >
       <div className="mx-auto max-w-7xl px-6">
-
         <div
           className="
-        grid
-        gap-12
-        lg:grid-cols-[1.25fr_.9fr]
-        lg:items-center
-      "
+            grid
+            gap-12
+            lg:grid-cols-[1.25fr_.9fr]
+            lg:items-center
+          "
         >
+          {/* =====================================================
+              LADO ESQUERDO
+          ===================================================== */}
 
-          {/* LADO ESQUERDO */}
           <div className="text-white">
-
-            <SectionLabel icon={<Truck className="h-3.5 w-3.5" />}>
+            <SectionLabel
+              icon={<Truck className="h-3.5 w-3.5" />}
+            >
               Parceiros e depoimentos
             </SectionLabel>
 
-            <SectionHeading width="large" className="
-        max-w-[760px]
-        leading-[1.05]
-        font-black
-    ">
-              Quem escolhe a qualidade <span className="text-[#F6C72F]"> Porto Laticínios.
+            <SectionHeading
+              width="large"
+              className="
+                max-w-[760px]
+                leading-[1.05]
+                font-black
+              "
+            >
+              Quem escolhe a qualidade{" "}
+              <span className="text-[#F6C72F]">
+                Porto Laticínios.
               </span>
             </SectionHeading>
 
-            <SectionParagraph width="small" className="text-white text-xl leading-10">
+            <SectionParagraph
+              width="small"
+              className="
+                text-xl
+                leading-10
+                text-white
+              "
+            >
               Atendemos{" "}
               <span className="font-bold">
                 Atacado e Varejo
               </span>
-              , com parceiros que confiam na nossa qualidade e compartilham suas experiências com sabor e compromisso.
+              , com parceiros que confiam na nossa qualidade e
+              compartilham suas experiências com sabor e compromisso.
             </SectionParagraph>
 
+            {/* =================================================
+                CARROSSEL DE CATEGORIAS
+            ================================================= */}
 
-            {/* CARROSSEL CLIENTES */}
             <div className="relative mt-10">
-
+              {/* BOTÃO ANTERIOR */}
               <button
+                type="button"
                 onClick={() => emblaApi?.scrollPrev()}
                 disabled={!canPrev}
+                aria-label="Categorias anteriores"
                 className="
-                text-black
-              absolute
-              -left-4
-              top-1/2
-              z-10
-              flex
-              h-10
-              w-10
-              -translate-y-1/2
-              items-center
-              justify-center
-              rounded-full
-              bg-background
-              shadow-md
-              transition
-              hover:scale-105
-              disabled:opacity-30
-            "
+                  absolute
+                  -left-4
+                  top-1/2
+                  z-20
+                  flex
+                  h-10
+                  w-10
+                  -translate-y-1/2
+                  items-center
+                  justify-center
+                  rounded-full
+                  bg-background
+                  text-black
+                  shadow-md
+                  transition
+                  hover:scale-105
+                  disabled:cursor-not-allowed
+                  disabled:opacity-30
+                "
               >
-                <ChevronLeft />
+                <ChevronLeft className="h-5 w-5" />
               </button>
 
-
+              {/* ÁREA DO CARROSSEL */}
               <div
                 ref={emblaRef}
                 className="overflow-hidden"
               >
+                <div className="-mx-2 flex">
+                  {types.map((type) => {
+                    const Icon = type.icon;
 
-                <div className="flex -mx-2">
-
-                  {types.map((type) => (
-                    <div
-                      key={type.name}
-                      className="
-                    flex-[0_0_50%]
-                    px-2
-                  "
-                    >
+                    return (
                       <div
+                        key={type.name}
                         className="
-                      group
-                      relative
-                      h-[150px]
-                      rounded-[26px]
-                      overflow-hidden
-                      border border-white/10
-                      group-hover:scale-105
-                      group-hover:brightness-110
-                    "
+                          min-w-0
+                          flex-[0_0_33.333%]
+                          px-2
+                        "
                       >
-
-                        <img
-                          src={type.image}
-                          alt={type.name}
-                          className="
-                        h-full
-                        w-full
-                        object-cover
-                        transition
-                        duration-500
-                        group-hover:scale-105
-                      "
-                        />
-
-
                         <div
                           className="
-                        absolute
-                        inset-0
-                        bg-gradient-to-r
-                        from-black/80
-                        bg-gradient-to-b
-                        to-transparent
-                      "
-                        />
-
-
-                        <h3
-                          className="
-                        absolute
-                        bottom-4
-                        left-5
-                        font-display
-                        text-xl
-                        text-white
-                        lading-relaxed
-                      "
+                            group
+                            relative
+                            flex
+                            h-[150px]
+                            w-full
+                            items-center
+                            justify-center
+                            overflow-hidden
+                            rounded-[26px]
+                            border
+                            border-white/10
+                            bg-white/10
+                            backdrop-blur-sm
+                            transition-all
+                            duration-300
+                            hover:-translate-y-1
+                            hover:bg-white/15
+                            hover:shadow-xl
+                          "
                         >
-                          {type.name}
-                        </h3>
+                          {/* EFEITO DE BRILHO */}
+                          <div
+                            className="
+                              absolute
+                              -right-10
+                              -top-10
+                              h-24
+                              w-24
+                              rounded-full
+                              bg-[#F6C72F]/10
+                              blur-2xl
+                              transition
+                              duration-500
+                              group-hover:bg-[#F6C72F]/20
+                            "
+                          />
 
+                          {/* ÍCONE E TEXTO */}
+                          <div
+                            className="
+                              relative
+                              z-10
+                              flex
+                              flex-col
+                              items-center
+                              gap-3
+                            "
+                          >
+                            <div
+                              className="
+                                flex
+                                h-12
+                                w-12
+                                items-center
+                                justify-center
+                                rounded-xl
+                                bg-white/10
+                                text-[#F6C72F]
+                                transition-all
+                                duration-300
+                                group-hover:scale-110
+                                group-hover:bg-[#F6C72F]
+                                group-hover:text-[#1A2B49]
+                              "
+                            >
+                              <Icon
+                                className="h-6 w-6"
+                                strokeWidth={1.8}
+                              />
+                            </div>
+
+                            <h3
+                              className="
+                                px-1
+                                text-center
+                                font-display
+                                text-sm
+                                leading-tight
+                                text-white
+                              "
+                            >
+                              {type.name}
+                            </h3>
+                          </div>
+                        </div>
                       </div>
-                    </div>
-                  ))}
+                    );
+                  })}
                 </div>
               </div>
 
-
+              {/* BOTÃO PRÓXIMO */}
               <button
+                type="button"
                 onClick={() => emblaApi?.scrollNext()}
                 disabled={!canNext}
+                aria-label="Próximas categorias"
                 className="
-                text-black
-              absolute
-              -right-4
-              top-1/2
-              z-10
-              flex
-              h-10
-              w-10
-              -translate-y-1/2
-              items-center
-              justify-center
-              rounded-full
-              bg-background
-              shadow-md
-              transition
-              hover:scale-105
-              disabled:opacity-30
-            "
+                  absolute
+                  -right-4
+                  top-1/2
+                  z-20
+                  flex
+                  h-10
+                  w-10
+                  -translate-y-1/2
+                  items-center
+                  justify-center
+                  rounded-full
+                  bg-background
+                  text-black
+                  shadow-md
+                  transition
+                  hover:scale-105
+                  disabled:cursor-not-allowed
+                  disabled:opacity-30
+                "
               >
-                <ChevronRight />
+                <ChevronRight className="h-5 w-5" />
               </button>
-
-
             </div>
-
           </div>
 
+          {/* =====================================================
+              LADO DIREITO - DEPOIMENTOS
+          ===================================================== */}
 
           <div className="flex justify-center lg:justify-end">
-
             <div className="w-full max-w-[320px]">
 
+              {/* CARROSSEL */}
               <div
-                className="overflow-hidden"
                 ref={emblaRef2}
+                className="overflow-hidden"
               >
-
                 <div className="flex">
-
-                  {reviews.map((r, i) => (
+                  {reviews.map((review, index) => (
                     <div
-                      key={i}
+                      key={index}
                       className="
-              flex-[0_0_100%]
-              px-2
-            "
+                        min-w-0
+                        flex-[0_0_100%]
+                        px-2
+                      "
                     >
-
                       <figure
                         className="
-                flex
-                min-h-[260px]
-                w-full
-                flex-col
-                rounded-2xl
-                bg-card
-                p-5
-              "
+                          flex
+                          min-h-[260px]
+                          w-full
+                          flex-col
+                          rounded-2xl
+                          bg-card
+                          p-5
+                        "
                       >
-
+                        {/* ESTRELAS */}
                         <div className="flex gap-1 text-accent">
-                          {[...Array(5)].map((_, k) => (
+                          {[...Array(5)].map((_, starIndex) => (
                             <Star
-                              key={k}
-                              className="h-4 w-4 fill-current"
+                              key={starIndex}
+                              className="
+                                h-4
+                                w-4
+                                fill-current
+                              "
                             />
                           ))}
                         </div>
 
-
-                        <blockquote className="mt-3 flex-1 text-sm leading-relaxed">
-                          "{r.quote}"
+                        {/* DEPOIMENTO */}
+                        <blockquote
+                          className="
+                            mt-3
+                            flex-1
+                            text-sm
+                            leading-relaxed
+                          "
+                        >
+                          "{review.quote}"
                         </blockquote>
 
-
-                        <figcaption className="mt-5 border-t border-border pt-4">
+                        {/* AUTOR */}
+                        <figcaption
+                          className="
+                            mt-5
+                            border-t
+                            border-border
+                            pt-4
+                          "
+                        >
                           <p className="font-bold">
-                            {r.who}
+                            {review.who}
                           </p>
 
-                          <p className="text-sm text-muted-foreground">
-                            {r.role}
+                          <p
+                            className="
+                              text-sm
+                              text-muted-foreground
+                            "
+                          >
+                            {review.role}
                           </p>
                         </figcaption>
-
                       </figure>
-
-                      {/* Indicador de progresso */}
-                      <div className="mt-6 flex justify-center gap-2">
-
-                        {reviews.map((_, index) => (
-                          <button
-                            key={index}
-                            onClick={() => emblaApi2?.scrollTo(index)}
-                            aria-label={`Ir para depoimento ${index + 1}`}
-                            className={`
-        h-2
-        rounded-full
-        transition-all
-        duration-300
-        ${selectedIndex === index
-                                ? "w-10 bg-white"
-                                : "w-2 bg-white/40"
-                              }
-      `}
-                          />
-                        ))}
-
-                      </div>
-
                     </div>
                   ))}
-
                 </div>
-
               </div>
 
+              {/* =================================================
+                  INDICADORES FIXOS
+              ================================================= */}
+
+              <div className="mt-6 flex justify-center gap-2">
+                {reviews.map((_, index) => (
+                  <button
+                    type="button"
+                    key={index}
+                    onClick={() => emblaApi2?.scrollTo(index)}
+                    aria-label={`Ir para depoimento ${index + 1}`}
+                    className={`
+                      h-2
+                      rounded-full
+                      transition-all
+                      duration-300
+                      ${
+                        selectedIndex === index
+                          ? "w-10 bg-white"
+                          : "w-2 bg-white/40"
+                      }
+                    `}
+                  />
+                ))}
+              </div>
             </div>
-
           </div>
-
-
-          
-
         </div>
-
       </div>
-
     </section>
   );
 }

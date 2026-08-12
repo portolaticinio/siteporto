@@ -188,7 +188,8 @@ export function Hero() {
             "
             style={{ color: "#000" }}
           >
-            Da mussarela ao requeijão cremoso, transformamos leite em produtos que levam mais sabor e confiança para a sua mesa.
+            Mussarela, requeijão cremoso e nata salgada: produtos feitos com leite de qualidade, cuidado em cada etapa e o sabor que chega à sua mesa.
+
           </p>
           <div className="mt-4 flex items-start gap-3 xs:flex-row lg:flex-row">
             <a

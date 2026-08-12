@@ -1,257 +1,363 @@
 "use client";
 
-import { Milk } from "lucide-react";
+import { useEffect, useState } from "react";
+import { Milk, ChevronLeft, ChevronRight } from "lucide-react";
+import { FaWhatsapp } from "react-icons/fa";
 
 import mussarelaImg from "@/assets/product-mussarela.png";
 import requeijao2Img from "@/assets/product-requeijao2.png";
 import requeijaoImg from "@/assets/product-requeijao1.png";
-import { ChevronLeft, ChevronRight } from "lucide-react";
-import { useEffect, useState } from "react";
+import nata from "@/assets/nata.png";
+
 import { SectionHeading } from "./SectionTitle";
 import { SectionLabel } from "./SectionLabel";
-import { FaWhatsapp } from "react-icons/fa";
 import { WHATSAPP_LINK } from "@/lib/constants";
 
+interface Product {
+  id: number;
+  images: string[];
+  imageSize: number;
+  name: string;
+  formats: string[];
+  tags: string[];
+}
+
+interface ProductCardProps {
+  product: Product;
+}
+
+function ProductCard({ product }: ProductCardProps) {
+  const [currentImage, setCurrentImage] = useState(0);
+
+  useEffect(() => {
+    if (product.images.length <= 1) return;
+
+    const timer = setInterval(() => {
+      setCurrentImage((prev) =>
+        prev === product.images.length - 1 ? 0 : prev + 1
+      );
+    }, 4000);
+
+    return () => clearInterval(timer);
+  }, [product.images.length]);
+
+  return (
+    <article
+      className="
+        group
+        overflow-hidden
+        rounded-2xl
+        bg-[#0E6AA4]
+        shadow-soft
+        transition
+        hover:shadow-warm
+      "
+    >
+      {/* IMAGEM */}
+      <div
+        className="
+          relative
+          aspect-[5/3]
+          overflow-hidden
+          bg-muted
+          flex
+          items-center
+          justify-center
+        "
+      >
+        <img
+          src={product.images[currentImage]}
+          alt={product.name}
+          loading="lazy"
+          width={700}
+          height={500}
+          style={{
+            transform: `scale(${product.imageSize})`,
+          }}
+          className="
+            h-full
+            w-full
+            object-contain
+            transition-transform
+            duration-700
+          "
+        />
+
+        {/* SETAS */}
+        {product.images.length > 1 && (
+          <>
+            <button
+              type="button"
+              aria-label="Imagem anterior"
+              onClick={() =>
+                setCurrentImage((prev) =>
+                  prev === 0 ? product.images.length - 1 : prev - 1
+                )
+              }
+              className="
+                absolute
+                left-3
+                top-1/2
+                -translate-y-1/2
+                rounded-full
+                bg-white/90
+                p-1.5
+                shadow
+                transition
+                hover:bg-white
+              "
+            >
+              <ChevronLeft className="h-4 w-4" />
+            </button>
+
+            <button
+              type="button"
+              aria-label="Próxima imagem"
+              onClick={() =>
+                setCurrentImage((prev) =>
+                  prev === product.images.length - 1 ? 0 : prev + 1
+                )
+              }
+              className="
+                absolute
+                right-3
+                top-1/2
+                -translate-y-1/2
+                rounded-full
+                bg-white/90
+                p-1.5
+                shadow
+                transition
+                hover:bg-white
+              "
+            >
+              <ChevronRight className="h-4 w-4" />
+            </button>
+          </>
+        )}
+      </div>
+
+      {/* CONTEÚDO */}
+      <div className="p-5">
+        <h3
+          className="
+            line-clamp-2
+            text-xl
+            font-sans
+            font-medium
+            leading-tight
+            text-white
+          "
+        >
+          {product.name}
+        </h3>
+
+        {/* FORMATOS */}
+        <div className="mt-4 space-y-2">
+          {product.formats.map((format) => (
+            <div
+              key={format}
+              className="
+                flex
+                items-center
+                gap-2
+                text-sm
+                text-white
+              "
+            >
+              <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-[#F6C72F]" />
+
+              {format}
+            </div>
+          ))}
+        </div>
+
+        {/* TAGS */}
+        <div className="mt-4 flex flex-wrap gap-1.5">
+          {product.tags.map((tag) => (
+            <span
+              key={tag}
+              className="
+                rounded-full
+                bg-[#F6C72F]
+                px-2.5
+                py-1
+                text-[12px]
+                font-semibold
+                text-[#17202A]
+              "
+            >
+              {tag}
+            </span>
+          ))}
+        </div>
+      </div>
+    </article>
+  );
+}
 
 export function Products() {
-  const products = [
+  const products: Product[] = [
     {
       id: 1,
-      images: [
-        mussarelaImg,
-      ],
+      images: [mussarelaImg],
+
+      // 1 = tamanho normal
+      // 1.2 = 20% maior
+      // 1.5 = 50% maior
+      // 2 = 100% maior
+      imageSize: 1.4,
+
       name: "Mussarela",
       formats: [
-        "Peça inteira ( a partir de 3,5kg)",
-        "Porção  (30g / 1 fatia)",
+        "Peça inteira (a partir de 3,5kg)",
+        "Porção (30g / 1 fatia)",
       ],
-      tags: ["Fonte de Cálcio", "Leite pasteurizado", "Derrete uniforme", "Sem glúten "],
+      tags: [
+        "Fonte de Cálcio",
+        "Leite pasteurizado",
+        "Derrete uniforme",
+        "Sem glúten",
+      ],
     },
     {
       id: 2,
-      images: [
-        requeijao2Img,
-      ],
+      images: [requeijao2Img],
+
+      imageSize: 1.2,
+
       name: "Mistura de Requeijão e Amido",
       formats: [
         "Bisnaga 1,5kg",
         "Rendimento total (50 porções)",
-        "Tamanho da porção (30g) ",
+        "Tamanho da porção (30g)",
       ],
-      tags: ["Cremosidade balanceada", "Leites e derivados", "Sem glúten"],
+      tags: [
+        "Cremosidade balanceada",
+        "Leites e derivados",
+        "Sem glúten",
+      ],
     },
     {
       id: 3,
-      images: [
-        requeijaoImg,
-      ],
+      images: [requeijaoImg],
+
+      imageSize: 1.4,
+
       name: "Mistura Requeijão e Amido, sabor Quatro Queijos",
       formats: [
         "Bisnaga 1,2kg",
         "Rendimento total (40 porções)",
-        "Tamanho da porção (30g) ",
+        "Tamanho da porção (30g)",
       ],
-      tags: ["Recheio cremoso", "Leites e derivados", "Sem glúten"],
+      tags: [
+        "Recheio cremoso",
+        "Leites e derivados",
+        "Sem glúten",
+      ],
+    },
+    {
+      id: 4,
+      images: [nata],
+      imageSize: 1.3,
+
+      name: "Nata Salgada",
+      formats: [
+        "Bisnaga 800g",
+        "Rendimento total (60 porções)",
+        "Tamanho da porção (30g)",
+      ],
+      tags: [
+        "Creme de leite",
+        "Leite desnatado",
+        "Sem glúten",
+      ],
     },
   ];
+
   return (
-    <section id="produtos" className="relative  
-    pt-6
-    pb-10
-    md:pt-9
-    xl:pt-10
-    xl:pb-10
-    bg-white">
+    <section
+      id="produtos"
+      className="
+        relative
+        bg-white
+        pt-6
+        pb-10
+        md:pt-9
+        xl:pt-10
+        xl:pb-10
+      "
+    >
       <div className="mx-auto max-w-7xl px-6">
-        <SectionLabel icon={<Milk className="h-3.5 w-3.5" />}>Nossos produtos</SectionLabel>
-        <div className="mt-5 flex flex-col items-start gap-4 sm:flex-row sm:justify-between sm:gap-0">
+        {/* TÍTULO */}
+        <SectionLabel icon={<Milk className="h-3.5 w-3.5" />}>
+          Nossos produtos
+        </SectionLabel>
+
+        <div
+          className="
+            mt-5
+            flex
+            flex-col
+            items-start
+            gap-4
+            sm:flex-row
+            sm:justify-between
+            sm:gap-0
+          "
+        >
           <SectionHeading width="medium">
             Excelência em cada processo, sabor em cada momento.
           </SectionHeading>
-             <a
-              href={WHATSAPP_LINK}
-              target="_blank"
-              rel="noreferrer"
-              className="
-    w-fit
-    inline-flex
-    h-12
-    items-center
-    justify-center
-    gap-2
-    rounded-2xl
-    bg-[#0E7FE0]
-    px-6
-    text-sm
-    font-medium
-    text-white
-    transition-all
-    hover:-translate-y-0.5
-    sm:h-14
-    sm:px-7
-  "
-            >
-              <FaWhatsapp className="h-5 w-5 sm:h-6 sm:w-6" />
-              Fazer pedido
-            </a>
+
+          {/* WHATSAPP */}
+          <a
+            href={WHATSAPP_LINK}
+            target="_blank"
+            rel="noreferrer"
+            className="
+              inline-flex
+              h-12
+              w-fit
+              items-center
+              justify-center
+              gap-2
+              rounded-2xl
+              bg-[#0E7FE0]
+              px-6
+              text-sm
+              font-medium
+              text-white
+              transition-all
+              hover:-translate-y-0.5
+              sm:h-14
+              sm:px-7
+            "
+          >
+            <FaWhatsapp className="h-5 w-5 sm:h-6 sm:w-6" />
+            Fazer pedido
+          </a>
         </div>
-        <div className="mt-12 grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-3">
-          {products.map((p) => {
-            const [currentImage, setCurrentImage] = useState(0);
 
-            useEffect(() => {
-              if (p.images.length <= 1) return;
-
-              const timer = setInterval(() => {
-                setCurrentImage((prev) =>
-                  prev === p.images.length - 1 ? 0 : prev + 1
-                );
-              }, 4000);
-
-              return () => clearInterval(timer);
-            }, [p.images.length]);
-
-            return (
-              <article
-  key={p.id}
-  className="
-    group
-    overflow-hidden
-    rounded-2xl
-    bg-[#0E7FE0]
-    shadow-soft
-    transition
-    hover:shadow-warm
-  "
->
-  {/* Imagem */}
-  <div
-    className="
-      relative
-      aspect-[5/3]
-      overflow-hidden
-      bg-muted
-    "
-  >
-    <img
-      src={p.images[currentImage]}
-      alt={p.name}
-      loading="lazy"
-      width={700}
-      height={500}
-      className="
-        h-full
-        w-full
-        object-cover
-        transition
-        duration-700
-        group-hover:scale-105
-      "
-    />
-
-    {p.images.length > 1 && (
-      <>
-        <button
-          onClick={() =>
-            setCurrentImage((prev) =>
-              prev === 0 ? p.images.length - 1 : prev - 1
-            )
-          }
-          className="
-            absolute
-            left-3
-            top-1/2
-            -translate-y-1/2
-            rounded-full
-            bg-white/90
-            p-1.5
-            shadow
-          "
-        >
-          <ChevronLeft className="h-4 w-4" />
-        </button>
-
-        <button
-          onClick={() =>
-            setCurrentImage((prev) =>
-              prev === p.images.length - 1 ? 0 : prev + 1
-            )
-          }
-          className="
-            absolute
-            right-3
-            top-1/2
-            -translate-y-1/2
-            rounded-full
-            bg-white/90
-            p-1.5
-            shadow
-          "
-        >
-          <ChevronRight className="h-4 w-4" />
-        </button>
-      </>
-    )}
-  </div>
-
-
-  {/* Conteúdo */}
-  <div className="p-5">
-    <h3
-      className="
-        line-clamp-2
-        text-xl
-        text-white
-        font-medium
-        leading-tight
-      "
-    >
-      {p.name}
-    </h3>
-
-    <div className="mt-4 space-y-2">
-      {p.formats.map((f) => (
+        {/* PRODUTOS */}
         <div
-          key={f}
           className="
-            flex
-            items-center
-            gap-2
-            text-sm
-            text-white
-            text-muted-foreground
+            mt-12
+            grid
+            grid-cols-1
+            gap-6
+            sm:grid-cols-2
+            lg:grid-cols-3
           "
         >
-          <span className="h-1.5 w-1.5 rounded-full bg-[#F6C72F]" />
-          {f}
-        </div>
-      ))}
-    </div>
-
-    <div className="mt-4 flex flex-wrap gap-1.5">
-      {p.tags.map((t) => (
-        <span
-          key={t}
-          className="
-            rounded-full
-            bg-[#F6C72F]
-            px-2.5
-            py-1
-            text-[12px]
-            text-bold
-            text-black
-          "
-        >
-          {t}
-        </span>
-      ))}
-    </div>
-  </div>
-</article>
-            );
-          })}
+          {products.map((product) => (
+            <ProductCard
+              key={product.id}
+              product={product}
+            />
+          ))}
         </div>
       </div>
-    </section >
+    </section>
   );
 }
