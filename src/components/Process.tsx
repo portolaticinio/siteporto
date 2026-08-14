@@ -113,7 +113,7 @@ export function Process() {
         </SectionLabel>
 
         <SectionHeading width="full" className="text-black">
-          Cada queijo passa por 6 etapas e mais de 20 conferências.
+          Cada queijo passa por 6 etapas
         </SectionHeading>
 
         <div className="flex gap-2 mt-2 items-center lg:hidden">
