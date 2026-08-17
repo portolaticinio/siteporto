@@ -1,8 +1,8 @@
 import { FaWhatsapp } from "react-icons/fa";
 import { Leaf, ChevronDown } from "lucide-react";
-import heroTablet from "@/assets/herotablet.png";
-import heroMobile from "@/assets/heromobile.png";
-import heroDesktop from "@/assets/herodesktop.png";
+import heroTablet from "@/assets/herodesktop2.png";
+import heroMobile from "@/assets/heromobile2.png";
+import heroDesktop from "@/assets/herodesktop2.png";
 
 import { WHATSAPP_LINK } from "@/lib/constants";
 
@@ -12,13 +12,20 @@ export function Hero() {
       className="
         relative
         overflow-hidden
-        min-h-[150vw]
-        md:min-h-[75vw]
-        lg:min-h-[38vw]
-        lg:max-h-[826px]
+        h-[62vh]
+        max-h[750px]
+        min-h-[620px]
+        md:h-auto
+        md:aspect-[1672/941]
+        md:min-h-0
+        md:max-h-none
+        lg:aspect-auto
+        lg:h-[600px]
+        xl:h-[640px]
+        2xl:h-[680px]
       "
     >
-      {/* Desktop */}
+
       <div
         className="
           absolute
@@ -27,62 +34,57 @@ export function Hero() {
           bg-cover
           bg-no-repeat
           lg:block
-          lg:[background-position:center_-80px]
-          xl:[background-position:center_-140px]
-          2xl:[background-position:center_-200px]
+          lg:[background-position:68%_center]
         "
         style={{
           backgroundImage: `url(${heroDesktop})`,
         }}
       />
 
-      {/* Tablet */}
       <div
         className="
           absolute
           inset-0
           hidden
           bg-cover
-          bg-center
           bg-no-repeat
           md:block
           lg:hidden
+          md:[background-position:82%_center]
         "
         style={{
           backgroundImage: `url(${heroTablet})`,
-          backgroundPosition: "center",
         }}
       />
 
-      {/* Mobile */}
       <div
         className="
           absolute
           inset-0
           block
           bg-cover
-          bg-center
           bg-no-repeat
           md:hidden
+          [background-position:center_8%]
         "
         style={{
           backgroundImage: `url(${heroMobile})`,
         }}
       />
 
-      {/* Overlay Desktop */}
-<div
-  className="absolute inset-0 hidden lg:block"
-  style={{
-    background: `
+      {/* Overlay Desktop — dark only where the text sits (left side) */}
+      <div
+        className="absolute inset-0 hidden lg:block"
+        style={{
+          background: `
       linear-gradient(
         90deg,
         rgba(0, 0, 0, 0.72) 0%,
-        rgba(0, 0, 0, 0.62) 18%,
-        rgba(0, 0, 0, 0.45) 34%,
-        rgba(0, 0, 0, 0.22) 50%,
-        rgba(0, 0, 0, 0.06) 68%,
-        transparent 82%
+        rgba(0, 0, 0, 0.62) 16%,
+        rgba(0, 0, 0, 0.42) 30%,
+        rgba(0, 0, 0, 0.18) 44%,
+        rgba(0, 0, 0, 0.04) 58%,
+        transparent 70%
       ),
       linear-gradient(
         180deg,
@@ -91,21 +93,21 @@ export function Hero() {
         rgba(0, 0, 0, 0.08) 100%
       )
     `,
-  }}
-/>
+        }}
+      />
 
-{/* Overlay Tablet */}
-<div
-  className="absolute inset-0 hidden md:block lg:hidden"
-  style={{
-    background: `
+      {/* Overlay Tablet */}
+      <div
+        className="absolute inset-0 hidden md:block lg:hidden"
+        style={{
+          background: `
       linear-gradient(
         90deg,
-        rgba(0, 0, 0, 0.68) 0%,
-        rgba(0, 0, 0, 0.52) 28%,
-        rgba(0, 0, 0, 0.28) 50%,
-        rgba(0, 0, 0, 0.08) 75%,
-        transparent 100%
+        rgba(0, 0, 0, 0.70) 0%,
+        rgba(0, 0, 0, 0.55) 22%,
+        rgba(0, 0, 0, 0.30) 40%,
+        rgba(0, 0, 0, 0.08) 60%,
+        transparent 80%
       ),
       linear-gradient(
         180deg,
@@ -114,26 +116,25 @@ export function Hero() {
         rgba(0, 0, 0, 0.12) 100%
       )
     `,
-  }}
-/>
+        }}
+      />
 
-{/* Overlay Mobile */}
-<div
-  className="absolute inset-0 block md:hidden"
-  style={{
-    background: `
+      <div
+        className="absolute inset-0 block md:hidden"
+        style={{
+          background: `
       linear-gradient(
         180deg,
-        rgba(0, 0, 0, 0.68) 0%,
-        rgba(0, 0, 0, 0.58) 28%,
-        rgba(0, 0, 0, 0.42) 48%,
-        rgba(0, 0, 0, 0.20) 70%,
-        rgba(0, 0, 0, 0.05) 88%,
-        transparent 100%
+        rgba(0, 0, 0, 0.72) 0%,
+        rgba(0, 0, 0, 0.62) 22%,
+        rgba(0, 0, 0, 0.40) 40%,
+        rgba(0, 0, 0, 0.15) 55%,
+        rgba(0, 0, 0, 0.02) 68%,
+        transparent 78%
       )
     `,
-  }}
-/>
+        }}
+      />
 
       <div
         className="
@@ -152,21 +153,25 @@ export function Hero() {
           md:py-10
           lg:grid
           lg:grid-cols-2
-          lg:items-center
+          items-center
           lg:gap-10
           lg:px-8
           lg:py-12
           xl:max-w-7xl
           xl:gap-12
           xl:px-6
-          2xl:max-w-[1600px]
+          2xl:max-w-[1200px]
         "
       >
         <div
           className="
             animate-float-up
             text-start
+            max-w-[420px]
+            sm:max-w-[460px]
+            md:max-w-[420px]
             lg:mx-0
+            lg:max-w-none
             lg:text-left
           "
         >
@@ -228,7 +233,7 @@ export function Hero() {
             style={{
               color: "#fff",
               fontSize: "clamp(1rem, 1.6vw, 1.25rem)",
-              maxWidth: "clamp(380px, 90vw, 540px)",
+              maxWidth: "clamp(320px, 100vw, 560px)",
               marginTop: "0.75rem",
             }}
           >
@@ -242,7 +247,7 @@ export function Hero() {
               mt-4
               flex
               flex-col
-              items-start
+              items-center
               gap-3
               min-[350px]:flex-row
             "
