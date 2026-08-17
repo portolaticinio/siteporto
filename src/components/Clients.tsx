@@ -165,8 +165,12 @@ export function Clients() {
       id="clientes"
       className="
         relative
-        overflow-hidden
-        py-24
+        w-full
+        max-w-[100vw]
+        overflow-x-hidden
+        py-16
+        sm:py-20
+        lg:py-24
       "
       style={{
         backgroundImage: "url('/src/assets/testemunhos.png')",
@@ -174,11 +178,14 @@ export function Clients() {
         backgroundPosition: "bottom",
       }}
     >
-      <div className="mx-auto max-w-7xl px-6">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6">
         <div
           className="
             grid
-            gap-12
+            grid-cols-1
+            min-w-0
+            gap-10
+            sm:gap-12
             lg:grid-cols-[1.25fr_.9fr]
             lg:items-center
           "
@@ -187,7 +194,7 @@ export function Clients() {
               LADO ESQUERDO
           ===================================================== */}
 
-          <div className="text-white">
+          <div className="min-w-0 w-full text-white">
             <SectionLabel
               icon={<Truck className="h-3.5 w-3.5" />}
             >
@@ -198,8 +205,10 @@ export function Clients() {
               width="large"
               className="
                 max-w-[760px]
-                leading-[1.05]
+                leading-[1.1]
+                sm:leading-[1.05]
                 font-black
+                break-words
               "
             >
               Quem escolhe a qualidade{" "}
@@ -211,8 +220,12 @@ export function Clients() {
             <SectionParagraph
               width="small"
               className="
-                text-xl
-                leading-10
+                text-base
+                leading-7
+                sm:text-lg
+                sm:leading-8
+                lg:text-xl
+                lg:leading-10
                 text-white
               "
             >
@@ -228,7 +241,7 @@ export function Clients() {
                 CARROSSEL DE CATEGORIAS
             ================================================= */}
 
-            <div className="relative mt-10">
+            <div className="relative min-w-0 w-full mt-8 sm:mt-10 px-1 sm:px-0">
               {/* BOTÃO ANTERIOR */}
               <button
                 type="button"
@@ -237,12 +250,15 @@ export function Clients() {
                 aria-label="Categorias anteriores"
                 className="
                   absolute
-                  -left-4
+                  left-0
+                  sm:-left-4
                   top-1/2
                   z-20
                   flex
-                  h-10
-                  w-10
+                  h-8
+                  w-8
+                  sm:h-10
+                  sm:w-10
                   -translate-y-1/2
                   items-center
                   justify-center
@@ -256,13 +272,13 @@ export function Clients() {
                   disabled:opacity-30
                 "
               >
-                <ChevronLeft className="h-5 w-5" />
+                <ChevronLeft className="h-4 w-4 sm:h-5 sm:w-5" />
               </button>
 
               {/* ÁREA DO CARROSSEL */}
               <div
                 ref={emblaRef}
-                className="overflow-hidden"
+                className="overflow-hidden px-8 sm:px-0"
               >
                 <div className="-mx-2 flex">
                   {types.map((type) => {
@@ -273,7 +289,10 @@ export function Clients() {
                         key={type.name}
                         className="
                           min-w-0
-                          flex-[0_0_33.333%]
+                          flex-[0_0_85%]
+                          xs:flex-[0_0_70%]
+                          sm:flex-[0_0_45%]
+                          md:flex-[0_0_33.333%]
                           px-2
                         "
                       >
@@ -282,7 +301,9 @@ export function Clients() {
                             group
                             relative
                             flex
-                            h-[150px]
+                            h-[120px]
+                            sm:h-[135px]
+                            md:h-[150px]
                             w-full
                             items-center
                             justify-center
@@ -324,14 +345,17 @@ export function Clients() {
                               flex
                               flex-col
                               items-center
-                              gap-3
+                              gap-2
+                              sm:gap-3
                             "
                           >
                             <div
                               className="
                                 flex
-                                h-12
-                                w-12
+                                h-10
+                                w-10
+                                sm:h-12
+                                sm:w-12
                                 items-center
                                 justify-center
                                 rounded-xl
@@ -345,7 +369,7 @@ export function Clients() {
                               "
                             >
                               <Icon
-                                className="h-6 w-6"
+                                className="h-5 w-5 sm:h-6 sm:w-6"
                                 strokeWidth={1.8}
                               />
                             </div>
@@ -355,7 +379,7 @@ export function Clients() {
                                 px-1
                                 text-center
                                 font-display
-                                text-sm
+                                text-lg
                                 leading-tight
                                 text-white
                               "
@@ -378,12 +402,15 @@ export function Clients() {
                 aria-label="Próximas categorias"
                 className="
                   absolute
-                  -right-4
+                  right-0
+                  sm:-right-4
                   top-1/2
                   z-20
                   flex
-                  h-10
-                  w-10
+                  h-8
+                  w-8
+                  sm:h-10
+                  sm:w-10
                   -translate-y-1/2
                   items-center
                   justify-center
@@ -397,7 +424,7 @@ export function Clients() {
                   disabled:opacity-30
                 "
               >
-                <ChevronRight className="h-5 w-5" />
+                <ChevronRight className="h-4 w-4 sm:h-5 sm:w-5" />
               </button>
             </div>
           </div>
@@ -407,7 +434,7 @@ export function Clients() {
           ===================================================== */}
 
           <div className="flex justify-center lg:justify-end">
-            <div className="w-full max-w-[320px]">
+            <div className="w-full max-w-sm sm:max-w-[320px] mx-auto lg:mx-0">
 
               {/* CARROSSEL */}
               <div
@@ -427,7 +454,8 @@ export function Clients() {
                       <figure
                         className="
                           flex
-                          min-h-[260px]
+                          min-h-[240px]
+                          sm:min-h-[260px]
                           w-full
                           flex-col
                           rounded-2xl
@@ -493,7 +521,7 @@ export function Clients() {
                   INDICADORES FIXOS
               ================================================= */}
 
-              <div className="mt-6 flex justify-center gap-2">
+              <div className="mt-6 mb-6 flex justify-center gap-2">
                 {reviews.map((_, index) => (
                   <button
                     type="button"

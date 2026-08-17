@@ -13,11 +13,11 @@ export function Hero() {
         relative
         overflow-hidden
         h-[62vh]
-        max-h[750px]
-        min-h-[620px]
+        max-h[700px]
+        min-h-[670px]
         md:h-auto
+        md:min-h-0        
         md:aspect-[1672/941]
-        md:min-h-0
         md:max-h-none
         lg:aspect-auto
         lg:h-[600px]
@@ -252,59 +252,66 @@ export function Hero() {
               min-[350px]:flex-row
             "
           >
-            <a
-              href={WHATSAPP_LINK}
-              target="_blank"
-              rel="noreferrer"
-              className="
-                w-fit
-                inline-flex
-                h-12
-                items-center
-                justify-center
-                gap-2
-                rounded-2xl
-                bg-[#DFA304]
-                px-6
-                text-sm
-                font-medium
-                text-black
-                transition-all
-                hover:-translate-y-0.5
-                sm:h-14
-                sm:px-7
-              "
-            >
-              <FaWhatsapp className="h-5 w-5 sm:h-6 sm:w-6" />
-              Fazer pedido
-            </a>
+       <div className="flex w-full items-center gap-3 sm:w-fit sm:gap-5">
+  <a
+    href={WHATSAPP_LINK}
+    target="_blank"
+    rel="noreferrer"
+    className="
+      inline-flex
+      h-12
+      flex-1
+      items-center
+      justify-center
+      gap-2
+      rounded-2xl
+      bg-[#DFA304]
+      px-4
+      text-sm
+      font-medium
+      text-black
+      transition-all
+      hover:-translate-y-0.5
+      sm:h-14
+      sm:flex-none
+      sm:px-7
+      sm:text-base
+    "
+  >
+    <FaWhatsapp className="h-5 w-5 shrink-0 sm:h-6 sm:w-6" />
+    <span>Fazer pedido</span>
+  </a>
 
-            <a
-              href="#produtos"
-              className="
-              w-fit
-              inline-flex
-              items-center
-              justify-center
-              gap-2
-              px-1
-              text-ls
-              font-medium
-              text-white
-              transition
-              underline
-              decoration-yellow-400
-              underline-offset-10
-              sm:h-14
-              sm:px-7
-            "
-            >
-              Conhecer produtos
-              <ChevronDown
-                className="h-4 w-4 "
-                strokeWidth={2}
-              />
-            </a>
+  <a
+    href="#produtos"
+    className="
+      inline-flex
+      h-12
+      shrink-0
+      items-center
+      justify-center
+      gap-1
+      px-1
+      text-sm
+      font-medium
+      text-white
+      underline
+      decoration-yellow-400
+      underline-offset-8
+      transition
+      sm:h-14
+      sm:px-4
+      sm:text-base
+    "
+  >
+    <span>Conhecer produtos</span>
+
+    <ChevronDown
+      className="h-4 w-4 shrink-0 sm:h-5 sm:w-5"
+      strokeWidth={2}
+    />
+  </a>
+</div>
           </div>
         </div>
       </div>
