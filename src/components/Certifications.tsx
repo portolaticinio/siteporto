@@ -1,11 +1,4 @@
-import {
-  ShieldCheck,
-  BadgeCheck,
-  ClipboardCheck,
-  Landmark,
-  Globe,
-  Microscope,
-} from "lucide-react";
+import { ShieldCheck, TreePine, PackageCheck, Medal} from "lucide-react";
 
 import { SectionLabel } from "./SectionLabel";
 import { SectionHeading } from "./SectionTitle";
@@ -16,31 +9,26 @@ import { FaWhatsapp } from "react-icons/fa";
 
 
 const seals = [
-  {
-    title: "SIF",
-    desc: "Serviço de Inspeção Federal",
-    icon: BadgeCheck,
-  },
-  {
-    title: "SIE",
-    desc: "Inspeção Estadual",
-    icon: ClipboardCheck,
-  },
-  {
-    title: "MAPA",
-    desc: "Registro no Ministério da Agricultura",
-    icon: Landmark,
-  },
-  {
-    title: "Laudo Lab.",
-    desc: "Análises microbiológicas mensais",
-    icon: Microscope,
-  },
-  {
-    title: "Boas Práticas",
-    desc: "Manual BPF e APPCC implantados",
-    icon: ShieldCheck,
-  },
+{
+  title: "SIE",
+  desc: "Registro de Estabelecimento - Serviço de Inspeção Estadual (SEDAP-PB)",
+  icon: ShieldCheck,
+},
+{
+  title: "CCF",
+  desc: "Cadastro Técnico Estadual de Consumidores de Produtos Florestais - SUDEMA/DIFLOR",
+  icon: TreePine,
+},
+{
+  title: "Registro de Produtos",
+  desc: "Mistura de Requeijão e Amido - nº 01860 e 01861 (SIE)",
+  icon: PackageCheck,
+},
+{
+  title: "Medalha de Prata",
+  desc: "Categoria Queijos de Massa Filada (Queijo Mussarela) - Concurso de Produtos Lácteos do Estado da Paraíba",
+  icon: Medal,
+},
 ];
 
 export function Certifications() {
@@ -126,33 +114,34 @@ export function Certifications() {
               return (
                 <div
                   key={seal.title}
-                  className={`
-group
-relative
-overflow-hidden
-rounded-2xl
-border
-border-gray-200
-border-t-4
-border-t-[#0E7FE0]
-bg-white
-p-6
-text-center
-shadow-sm
-transition-all
-duration-500
-ease-out
-hover:-translate-y-2
-hover:border-[#0E7FE0]/30
-hover:shadow-2xl
-w-[calc(50%-0.5rem)]
-sm:w-[calc(50%-0.5rem)]
-lg:w-[calc(33.333%-1rem)]
-
-${visible
-                      ? "translate-y-0 opacity-100"
-                      : "translate-y-10 opacity-0"}
+                
+className={`
+  group
+  relative
+  overflow-hidden
+  rounded-2xl
+  border
+  border-gray-200
+  border-t-4
+  border-t-[#0E7FE0]
+  bg-white
+  p-6
+  text-center
+  shadow-sm
+  transition-all
+  duration-500
+  ease-out
+  hover:-translate-y-2
+  hover:border-[#0E7FE0]/30
+  hover:shadow-2xl
+  w-[calc(50%-0.5rem)]
+  sm:w-[calc(50%-0.5rem)]
+  lg:w-[calc(50%-0.5rem)]
+  ${visible
+    ? "translate-y-0 opacity-100"
+    : "translate-y-10 opacity-0"}
 `}
+
                 >
                   <div
                     className="
@@ -173,7 +162,7 @@ ${visible
                     <Icon className="h-5 w-5 text-white" />
                   </div>
 
-                  <h3 className="mt-3 text-lg text-black font-semibold leading-none">
+                  <h3 className="mt-3 text-ls text-black font-semibold font-sans leading-none">
                     {seal.title}
                   </h3>
 

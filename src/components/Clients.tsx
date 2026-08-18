@@ -36,10 +36,6 @@ export function Clients() {
       icon: Croissant,
     },
     {
-      name: "Mercearias",
-      icon: Store,
-    },
-    {
       name: "Distribuidores",
       icon: Truck,
     },
@@ -203,13 +199,6 @@ export function Clients() {
 
             <SectionHeading
               width="large"
-              className="
-                max-w-[760px]
-                leading-[1.1]
-                sm:leading-[1.05]
-                font-black
-                break-words
-              "
             >
               Quem escolhe a qualidade{" "}
               <span className="text-[#F6C72F]">
@@ -220,17 +209,11 @@ export function Clients() {
             <SectionParagraph
               width="small"
               className="
-                text-base
-                leading-7
-                sm:text-lg
-                sm:leading-8
-                lg:text-xl
-                lg:leading-10
                 text-white
               "
             >
               Atendemos{" "}
-              <span className="font-bold">
+              <span className="font-bold text-[#F6C72F]">
                 Atacado e Varejo
               </span>
               , com parceiros que confiam na nossa qualidade e

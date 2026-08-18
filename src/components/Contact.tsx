@@ -49,6 +49,7 @@ export function Contact() {
           </SectionHeading>
 
           <div className="mt-10 space-y-5">
+            <ContactRow icon={<Phone className="h-5 w-5" />}label="Telefone" value={COMPANY_PHONE} href={`tel:${COMPANY_PHONE}`}/>
             <ContactRow icon={<MessageCircle className="h-5 w-5" />} label="WhatsApp" value={COMPANY_WHATSAPP_DISPLAY} href={WHATSAPP_LINK} />
             <ContactRow icon={<Mail className="h-5 w-5" />} label="E-mail" value={COMPANY_EMAIL} href={`mailto:${COMPANY_EMAIL}`} />
             <ContactRow icon={<MapPin className="h-5 w-5" />} label="Endereço" value={COMPANY_ADDRESS} />

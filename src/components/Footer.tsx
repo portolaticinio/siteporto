@@ -198,7 +198,7 @@ export function Footer() {
 
               {/* Gmail */}
               <a
-                href="mailto:contato@portolaticinios.com.br"
+                href="mailto:portolaticinio@gmail.com"
                 aria-label="Email"
                 className="
                   flex
@@ -260,12 +260,9 @@ export function Footer() {
           <div className="flex flex-col gap-1 md:text-right">
 
             <p>
-              CNPJ 00.000.000/0001-00
+              CNPJ 42.882.487/0001-23
             </p>
 
-            <p>
-              Registro MAPA / SIF 0000
-            </p>
 
           </div>
 
