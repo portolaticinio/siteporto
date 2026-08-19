@@ -456,7 +456,7 @@ export function Recipes() {
                       <span>{r.time}</span>
                     </div>
 
-                    <h3 className="mt-2 font-sans text-xl font-medium text-foreground">
+                    <h3 className="mt-2 font-sans text-xl text-foreground">
                       {r.title}
                     </h3>
 

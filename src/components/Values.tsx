@@ -147,7 +147,7 @@ export function Values() {
                   {item.icon}
                 </div>
 
-                <h4 className="text-xl">
+                <h4 className="text-ls font-sans">
                   {item.title}
                 </h4>
               </div>

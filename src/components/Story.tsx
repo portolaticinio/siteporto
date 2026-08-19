@@ -9,37 +9,37 @@ export function Story() {
   return (
     <section id="historia" className="relative py-10 bg-white"
     >
-      <div className="mx-auto grid max-w-7xl items-center gap-14 px-6 lg:grid-cols-2">
+      <div className="mx-auto grid max-w-7xl items-center gap-14 lg:grid-cols-2">
         <div className="relative">
-        <img
-  src={historyImg}
-  alt="Fundador da fábrica nos anos iniciais"
-  loading="lazy"
-  width={700}
-  height={550}
-  className="
+          <img
+            src={historyImg}
+            alt="Fundador da fábrica nos anos iniciais"
+            loading="lazy"
+            width={700}
+            height={550}
+            className="
     mx-auto
     h-auto
     w-full
     max-w-[280px]
     rounded-2xl
     sepia-[0.2]
-    shadow-[0_30px_70px_rgba(0,0,0,0.35)]
-
+    shadow-[30px_50px_#0E7FE0]
     sm:max-w-[320px]
     md:max-w-[380px]
     lg:max-w-[420px]
   "
-/>
+          />
           <div
             className="
     absolute
     bottom-[-30px] right-3
     w-[120px]
     rounded-xl
-    bg-[#0E7FE0]
+    bg-[#DFA304]
     p-2
-    text-white
+    text-black
+    text-center
     shadow-warm
 
     sm:-bottom-6
@@ -54,11 +54,11 @@ export function Story() {
     md:p-4
   "
           >
-            <p className="font-display text-2xl leading-none md:text-3xl">
+            <p className="font-bold text-2xl leading-none md:text-3xl">
               2022
             </p>
 
-            <p className="mt-2 text-[11px] leading-snug opacity-90 md:text-xs">
+            <p className="mt-2 text-[11px] font-semibold leading-snug opacity-90 md:text-xs">
               O ano em que tudo começou.
             </p>
           </div>

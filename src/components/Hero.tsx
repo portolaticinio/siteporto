@@ -1,8 +1,8 @@
 import { FaWhatsapp } from "react-icons/fa";
 import { Leaf, ChevronDown } from "lucide-react";
 import heroTablet from "@/assets/herodesktop2.png";
-import heroMobile from "@/assets/heromobile2.png";
 import heroDesktop from "@/assets/herodesktop2.png";
+import heroMobile from "@/assets/heromobile.png";
 
 import { WHATSAPP_LINK } from "@/lib/constants";
 
@@ -14,7 +14,7 @@ export function Hero() {
         overflow-hidden
         h-[62vh]
         max-h[700px]
-        min-h-[670px]
+        min-h-[610px]
         md:h-auto
         md:min-h-0        
         md:aspect-[1672/941]
@@ -50,7 +50,7 @@ export function Hero() {
           bg-no-repeat
           md:block
           lg:hidden
-          md:[background-position:82%_center]
+          md:[background-position:80%_center]
         "
         style={{
           backgroundImage: `url(${heroTablet})`,
@@ -65,7 +65,7 @@ export function Hero() {
           bg-cover
           bg-no-repeat
           md:hidden
-          [background-position:center_8%]
+          [background-position:center_50%]
         "
         style={{
           backgroundImage: `url(${heroMobile})`,
