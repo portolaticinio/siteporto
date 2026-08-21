@@ -2,7 +2,8 @@ import { createServerFn } from "@tanstack/react-start";
 import { z } from "zod";
 import nodemailer from "nodemailer";
 
-// Ajuste os campos/mensagens conforme a necessidade do seu formulário
+import { getServerConfig } from "../config.server";
+
 export const contactFormSchema = z.object({
   name: z.string().min(2, "Informe seu nome"),
   company: z.string().optional().or(z.literal("")),
@@ -13,23 +14,33 @@ export const contactFormSchema = z.object({
 
 export type ContactFormValues = z.infer<typeof contactFormSchema>;
 
-// Transporter usando Gmail (SMTP) — credenciais vêm de variáveis de ambiente
-const transporter = nodemailer.createTransport({
-  service: "gmail",
-  auth: {
-    user: process.env.GMAIL_USER, // ex: seuemail@gmail.com
-    pass: process.env.GMAIL_APP_PASSWORD, // senha de app de 16 dígitos (não é a senha normal)
-  },
-});
-
 export const sendContactMessage = createServerFn({ method: "POST" })
   .validator(contactFormSchema)
   .handler(async ({ data }) => {
+    const config = getServerConfig();
+
+    if (!config.gmailUser || !config.gmailAppPassword) {
+      console.error(
+        "GMAIL_USER / GMAIL_APP_PASSWORD não configurados. Veja .env.example.",
+      );
+      throw new Error(
+        "Não foi possível enviar sua mensagem agora. Tente novamente em instantes.",
+      );
+    }
+
+    const transporter = nodemailer.createTransport({
+      service: "gmail",
+      auth: {
+        user: config.gmailUser,
+        pass: config.gmailAppPassword,
+      },
+    });
+
     try {
       await transporter.sendMail({
-        from: `"Site - Formulário de Contato" <${process.env.GMAIL_USER}>`,
-        to: process.env.GMAIL_USER, // para onde a mensagem chega (seu gmail)
-        replyTo: data.email, // responder já vai direto pro cliente
+        from: `"Site Porto Laticínios" <${config.gmailUser}>`,
+        to: config.contactToEmail,
+        replyTo: data.email,
         subject: `Novo contato pelo site: ${data.name}`,
         text: `
 Nome: ${data.name}
@@ -53,9 +64,9 @@ ${data.message}
 
       return { success: true };
     } catch (error) {
-      console.error("Erro ao enviar e-mail de contato:", error);
+      console.error("Erro ao enviar e-mail via Gmail SMTP:", error);
       throw new Error(
-        "Não foi possível enviar sua mensagem. Tente novamente em instantes."
+        "Não foi possível enviar sua mensagem. Tente novamente em instantes.",
       );
     }
   });

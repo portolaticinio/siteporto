@@ -22,7 +22,7 @@ export function Contact() {
   const onSubmit = async (values: ContactFormValues) => {
     try {
       await sendContactMessage({ data: values });
-      toast.success("Pedido enviado! Nosso comercial retorna em até 2h úteis.");
+      toast.success("Pedido enviado! Nosso comercial retorna em breve.");
       reset();
     } catch (error) {
       toast.error(error instanceof Error ? error.message : "Não foi possível enviar. Tente novamente.");
