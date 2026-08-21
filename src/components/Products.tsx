@@ -47,22 +47,26 @@ function ProductCard({ product }: ProductCardProps) {
         group
         overflow-hidden
         rounded-2xl
-        bg-[#0E6AA4]
-        shadow-soft
-        transition
-        hover:shadow-warm
+        border
+        border-[#E2E2DE]
+        bg-[#F4F4F2]
+        shadow-[0_4px_18px_rgba(0,0,0,0.08)]
+        transition-all
+        duration-300
+        hover:-translate-y-1
+        hover:shadow-[0_8px_28px_rgba(0,0,0,0.12)]
       "
     >
       {/* IMAGEM */}
       <div
         className="
           relative
-          aspect-[5/3]
-          overflow-hidden
-          bg-muted
           flex
+          aspect-[5/3]
           items-center
           justify-center
+          overflow-hidden
+          bg-[#F8F8F6]
         "
       >
         <img
@@ -102,12 +106,12 @@ function ProductCard({ product }: ProductCardProps) {
                 rounded-full
                 bg-white/90
                 p-1.5
-                shadow
+                shadow-md
                 transition
                 hover:bg-white
               "
             >
-              <ChevronLeft className="h-4 w-4" />
+              <ChevronLeft className="h-4 w-4 text-[#17202A]" />
             </button>
 
             <button
@@ -126,12 +130,12 @@ function ProductCard({ product }: ProductCardProps) {
                 rounded-full
                 bg-white/90
                 p-1.5
-                shadow
+                shadow-md
                 transition
                 hover:bg-white
               "
             >
-              <ChevronRight className="h-4 w-4" />
+              <ChevronRight className="h-4 w-4 text-[#17202A]" />
             </button>
           </>
         )}
@@ -139,6 +143,7 @@ function ProductCard({ product }: ProductCardProps) {
 
       {/* CONTEÚDO */}
       <div className="p-5">
+        {/* NOME */}
         <h3
           className="
             line-clamp-2
@@ -146,7 +151,7 @@ function ProductCard({ product }: ProductCardProps) {
             font-sans
             font-medium
             leading-tight
-            text-white
+            text-[#17202A]
           "
         >
           {product.name}
@@ -162,10 +167,18 @@ function ProductCard({ product }: ProductCardProps) {
                 items-center
                 gap-2
                 text-sm
-                text-white
+                text-[#4B5563]
               "
             >
-              <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-[#F6C72F]" />
+              <span
+                className="
+                  h-1.5
+                  w-1.5
+                  shrink-0
+                  rounded-full
+                  bg-[#F6C72F]
+                "
+              />
 
               {format}
             </div>
@@ -209,10 +222,12 @@ export function Products() {
       imageSize: 1.4,
 
       name: "Mussarela",
+
       formats: [
         "Peça inteira (a partir de 3,5kg)",
         "Porção (30g / 1 fatia)",
       ],
+
       tags: [
         "Fonte de Cálcio",
         "Leite pasteurizado",
@@ -220,6 +235,7 @@ export function Products() {
         "Sem glúten",
       ],
     },
+
     {
       id: 2,
       images: [requeijao2Img],
@@ -227,17 +243,20 @@ export function Products() {
       imageSize: 1.2,
 
       name: "Mistura de Requeijão e Amido",
+
       formats: [
         "Bisnaga 1,5kg",
         "Rendimento total (50 porções)",
         "Tamanho da porção (30g)",
       ],
+
       tags: [
         "Cremosidade balanceada",
         "Leites e derivados",
         "Sem glúten",
       ],
     },
+
     {
       id: 3,
       images: [requeijaoImg],
@@ -245,28 +264,34 @@ export function Products() {
       imageSize: 1.4,
 
       name: "Mistura Requeijão e Amido, sabor Quatro Queijos",
+
       formats: [
         "Bisnaga 1,2kg",
         "Rendimento total (40 porções)",
         "Tamanho da porção (30g)",
       ],
+
       tags: [
         "Recheio cremoso",
         "Leites e derivados",
         "Sem glúten",
       ],
     },
+
     {
       id: 4,
       images: [nata],
+
       imageSize: 1.3,
 
       name: "Nata Salgada",
+
       formats: [
         "Bisnaga 800g",
         "Rendimento total (60 porções)",
         "Tamanho da porção (30g)",
       ],
+
       tags: [
         "Creme de leite",
         "Leite desnatado",
@@ -330,6 +355,7 @@ export function Products() {
               text-white
               transition-all
               hover:-translate-y-0.5
+              hover:bg-[#0C72C9]
               sm:h-14
               sm:px-7
             "
