@@ -63,7 +63,7 @@ export function Story() {
             </p>
           </div>
         </div>
-        <div>
+        <div className="mr-5 ml-5 mt-5">
           <SectionLabel icon={<Heart className="h-3.5 w-3.5" />}>Nossa história</SectionLabel>
           <SectionHeading className="mt-4 text-4xl text-balance">
             Antes de existir uma fábrica, existia um sonho compartilhado.

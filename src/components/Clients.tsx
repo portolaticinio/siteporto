@@ -284,9 +284,9 @@ export function Clients() {
                             group
                             relative
                             flex
-                            h-[120px]
-                            sm:h-[135px]
-                            md:h-[150px]
+                            h-[100px]
+                            sm:h-[100px]
+                            md:h-[100px]
                             w-full
                             items-center
                             justify-center
@@ -437,8 +437,8 @@ export function Clients() {
                       <figure
                         className="
                           flex
-                          min-h-[240px]
-                          sm:min-h-[260px]
+                          min-h-[220px]
+                          sm:min-h-[220px]
                           w-full
                           flex-col
                           rounded-2xl
