@@ -23,7 +23,7 @@ export function Values() {
       icon: <Users className="h-6 w-6" />,
       title: "Empregos locais",
       description:
-        "23 empregos diretos, além de diversas outras oportunidades de trabalho geradas pela operação da fábrica, fortalecendo famílias e movimentando a economia de São Francisco - PB e região.",
+        "23 empregos diretos e diversas outras oportunidades geradas pela operação da fábrica, fortalecendo famílias e movimentando a economia de São Francisco - PB e região.",
     },
     {
       icon: <Heart className="h-6 w-6" />,

@@ -144,7 +144,7 @@ export function Footer() {
 
               {/* WhatsApp */}
               <a
-                href="https://wa.me/5583999999999"
+                href="https://wa.me/5583981192980"
                 target="_blank"
                 rel="noreferrer"
                 aria-label="WhatsApp"
@@ -171,7 +171,7 @@ export function Footer() {
 
               {/* Instagram */}
               <a
-                href="#"
+                href="https://www.instagram.com/portolaticinio/"
                 target="_blank"
                 rel="noreferrer"
                 aria-label="Instagram"

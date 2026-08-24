@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 import { toast } from "sonner";
 
 import { sendContactMessage, contactFormSchema, type ContactFormValues } from "@/lib/api/contact.functions";
-import { COMPANY_ADDRESS, COMPANY_EMAIL, COMPANY_HOURS, COMPANY_PHONE, COMPANY_WHATSAPP_DISPLAY, WHATSAPP_LINK } from "@/lib/constants";
+import { COMPANY_ADDRESS, COMPANY_EMAIL, COMPANY_HOURS, COMPANY_WHATSAPP_DISPLAY, WHATSAPP_LINK } from "@/lib/constants";
 
 import { SectionLabel } from "./SectionLabel";
 import { SectionHeading } from "./SectionTitle";
@@ -49,7 +49,6 @@ export function Contact() {
           </SectionHeading>
 
           <div className="mt-10 space-y-5">
-            <ContactRow icon={<Phone className="h-5 w-5" />}label="Telefone" value={COMPANY_PHONE} href={`tel:${COMPANY_PHONE}`}/>
             <ContactRow icon={<MessageCircle className="h-5 w-5" />} label="WhatsApp" value={COMPANY_WHATSAPP_DISPLAY} href={WHATSAPP_LINK} />
             <ContactRow icon={<Mail className="h-5 w-5" />} label="E-mail" value={COMPANY_EMAIL} href={`mailto:${COMPANY_EMAIL}`} />
             <ContactRow icon={<MapPin className="h-5 w-5" />} label="Endereço" value={COMPANY_ADDRESS} />
