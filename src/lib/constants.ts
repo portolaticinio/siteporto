@@ -5,4 +5,4 @@ export const COMPANY_EMAIL = "portolaticinio@gmail.com";
 export const COMPANY_PHONE = "(83) 98119-2980";
 export const COMPANY_WHATSAPP_DISPLAY = "(83) 98119-2980";
 export const COMPANY_ADDRESS = "Rua José Domingos de Oliveira, São Francisco, Paraiba, Brasil 58818000";
-export const COMPANY_HOURS = "Seg–Sex 7h–17h · Sáb 7h–17h";
+export const COMPANY_HOURS = "Seg - Sáb 7h – 17h";

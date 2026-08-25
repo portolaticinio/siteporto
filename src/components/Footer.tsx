@@ -220,14 +220,7 @@ export function Footer() {
                 <Mail className="h-5 w-5" />
               </a>
             </div>
-            <div className="mt-4 space-y-2 text-sm text-white/70">
-            <p>
-              Atendimento de Segunda a Sexta
-            </p>
-            <p>
-              Das 07:00 às 17:00
-            </p>
-          </div>
+            
           </div>
         </div>
         {/* Linha inferior */}

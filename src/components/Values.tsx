@@ -17,7 +17,7 @@ export function Values() {
       icon: <Recycle className="h-6 w-6" />,
       title: "Soro reaproveitado",
       description:
-        "100% do soro gerado na produção é destinado a produtores rurais para alimentação animal, promovendo o reaproveitamento desse subproduto, reduzindo desperdícios.",
+        "100% do soro gerado na produção é destinado a produtores rurais para alimentação animal, promovendo o reaproveitamento e reduzindo desperdícios.",
     },
     {
       icon: <Users className="h-6 w-6" />,

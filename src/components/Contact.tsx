@@ -48,7 +48,7 @@ export function Contact() {
             Estamos à disposição para atender você.
           </SectionHeading>
 
-          <div className="mt-10 space-y-5">
+          <div className="mt-10 space-y-6">
             <ContactRow icon={<MessageCircle className="h-5 w-5" />} label="WhatsApp" value={COMPANY_WHATSAPP_DISPLAY} href={WHATSAPP_LINK} />
             <ContactRow icon={<Mail className="h-5 w-5" />} label="E-mail" value={COMPANY_EMAIL} href={`mailto:${COMPANY_EMAIL}`} />
             <ContactRow icon={<MapPin className="h-5 w-5" />} label="Endereço" value={COMPANY_ADDRESS} />
@@ -136,7 +136,7 @@ function ContactRow({
       rel="noreferrer"
       className="flex items-center gap-1 rounded-2xl border border-white/15 p-2 transition"
     >
-      <div className="grid h-11 w-11 place-items-center rounded-2xl bg-[#0E7FE0] text-white">{icon}</div>
+      <div className="grid h-11 w-11 place-items-center rounded-2xl bg-[#0E7FE0] text-white mr-2">{icon}</div>
       <div>
         <p className="text-xs uppercase tracking-wider opacity-70">{label}</p>
         <p className="font-medium">{value}</p>
