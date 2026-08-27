@@ -2,6 +2,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { Clock, Mail, MapPin, MessageCircle, Phone } from "lucide-react";
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";
+import backBg from "@/assets/back.png";
 
 import { sendContactMessage, contactFormSchema, type ContactFormValues } from "@/lib/api/contact.functions";
 import { COMPANY_ADDRESS, COMPANY_EMAIL, COMPANY_HOURS, COMPANY_WHATSAPP_DISPLAY, WHATSAPP_LINK } from "@/lib/constants";
@@ -30,11 +31,12 @@ export function Contact() {
   };
 
   return (
-    <section id="contato" className="relative overflow-hidden pt-20 pb-7 " style={{
-      backgroundImage: "url('/src/assets/back.png')",
-      backgroundSize: 'cover',
-      backgroundPosition: 'center -179px',
-    }}
+    <section id="contato" className="relative overflow-hidden pt-20 pb-7 " 
+    style={{
+    backgroundImage: `url(${backBg})`,
+    backgroundSize: "cover",
+    backgroundPosition: "center -179px",
+  }}
     >
       {/* Camada de sobreposição para clarear e diminuir o contraste do fundo */}
       < div className="absolute inset-0 bg-[#F7F3E8]/85 pointer-events-none" />

@@ -12,7 +12,7 @@ import {
   Croissant,
   Store,
 } from "lucide-react";
-
+import testemunhosBg from "@/assets/testemunhos.png"; // ajuste o caminho conforme seu alias
 import { SectionLabel } from "./SectionLabel";
 import { SectionHeading } from "./SectionTitle";
 import { SectionParagraph } from "./SectionParagraph";
@@ -168,11 +168,11 @@ export function Clients() {
         sm:py-20
         lg:py-24
       "
-      style={{
-        backgroundImage: "url('/src/assets/testemunhos.png')",
-        backgroundSize: "cover",
-        backgroundPosition: "bottom",
-      }}
+     style={{
+    backgroundImage: `url(${testemunhosBg})`,
+    backgroundSize: "cover",
+    backgroundPosition: "bottom",
+  }}
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6">
         <div
