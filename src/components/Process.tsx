@@ -345,6 +345,7 @@ export function Process() {
               snap-x
               snap-mandatory
               px-2
+              pt-6
               pb-8
               [-ms-overflow-style:none]
               [scrollbar-width:none]
