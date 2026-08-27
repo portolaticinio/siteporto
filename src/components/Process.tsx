@@ -4,6 +4,8 @@ import { useEffect, useRef, useState } from "react";
 import { ArrowRightCircle, Factory } from "lucide-react";
 import { SectionLabel } from "./SectionLabel";
 import { SectionHeading } from "./SectionTitle";
+import processoBg from "@/assets/processo3.png"; // ajuste o caminho/alias conforme seu projeto
+
 
 const steps = [
   {
@@ -109,12 +111,10 @@ export function Process() {
       id="processo"
       className="relative overflow-hidden py-20"
       style={{
-        backgroundImage: "url('/src/assets/processo3.png')",
-        backgroundSize: "cover",
-        backgroundPosition: isMobile
-          ? "88% center"
-          : "90% center",
-      }}
+    backgroundImage: `url(${processoBg})`,
+    backgroundSize: "cover",
+    backgroundPosition: isMobile ? "88% center" : "90% center",
+  }}
     >
       {/* profundidade sutil */}
       <div
