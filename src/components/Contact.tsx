@@ -138,10 +138,12 @@ function ContactRow({
       rel="noreferrer"
       className="flex items-center gap-1 rounded-2xl border border-white/15 p-2 transition"
     >
-      <div className="grid h-11 w-11 place-items-center rounded-2xl bg-[#0E7FE0] text-white mr-2">{icon}</div>
+      <div className="grid h-11 w-11 shrink-0 place-items-center rounded-2xl bg-[#0E7FE0] text-white mr-2">
+        {icon}
+      </div>
       <div>
         <p className="text-xs uppercase tracking-wider opacity-70">{label}</p>
-        <p className="font-medium">{value}</p>
+        <p className="font-medium break-words">{value}</p>
       </div>
     </Tag>
   );

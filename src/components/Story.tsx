@@ -4,6 +4,7 @@ import historyImg from "@/assets/history.png";
 
 import { SectionLabel } from "./SectionLabel";
 import { SectionHeading } from "./SectionTitle";
+import { SectionParagraph } from "./SectionParagraph";
 
 export function Story() {
   return (
@@ -65,22 +66,27 @@ export function Story() {
         </div>
         <div className="mr-5 ml-5 mt-5">
           <SectionLabel icon={<Heart className="h-3.5 w-3.5" />}>Nossa história</SectionLabel>
-          <SectionHeading className="mt-4 text-4xl text-balance">
+
+          <SectionHeading width="large">
             Antes de existir uma fábrica, existia um sonho compartilhado.
           </SectionHeading>
-          <div className="mt-4 space-y-5 text-lg leading-relaxed text-muted-foreground">
-            <p>
-              Foi assim que nasceu a nossa história: da união de dois irmãos e um amigo,
-              que escolheram caminhar juntos como uma família.
-              <br></br>
-              Com coragem, dedicação e o apoio de seus familiares, enfrentaram obstáculos,
-              transformaram desafios em conquistas e construíram muito mais do que uma Fábrica de Laticínios:
-              deram início a uma trajetória marcada pela confiança, dedicação e compromisso com a qualidade.
-            </p>
-            <p className="font-display text-2xl text-foreground">
+
+          <SectionParagraph width="medium">
+            Foi assim que nasceu a nossa história: da união de dois irmãos e um amigo,
+            que escolheram caminhar juntos como uma família.
+            <br />
+            Com coragem, dedicação e o apoio de seus familiares, enfrentaram obstáculos,
+            transformaram desafios em conquistas e construíram muito mais do que uma Fábrica de Laticínios:
+            deram início a uma trajetória marcada pela confiança, dedicação e compromisso com a qualidade.
+          </SectionParagraph>
+
+          <div className="mt-5 space-y-2">
+            <p className="font-display text-lg text-foreground sm:text-xl md:text-2xl">
               "Hoje, seguimos levando sabor e confiança para a mesa dos nossos clientes e parceiros."
             </p>
-            <p className="text-sm">— Fernando, Fabinho e Cláudio, Fundadores</p>
+            <p className="text-xs sm:text-sm text-muted-foreground">
+              — Fernando, Fabinho e Cláudio, Fundadores
+            </p>
           </div>
         </div>
       </div>

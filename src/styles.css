@@ -115,6 +115,8 @@
 
   html {
     scroll-behavior: smooth;
+    background-color: var(--color-background); /* ADICIONADO */
+
   }
 
   body {

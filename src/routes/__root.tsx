@@ -83,12 +83,13 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
   head: () => ({
     meta: [
       { charSet: "utf-8" },
-      { name: "viewport", content: "width=device-width, initial-scale=1" },
+      { name: "viewport", content: "width=device-width, initial-scale=1, viewport-fit=cover" }, // ALTERADO
       { title: "Porto Laticínios — Mussarela e Requeijão Artesanal" },
       { name: "description", content: "Fábrica de mussarela e bisnaga de requeijão. Do campo à sua mesa, sabor que a família confia há mais de 25 anos." },
       { property: "og:title", content: "Porto Laticínios" },
       { property: "og:description", content: "Mussarela e requeijão artesanal direto da fábrica." },
       { property: "og:type", content: "website" },
+      
     ],
     links: [
       { rel: "stylesheet", href: appCss },
@@ -98,6 +99,11 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         rel: "stylesheet",
         href: "https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap",
       },
+      { rel: "icon", type: "image/png", href: "/favicon-96x96.png", sizes: "96x96" },
+      { rel: "icon", type: "image/svg+xml", href: "/favicon.svg" },
+      { rel: "shortcut icon", href: "/favicon.ico" },
+      { rel: "apple-touch-icon", sizes: "180x180", href: "/apple-touch-icon.png" },
+      { rel: "manifest", href: "/site.webmanifest" },
     ],
   }),
   shellComponent: RootShell,
