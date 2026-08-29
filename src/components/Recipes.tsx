@@ -11,14 +11,14 @@ import {
   Clock,
 } from "lucide-react";
 
-import crepioca from "@/assets/crepioca.jpg";
-import frango from "@/assets/frango.jpg";
-import paodealho from "@/assets/paodealho.jpg";
-import molhomassas from "@/assets/molho-massas.jpg";
-import molhonata from "@/assets/molho-nata.jpg";
-import pao from "@/assets/pao-recheado.jpg";
-import pizza from "@/assets/pizza.jpg";
-import torrada from "@/assets/torrada.jpg";
+import crepioca from "@/assets_optimized/crepioca.webp";
+import frango from "@/assets_optimized/frango.webp";
+import paodealho from "@/assets_optimized/paodealho.webp";
+import molhomassas from "@/assets_optimized/molho-massas.webp";
+import molhonata from "@/assets_optimized/molho-nata.webp";
+import pao from "@/assets_optimized/pao-recheado.webp";
+import pizza from "@/assets_optimized/pizza.webp";
+import torrada from "@/assets_optimized/torrada.webp";
 
 import { SectionLabel } from "./SectionLabel";
 import { SectionHeading } from "./SectionTitle";
@@ -442,6 +442,9 @@ export function Recipes() {
                     <img
                       src={r.img}
                       alt={r.title}
+                      width={900}
+                      height={600}
+                      loading="lazy"
                       className="h-full w-full object-cover transition duration-700 group-hover:scale-105"
                     />
 
@@ -526,6 +529,9 @@ export function Recipes() {
                           <img
                             src={r.img}
                             alt={r.title}
+                            width={900}
+                            height={600}
+                            loading="lazy"
                             className="h-full w-full object-cover transition duration-700 group-hover:scale-105"
                           />
 
@@ -631,6 +637,9 @@ export function Recipes() {
               <img
                 src={receitaSelecionada.img}
                 alt={receitaSelecionada.title}
+                width={900}
+                height={600}
+                loading="lazy"
                 className="h-full w-full object-cover"
               />
             </div>

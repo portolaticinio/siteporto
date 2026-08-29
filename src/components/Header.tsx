@@ -26,6 +26,9 @@ export function Header() {
           <img
             src={logo}
             alt="Porto Laticínios"
+            width={400}
+            height={400}
+            fetchPriority="high"
             className="h-20 w-auto object-contain "
           />
         </a>

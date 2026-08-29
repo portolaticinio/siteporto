@@ -7,6 +7,7 @@ export function FloatingWhatsApp() {
       href={WHATSAPP_LINK}
       target="_blank"
       rel="noreferrer"
+      aria-label="Falar com a Porto Laticínios pelo WhatsApp"
       className="
         fixed bottom-3 right-6 z-50
         inline-flex items-center gap-2

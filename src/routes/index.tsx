@@ -112,13 +112,6 @@ export const Route = createFileRoute("/")({
         content: "https://www.portolaticinios.com.br/",
       },
 
-      // og:image / og:image:width / og:image:height / og:image:alt removidos
-      // por enquanto — não colocar essas tags sem um arquivo de imagem real
-      // publicado no domínio. Sem elas, o preview em WhatsApp/redes sociais
-      // usa fallback (geralmente sem imagem ou com um genérico), o que é
-      // melhor do que apontar para uma imagem 404. Assim que houver uma foto
-      // de produto/fábrica em 1200x630px, reative estas 4 tags.
-
       // =====================================================
       // TWITTER / X
       // =====================================================
@@ -138,9 +131,6 @@ export const Route = createFileRoute("/")({
         content:
           "Fábrica de mussarela, bisnaga de requeijão e nata salgada em São Francisco-PB. Atacado e varejo.",
       },
-
-      // twitter:image / twitter:image:alt removidos pelo mesmo motivo do
-      // og:image acima — reativar quando houver imagem real publicada.
 
       // =====================================================
       // TEMA
@@ -185,8 +175,8 @@ export const Route = createFileRoute("/")({
 
           url: "https://www.portolaticinios.com.br/",
 
-          // "image" removido — reative com uma URL real assim que houver
-          // uma foto publicada (ex.: https://www.portolaticinios.com.br/foto-fabrica.jpg)
+          image:"https://www.portolaticinios.com.br/og-image.jpg",
+
           telephone: "+55XXXXXXXXXXX", // TODO: preencher com o número real
 
           priceRange: "$$", // opcional, ajuda no local pack
@@ -200,11 +190,7 @@ export const Route = createFileRoute("/")({
             addressCountry: "BR",
           },
 
-          // Coordenadas aproximadas do centro do município de São Francisco-PB
-          // (-6.60773, -38.0968). O plus code "9VFX+2G" indica que a fábrica
-          // fica bem próxima desse ponto, mas para precisão exata: abra o
-          // Google Maps, clique com botão direito no local exato da fábrica
-          // e copie o par de coordenadas que aparece no topo do menu.
+       
           geo: {
             "@type": "GeoCoordinates",
             latitude: -6.60773,

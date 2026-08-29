@@ -19,6 +19,9 @@ export function Footer() {
             <img
             src={logo}
             alt="Porto Laticínios"
+            width={400}
+            height={400}
+            loading="lazy"
             className="h-40 w-auto object-contain rounded-full"
           />
             <p className="mt-4 max-w-sm text-sm leading-7 text-white/75">
