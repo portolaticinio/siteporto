@@ -11,7 +11,7 @@ export function Story() {
     <section id="historia" className="relative py-10 bg-white"
     >
       <div className="mx-auto grid max-w-7xl items-center gap-14 lg:grid-cols-2">
-        <div className="relative">
+        <div className="relative mx-auto w-fit">
           <img
             src={historyImg}
             alt="Fundador da fábrica nos anos iniciais"
@@ -19,47 +19,43 @@ export function Story() {
             width={700}
             height={550}
             className="
-    mx-auto
-    h-auto
-    w-full
-    max-w-[280px]
-    rounded-2xl
-    sepia-[0.2]
-    shadow-[30px_50px_#0E7FE0]
-    sm:max-w-[320px]
-    md:max-w-[380px]
-    lg:max-w-[420px]
-  "
+      h-auto
+      w-full
+      max-w-[280px]
+      rounded-2xl
+      sepia-[0.2]
+      shadow-[30px_50px_#0E7FE0]
+
+      sm:max-w-[320px]
+      md:max-w-[380px]
+      lg:max-w-[420px]
+    "
           />
+
           <div
             className="
     absolute
-    bottom-[-30px] right-3
+    right-[-15px]
+    top-[300px]
+    z-10
     w-[120px]
     rounded-xl
     bg-[#DFA304]
-    p-2
-    text-black
+    p-3
     text-center
-    shadow-warm
-
-    sm:-bottom-6
-    sm:-right-3
-    sm:w-[140px]
-    sm:p-3
-    
-    md:-bottom-8
-    md:-right-4
-    md:w-[160px]
-    md:rounded-xl
-    md:p-4
+    text-black
+    shadow-lg
+    max-[754px]:right-[-70px]
+    max-[754px]:top-[220px]
+    max-[754px]:w-[150px]
+    max-[754px]:p-4
   "
           >
-            <p className="font-bold text-2xl leading-none md:text-3xl">
+            <p className="text-2xl font-bold leading-none md:text-3xl">
               2022
             </p>
 
-            <p className="mt-2 text-[11px] font-semibold leading-snug opacity-90 md:text-xs">
+            <p className="mt-2 text-[10px] font-semibold leading-snug opacity-90 md:text-xs">
               O ano em que tudo começou.
             </p>
           </div>

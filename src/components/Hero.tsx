@@ -23,6 +23,7 @@ export function Hero() {
         lg:h-[600px]
         xl:h-[640px]
         2xl:h-[680px]
+
       "
     >
 
@@ -252,12 +253,12 @@ export function Hero() {
               min-[350px]:flex-row
             "
           >
-       <div className="flex w-full items-center gap-3 sm:w-fit sm:gap-5">
-  <a
-    href={WHATSAPP_LINK}
-    target="_blank"
-    rel="noreferrer"
-    className="
+            <div className="flex w-full items-center gap-3 sm:w-fit sm:gap-5">
+              <a
+                href={WHATSAPP_LINK}
+                target="_blank"
+                rel="noreferrer"
+                className="
       inline-flex
       h-12
       flex-1
@@ -277,14 +278,14 @@ export function Hero() {
       sm:px-7
       sm:text-base
     "
-  >
-    <FaWhatsapp className="h-5 w-5 shrink-0 sm:h-6 sm:w-6" />
-    <span>Fazer pedido</span>
-  </a>
+              >
+                <FaWhatsapp className="h-5 w-5 shrink-0 sm:h-6 sm:w-6" />
+                <span>Fazer pedido</span>
+              </a>
 
-  <a
-    href="#produtos"
-    className="
+              <a
+                href="#produtos"
+                className="
       inline-flex
       h-12
       shrink-0
@@ -303,15 +304,15 @@ export function Hero() {
       sm:px-4
       sm:text-base
     "
-  >
-    <span>Conhecer produtos</span>
+              >
+                <span>Conhecer produtos</span>
 
-    <ChevronDown
-      className="h-4 w-4 shrink-0 sm:h-5 sm:w-5"
-      strokeWidth={2}
-    />
-  </a>
-</div>
+                <ChevronDown
+                  className="h-4 w-4 shrink-0 sm:h-5 sm:w-5"
+                  strokeWidth={2}
+                />
+              </a>
+            </div>
           </div>
         </div>
       </div>
