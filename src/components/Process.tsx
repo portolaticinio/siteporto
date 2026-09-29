@@ -5,7 +5,7 @@ import { ArrowRightCircle, Factory } from "lucide-react";
 import { SectionLabel } from "./SectionLabel";
 import { SectionHeading } from "./SectionTitle";
 import { usePrefersReducedMotion } from "@/hooks/usePrefersReducedMotion";
-import processoBg from "@/assets/processo3.png"; // DICA: converter para WebP/AVIF
+import processoBg from "@/assets_optimized/processo3.webp";
 
 const steps = [
   { n: "01", title: "Recepção do leite", desc: "De produtores locais, testado na chegada." },

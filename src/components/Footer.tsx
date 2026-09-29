@@ -1,7 +1,7 @@
 import { Instagram, Mail } from "lucide-react";
-import { FaWhatsapp } from "react-icons/fa"; // mesmo ícone usado no restante do site
+import { FaWhatsapp } from "react-icons/fa";
 
-import logo from "@/assets/logo2.png"; // DICA: exportar em ~320px (2x de 160px) e em WebP
+import logo from "@/assets_optimized/logo2.webp"; 
 import { WHATSAPP_LINK } from "@/lib/constants";
 
 const institutionalLinks = [

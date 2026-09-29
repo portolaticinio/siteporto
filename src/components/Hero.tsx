@@ -5,8 +5,11 @@ import { WHATSAPP_LINK } from "@/lib/constants";
 
 const HERO_DIR = "/hero";
 
-const srcSet = (name: string, widths: number[], ext: "avif" | "webp") =>
-  widths.map((w) => `${HERO_DIR}/${name}-${w}.${ext} ${w}w`).join(", ");
+const srcSet = (
+  name: string,
+  widths: number[],
+  ext: "avif" | "webp",
+) => widths.map((w) => `${HERO_DIR}/${name}-${w}.${ext} ${w}w`).join(", ");
 
 const DESKTOP_WIDTHS = [800, 1200, 1672];
 const MOBILE_WIDTHS = [480, 768, 1080];
@@ -46,11 +49,6 @@ export function Hero() {
   return (
     <section
       aria-labelledby="hero-title"
-      /*
-        bg-neutral-900: enquanto a imagem carrega o usuário vê um fundo escuro
-        (o texto branco já fica legível) em vez de um flash branco.
-        Troque por uma cor média da própria foto para ficar ainda mais suave.
-      */
       className="
         relative
         overflow-hidden
@@ -68,37 +66,56 @@ export function Hero() {
         2xl:h-[680px]
       "
     >
-  
+      {/* =====================================================
+          IMAGEM PRINCIPAL — LCP
+          Mantemos picture para entregar AVIF/WebP responsivo.
+          O preload fica no head da rota.
+      ====================================================== */}
       <picture>
+        {/* Desktop AVIF */}
         <source
           media="(min-width: 768px)"
           type="image/avif"
           srcSet={srcSet("hero-desktop", DESKTOP_WIDTHS, "avif")}
           sizes="100vw"
         />
+
+        {/* Desktop WebP */}
         <source
           media="(min-width: 768px)"
           type="image/webp"
           srcSet={srcSet("hero-desktop", DESKTOP_WIDTHS, "webp")}
           sizes="100vw"
         />
+
+        {/* Mobile AVIF */}
         <source
           type="image/avif"
           srcSet={srcSet("hero-mobile", MOBILE_WIDTHS, "avif")}
           sizes="100vw"
         />
+
+        {/* Mobile WebP */}
         <source
           type="image/webp"
           srcSet={srcSet("hero-mobile", MOBILE_WIDTHS, "webp")}
           sizes="100vw"
         />
+
+        {/* Fallback */}
         <img
           src={`${HERO_DIR}/hero-mobile-768.webp`}
           alt=""
+          width={1080}
+          height={1080}
           fetchPriority="high"
           decoding="async"
           className="
-            absolute inset-0 h-full w-full object-cover
+            absolute
+            inset-0
+            h-full
+            w-full
+            object-cover
             object-[center_50%]
             md:object-[80%_center]
             lg:object-[68%_center]
@@ -106,18 +123,36 @@ export function Hero() {
         />
       </picture>
 
-      {/* Overlays decorativos */}
-      <div aria-hidden="true" className="absolute inset-0 hidden lg:block" style={overlayDesktop} />
+      {/* =====================================================
+          OVERLAYS
+      ====================================================== */}
+
+      <div
+        aria-hidden="true"
+        className="absolute inset-0 hidden lg:block"
+        style={overlayDesktop}
+      />
+
       <div
         aria-hidden="true"
         className="absolute inset-0 hidden md:block lg:hidden"
         style={overlayTablet}
       />
-      <div aria-hidden="true" className="absolute inset-0 block md:hidden" style={overlayMobile} />
+
+      <div
+        aria-hidden="true"
+        className="absolute inset-0 block md:hidden"
+        style={overlayMobile}
+      />
+
+      {/* =====================================================
+          CONTEÚDO
+      ====================================================== */}
 
       <div
         className="
-          relative z-10
+          relative
+          z-10
           mx-auto
           lg:mt-16
           lg:mb-16
@@ -132,7 +167,7 @@ export function Hero() {
           md:py-10
           lg:grid
           lg:grid-cols-2
-          items-center
+          lg:items-center
           lg:gap-10
           lg:px-8
           lg:py-12
@@ -177,7 +212,11 @@ export function Hero() {
               md:tracking-[0.1em]
             "
           >
-            <Leaf aria-hidden="true" className="h-3 w-3 shrink-0" />
+            <Leaf
+              aria-hidden="true"
+              className="h-3 w-3 shrink-0"
+            />
+
             Desde 2023 — Construindo nossa história
           </span>
 
@@ -187,7 +226,7 @@ export function Hero() {
             style={{
               color: "#fff",
               textShadow: "0 2px 12px rgba(255,255,255,.15)",
-              fontSize: "clamp(2rem, 4.4vw, 4.0rem)",
+              fontSize: "clamp(2rem, 4.4vw, 4rem)",
               marginTop: "0.75rem",
             }}
           >
@@ -206,7 +245,9 @@ export function Hero() {
 
           <p
             className="mt-3 max-w-[560px] text-white"
-            style={{ fontSize: "clamp(1rem, 1.6vw, 1.25rem)" }}
+            style={{
+              fontSize: "clamp(1rem, 1.6vw, 1.25rem)",
+            }}
           >
             Produzimos laticínios com cuidado em cada etapa e dedicação para
             entregar produtos que fazem parte da história de muitas famílias.
@@ -241,9 +282,16 @@ export function Hero() {
                 ${focusRing}
               `}
             >
-              <FaWhatsapp aria-hidden="true" className="h-5 w-5 shrink-0 sm:h-6 sm:w-6" />
+              <FaWhatsapp
+                aria-hidden="true"
+                className="h-5 w-5 shrink-0 sm:h-6 sm:w-6"
+              />
+
               <span>Fazer pedido</span>
-              <span className="sr-only">(abre o WhatsApp em uma nova aba)</span>
+
+              <span className="sr-only">
+                (abre o WhatsApp em uma nova aba)
+              </span>
             </a>
 
             <a
@@ -272,6 +320,7 @@ export function Hero() {
               `}
             >
               <span>Conhecer produtos</span>
+
               <ChevronDown
                 aria-hidden="true"
                 className="h-4 w-4 shrink-0 sm:h-5 sm:w-5"

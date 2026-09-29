@@ -2,7 +2,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { Clock, Mail, MapPin, MessageCircle, Phone } from "lucide-react";
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";
-import backBg from "@/assets/back.png";
+import backBg from "@/assets_optimized/back.webp";
 
 import { sendContactMessage, contactFormSchema, type ContactFormValues } from "@/lib/api/contact.functions";
 import { COMPANY_ADDRESS, COMPANY_EMAIL, COMPANY_HOURS, COMPANY_WHATSAPP_DISPLAY, WHATSAPP_LINK } from "@/lib/constants";

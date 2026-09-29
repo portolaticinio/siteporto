@@ -18,18 +18,13 @@ import { Values } from "@/components/Values";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      // =====================================================
-      // SEO PRINCIPAL
-      // =====================================================
-
       {
-        // ~62 caracteres — dentro do limite seguro do Google
-        title: "Porto Laticínios | Mussarela e Requeijão em São Francisco-PB",
+        title:
+          "Porto Laticínios | Mussarela e Requeijão em São Francisco-PB",
       },
 
       {
         name: "description",
-        // ~150 caracteres — não trunca no snippet
         content:
           "Fábrica de mussarela, bisnaga de requeijão e nata salgada em São Francisco-PB. Atendemos atacado e varejo para pizzarias, padarias e mercados.",
       },
@@ -45,10 +40,6 @@ export const Route = createFileRoute("/")({
         content: "Porto Laticínios",
       },
 
-      // =====================================================
-      // INDEXAÇÃO
-      // =====================================================
-
       {
         name: "robots",
         content:
@@ -61,12 +52,6 @@ export const Route = createFileRoute("/")({
           "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
       },
 
-      // =====================================================
-      // LOCALIZAÇÃO
-      // (mantidas por segurança/compatibilidade, mas o Google
-      // hoje usa principalmente o JSON-LD abaixo para local SEO)
-      // =====================================================
-
       {
         name: "geo.region",
         content: "BR-PB",
@@ -76,10 +61,6 @@ export const Route = createFileRoute("/")({
         name: "geo.placename",
         content: "São Francisco, Paraíba, Brasil",
       },
-
-      // =====================================================
-      // OPEN GRAPH
-      // =====================================================
 
       {
         property: "og:type",
@@ -98,7 +79,8 @@ export const Route = createFileRoute("/")({
 
       {
         property: "og:title",
-        content: "Porto Laticínios | Mussarela, Requeijão e Nata Salgada",
+        content:
+          "Porto Laticínios | Mussarela, Requeijão e Nata Salgada",
       },
 
       {
@@ -109,12 +91,9 @@ export const Route = createFileRoute("/")({
 
       {
         property: "og:url",
-        content: "https://www.portolaticinios.com.br/",
+        content:
+          "https://www.portolaticinios.com.br/",
       },
-
-      // =====================================================
-      // TWITTER / X
-      // =====================================================
 
       {
         name: "twitter:card",
@@ -123,7 +102,8 @@ export const Route = createFileRoute("/")({
 
       {
         name: "twitter:title",
-        content: "Porto Laticínios | Mussarela, Requeijão e Nata Salgada",
+        content:
+          "Porto Laticínios | Mussarela, Requeijão e Nata Salgada",
       },
 
       {
@@ -132,10 +112,6 @@ export const Route = createFileRoute("/")({
           "Fábrica de mussarela, bisnaga de requeijão e nata salgada em São Francisco-PB. Atacado e varejo.",
       },
 
-      // =====================================================
-      // TEMA
-      // =====================================================
-
       {
         name: "theme-color",
         content: "#0E6AA4",
@@ -143,54 +119,49 @@ export const Route = createFileRoute("/")({
     ],
 
     links: [
-      // =====================================================
-      // CANONICAL
-      // =====================================================
-
       {
         rel: "canonical",
         href: "https://www.portolaticinios.com.br/",
       },
     ],
 
-    // =======================================================
-    // DADOS ESTRUTURADOS — SEO LOCAL
-    // Agora com @context e @type, o que faz o Google
-    // reconhecer o objeto como Schema.org válido.
-    // =======================================================
-
     scripts: [
       {
         type: "application/ld+json",
         children: JSON.stringify({
           "@context": "https://schema.org",
-          "@type": "FoodEstablishment", // ou "Organization" se o foco for só atacado B2B
+          "@type": "FoodEstablishment",
 
           name: "Porto Laticínios",
 
-          alternateName: ["Porto Laticinio", "Laticínio Porto"],
+          alternateName: [
+            "Porto Laticinio",
+            "Laticínio Porto",
+          ],
 
           description:
             "Fábrica de laticínios localizada em São Francisco, Paraíba, especializada na produção de mussarela, bisnaga de requeijão e nata salgada.",
 
-          url: "https://www.portolaticinios.com.br/",
+          url:
+            "https://www.portolaticinios.com.br/",
 
-          image:"https://www.portolaticinios.com.br/og-image.jpg",
+          image:
+            "https://www.portolaticinios.com.br/og-image.jpg",
 
-          telephone: "+55XXXXXXXXXXX", // TODO: preencher com o número real
+          telephone: "+55XXXXXXXXXXX",
 
-          priceRange: "$$", // opcional, ajuda no local pack
+          priceRange: "$$",
 
           address: {
             "@type": "PostalAddress",
-            streetAddress: "Rodovia PB-359, Km 18, Sítio Chabocão",
+            streetAddress:
+              "Rodovia PB-359, Km 18, Sítio Chabocão",
             addressLocality: "São Francisco",
             addressRegion: "PB",
             postalCode: "58818-000",
             addressCountry: "BR",
           },
 
-       
           geo: {
             "@type": "GeoCoordinates",
             latitude: -6.60773,
@@ -260,17 +231,29 @@ function Home() {
   return (
     <div className="min-h-screen bg-background text-foreground">
       <Header />
+
       <Hero />
+
       <Marquee />
+
       <Story />
+
       <Products />
+
       <Process />
+
       <Certifications />
+
       <Values />
+
       <Clients />
+
       <Recipes />
+
       <Contact />
+
       <Footer />
+
       <FloatingWhatsApp />
     </div>
   );

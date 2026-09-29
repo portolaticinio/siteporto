@@ -5,7 +5,8 @@ import { FaWhatsapp } from "react-icons/fa";
 import { HiMenu, HiX } from "react-icons/hi";
 
 import { WHATSAPP_LINK } from "@/lib/constants";
-import logo from "@/assets/logo2.png";
+import logo from "@/assets_optimized/logo2.webp";
+
 
 export function Header() {
   const [open, setOpen] = useState(false);

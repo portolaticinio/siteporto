@@ -14,7 +14,7 @@ import {
   Pause,
   Play,
 } from "lucide-react";
-import testemunhosBg from "@/assets/testemunhos.png";
+import testemunhosBg from "@/assets_optimized/testemunhos.webp";
 import { SectionLabel } from "./SectionLabel";
 import { SectionHeading } from "./SectionTitle";
 import { SectionParagraph } from "./SectionParagraph";

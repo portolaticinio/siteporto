@@ -4,11 +4,10 @@ import { useEffect, useState } from "react";
 import { Milk, ChevronLeft, ChevronRight, Pause, Play } from "lucide-react";
 import { FaWhatsapp } from "react-icons/fa";
 
-// DICA: converta estes PNGs para WebP/AVIF (como você já fez em assets_optimized nas receitas)
-import mussarelaImg from "@/assets/product-mussarela.png";
-import requeijao2Img from "@/assets/product-requeijao2.png";
-import requeijaoImg from "@/assets/product-requeijao1.png";
-import nata from "@/assets/nata.png";
+import mussarelaImg from "@/assets_optimized/product-mussarela.webp";
+import requeijao2Img from "@/assets_optimized/product-requeijao2.webp";
+import requeijaoImg from "@/assets_optimized/product-requeijao1.webp";
+import nata from "@/assets_optimized/nata.webp";
 
 import { SectionHeading } from "./SectionTitle";
 import { SectionLabel } from "./SectionLabel";
