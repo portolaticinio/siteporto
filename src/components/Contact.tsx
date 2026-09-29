@@ -38,7 +38,6 @@ export function Contact() {
     backgroundPosition: "center -179px",
   }}
     >
-      {/* Camada de sobreposição para clarear e diminuir o contraste do fundo */}
       < div className="absolute inset-0 bg-[#F7F3E8]/85 pointer-events-none" />
       <div className="mx-auto grid max-w-7xl gap-14 px-6 lg:grid-cols-2 z-10 relative">
         <div>

@@ -1,267 +1,153 @@
-import {
-  Instagram,
-  Mail,
-  MessageCircle,
-} from "lucide-react";
+import { Instagram, Mail } from "lucide-react";
+import { FaWhatsapp } from "react-icons/fa"; // mesmo ícone usado no restante do site
 
-import logo from "@/assets/logo2.png";
+import logo from "@/assets/logo2.png"; // DICA: exportar em ~320px (2x de 160px) e em WebP
+import { WHATSAPP_LINK } from "@/lib/constants";
+
+const institutionalLinks = [
+  { href: "#historia", label: "História" },
+  { href: "#processo", label: "Processo" },
+  { href: "#certificacoes", label: "Certificações" },
+];
+
+const productLinks = [
+  { href: "#produtos", label: "Queijo Mussarela" },
+  { href: "#produtos", label: "Mistura de Requeijão e Amido" },
+  { href: "#produtos", label: "Requeijão sabor Quatro Queijos" },
+];
+
+const socials = [
+  {
+    label: "WhatsApp",
+    href: WHATSAPP_LINK,
+    icon: FaWhatsapp,
+    hover: "hover:border-[#25D366] hover:bg-[#25D366] focus-visible:bg-[#25D366]",
+    external: true,
+  },
+  {
+    label: "Instagram",
+    href: "https://www.instagram.com/portolaticinio/",
+    icon: Instagram,
+    hover: "hover:border-[#E4405F] hover:bg-[#E4405F] focus-visible:bg-[#E4405F]",
+    external: true,
+  },
+  {
+    label: "E-mail",
+    href: "mailto:portolaticinio@gmail.com",
+    icon: Mail,
+    hover: "hover:border-[#EA4335] hover:bg-[#EA4335] focus-visible:bg-[#EA4335]",
+    external: false,
+  },
+];
+
+const linkClass =
+  "rounded-sm transition-colors hover:text-white hover:underline underline-offset-4 " +
+  "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white";
+
+const headingClass = "text-sm font-semibold uppercase tracking-[0.18em] text-white";
 
 export function Footer() {
   return (
-    <footer className="border-t border-white/10 
-    bg-[radial-gradient(circle_at_left,#0A69BA_0%,#095EA8_50%,#074A84_100%)]
-    text-white">
+    <footer
+      className="
+        border-t border-white/10 text-white
+        bg-[radial-gradient(circle_at_left,#0A69BA_0%,#095EA8_50%,#074A84_100%)]
+      "
+    >
       <div className="mx-auto max-w-7xl px-6 py-10">
-
-        <div className="grid gap-10 lg:grid-cols-[1fr_1fr_1fr_1fr]">
+        <div className="grid gap-10 lg:grid-cols-4">
           {/* Logo */}
           <div>
             <img
-            src={logo}
-            alt="Porto Laticínios"
-            width={400}
-            height={400}
-            loading="lazy"
-            className="h-40 w-auto object-contain rounded-full"
-          />
-            <p className="mt-4 max-w-sm text-sm leading-7 text-white/75">
-              O Verdadeiro Sabor
-              do Queijo na Paraíba
-
+              src={logo}
+              alt="Porto Laticínios"
+              width={160}
+              height={160}
+              loading="lazy"
+              decoding="async"
+              className="h-40 w-auto rounded-full object-contain"
+            />
+            <p className="mt-4 max-w-sm text-sm leading-7 text-white/90">
+              O Verdadeiro Sabor do Queijo na Paraíba
             </p>
           </div>
 
           {/* Institucional */}
-          <div>
-
-            <h3
-              className="
-                text-sm
-                font-semibold
-                uppercase
-                tracking-[0.18em]
-                text-white
-              "
-            >
+          <nav aria-labelledby="footer-institucional">
+            <h2 id="footer-institucional" className={headingClass}>
               Institucional
-            </h3>
-
-            <ul className="mt-4 space-y-2 text-sm text-white/75">
-
-              <li>
-                <a
-                  href="#historia"
-                  className="transition hover:text-white"
-                >
-                  História
-                </a>
-              </li>
-
-              <li>
-                <a
-                  href="#processo"
-                  className="transition hover:text-white"
-                >
-                  Processo
-                </a>
-              </li>
-
-              <li>
-                <a
-                  href="#certificacoes"
-                  className="transition hover:text-white"
-                >
-                  Certificações
-                </a>
-              </li>
-
+            </h2>
+            <ul className="mt-4 space-y-2 text-sm text-white/90">
+              {institutionalLinks.map((link) => (
+                <li key={link.label}>
+                  <a href={link.href} className={linkClass}>
+                    {link.label}
+                  </a>
+                </li>
+              ))}
             </ul>
-
-          </div>
+          </nav>
 
           {/* Produtos */}
-          <div>
-
-            <h3
-              className="
-                text-sm
-                font-semibold
-                uppercase
-                tracking-[0.18em]
-                text-white
-              "
-            >
+          <nav aria-labelledby="footer-produtos">
+            <h2 id="footer-produtos" className={headingClass}>
               Produtos
-            </h3>
-
-            <ul className="mt-4 space-y-2 text-sm text-white/75">
-
-              <li>
-                <a
-                  href="#produtos"
-                  className="transition hover:text-white"
-                >
-                  Queijo Mussarela
-                </a>
-              </li>
-
-
-              <li>
-                <a
-                  href="#produtos"
-                  className="transition hover:text-white"
-                >
-                  Mistura de Requeijão e Amido
-                </a>
-              </li>
-
-
-              <li>
-                <a
-                  href="#produtos"
-                  className="transition hover:text-white"
-                >
-                  Requeijão sabor Quatro Queijos
-                </a>
-              </li>
-
+            </h2>
+            <ul className="mt-4 space-y-2 text-sm text-white/90">
+              {productLinks.map((link) => (
+                <li key={link.label}>
+                  <a href={link.href} className={linkClass}>
+                    {link.label}
+                  </a>
+                </li>
+              ))}
             </ul>
+          </nav>
 
-          </div>
-
-          {/* Redes sociais */}
+          {/* Contato */}
           <div>
-            <h3
-              className="
-                text-sm
-                font-semibold
-                uppercase
-                tracking-[0.18em]
-                text-white
-              "
-            >
-              Contato
-            </h3>
-            <div className="mt-4 flex gap-3">
-
-
-              {/* WhatsApp */}
-              <a
-                href="https://wa.me/5583981192980"
-                target="_blank"
-                rel="noreferrer"
-                aria-label="WhatsApp"
-                className="
-                  flex
-                  h-11
-                  w-11
-                  items-center
-                  justify-center
-                  rounded-xl
-                  border
-                  border-white/10
-                  bg-white/5
-                  transition-all
-                  duration-300
-                  hover:-translate-y-1
-                  hover:border-[#25D366]
-                  hover:bg-[#25D366]
-                "
-              >
-                <MessageCircle className="h-5 w-5" />
-              </a>
-
-
-              {/* Instagram */}
-              <a
-                href="https://www.instagram.com/portolaticinio/"
-                target="_blank"
-                rel="noreferrer"
-                aria-label="Instagram"
-                className="
-                  flex
-                  h-11
-                  w-11
-                  items-center
-                  justify-center
-                  rounded-xl
-                  border
-                  border-white/10
-                  bg-white/5
-                  transition-all
-                  duration-300
-                  hover:-translate-y-1
-                  hover:border-[#E4405F]
-                  hover:bg-[#E4405F]
-                "
-              >
-                <Instagram className="h-5 w-5" />
-              </a>
-
-
-              {/* Gmail */}
-              <a
-                href="mailto:portolaticinio@gmail.com"
-                aria-label="Email"
-                className="
-                  flex
-                  h-11
-                  w-11
-                  items-center
-                  justify-center
-                  rounded-xl
-                  border
-                  border-white/10
-                  bg-white/5
-                  transition-all
-                  duration-300
-                  hover:-translate-y-1
-                  hover:border-[#EA4335]
-                  hover:bg-[#EA4335]
-                "
-              >
-                <Mail className="h-5 w-5" />
-              </a>
-            </div>
-            
+            <h2 className={headingClass}>Contato</h2>
+            <ul className="mt-4 flex gap-3">
+              {socials.map(({ label, href, icon: Icon, hover, external }) => (
+                <li key={label}>
+                  <a
+                    href={href}
+                    {...(external
+                      ? { target: "_blank", rel: "noopener noreferrer" }
+                      : {})}
+                    className={`
+                      flex h-11 w-11 items-center justify-center rounded-xl
+                      border border-white/20 bg-white/10
+                      transition-[transform,background-color,border-color]
+                      duration-300 motion-reduce:transition-none
+                      motion-safe:hover:-translate-y-1
+                      focus-visible:outline focus-visible:outline-2
+                      focus-visible:outline-offset-2 focus-visible:outline-white
+                      ${hover}
+                    `}
+                  >
+                    <Icon aria-hidden="true" className="h-5 w-5" />
+                    <span className="sr-only">
+                      {label}
+                      {external ? " (abre em uma nova aba)" : ""}
+                    </span>
+                  </a>
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
+
         {/* Linha inferior */}
         <div
           className="
-            mt-6
-            flex
-            flex-col
-            gap-4
-            border-t
-            border-white/10
-            pt-6
-            text-center
-            text-sm
-            text-white/60
-
-            md:flex-row
-            md:items-center
-            md:justify-between
-            md:text-left
+            mt-6 flex flex-col gap-4 border-t border-white/10 pt-6 text-center
+            text-sm text-white/90
+            md:flex-row md:items-center md:justify-between md:text-left
           "
         >
-
-          <p>
-            © {new Date().getFullYear()} Porto Laticínios.
-            Todos os direitos reservados.
-          </p>
-
-
-          <div className="flex flex-col gap-1 md:text-right">
-
-            <p>
-              CNPJ 42.882.487/0001-23
-            </p>
-
-
-          </div>
-
+          <p>© {new Date().getFullYear()} Porto Laticínios. Todos os direitos reservados.</p>
+          <p>CNPJ 42.882.487/0001-23</p>
         </div>
       </div>
     </footer>
